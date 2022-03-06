@@ -1,5 +1,5 @@
 ## My configuration files
-### Programs
+### Setup
 #### Waybar
 #### Sway
 #### mako
