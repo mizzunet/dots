@@ -1,4 +1,5 @@
 ## My configuration files
+<img src="/screenshots/screenshot.png" alt="Linux" style="height: 100px; width:100px;"/>
 ### Setup
 #### Waybar
 #### Sway
