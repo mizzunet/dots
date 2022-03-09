@@ -6,6 +6,7 @@ Clone this `git clone git@github.com:mizzunet/dots.git .dots`
 WM: sway
 Bar: waybar
 Notification: mako
+Fonts: Materials Icons, Clear Sans
 ```
 
 ### Artix Installation
