@@ -1,0 +1,7 @@
+complete -xf -c sway -s h -l help -d "Show help message and quit."
+complete -xF -c sway -s c -l config -d "Specify a config file."
+complete -xf -c sway -s C -l validate -d "Check the validity of the config file, then exit."
+complete -xf -c sway -s v -l version -d "Show the version number and quit."
+complete -xf -c sway -s V -l verbose -d "Enables more verbose logging"
+complete -xf -c sway -l get-socketpath -d " Gets the IPC socket path and prints it, then exits."
+complete -xf -c sway -s d -l debug -d "Enable debugging."

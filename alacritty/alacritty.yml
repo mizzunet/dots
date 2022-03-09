@@ -1,0 +1,29 @@
+font:
+  normal:
+    family: Roboto Mono
+    style: Light
+
+  bold:
+    family: Roboto Mono
+    style: Regular
+
+  italic:
+    family: DejaVu Sans Mono
+    style: Italic
+
+  bold_italic:
+    family: DejaVu Sans Mono
+    style: Bold Italic
+
+  size: 11
+colors:
+   primary:
+    background: '#000000'
+
+window:
+  padding:
+    x: 10
+    y: 10
+      
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>"

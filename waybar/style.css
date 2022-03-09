@@ -1,0 +1,98 @@
+* {
+    border: none;
+    font-family: "Clear Mono";
+    font-size: 17px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: transparent;
+    color: #bebebe;
+}
+window#librewolf {
+    background: transparent;
+    color: #bebebe;
+}
+.modules-right {
+    margin: 0px 15px 0 0;
+}
+.modules-center {
+    margin: 0px 0 0 0;
+}
+.modules-left {
+    margin: 0px 0 0 8px;
+}
+#custom-protonmail,#workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
+    margin:0px 4px 0 4px;
+}
+
+#workspaces button:hover {
+    background: rgba(50,50,50, 0.7);
+}
+
+#workspaces button {
+    margin: 0px 5px 0 5px;
+    background: transparent;
+    padding: 4px 4px 4px 4px;
+    border-radius: 6px;
+}
+
+#workspaces button.focused {
+    color: white;
+}
+#mode {
+    padding: 0px 12px 0px 12px;
+    color: black;
+    background: white;
+}
+
+@keyframes critical {
+    to {
+    color: rgba(187,56,0, 1);
+    }
+}
+
+
+#battery.critical:not(.charging) {
+    color:rgba(187,56,0, 1);
+    animation-name: critical;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#clock {
+    border-radius: 6px;
+    padding: 4px 6px 0px 0px;
+}
+
+#clock:hover {
+	background: rgba(40,40,40, .95);
+}
+ 
+#tray {
+    margin: 7px 15px 0 4px;
+    background: rgba(40,40,40, .65);
+    border-radius: 6px;
+    padding: 1px 5px 1px 5px;
+}
+#custom-protonmail{
+    padding-top:4px;
+    padding-right:4px;
+}
+#custom-protonmail.error {
+    color: darkred;
+}
+#tray {
+    background-color: #2980b9;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background-color: #eb4d4b;
+}
