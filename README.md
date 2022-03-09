@@ -2,9 +2,11 @@
 Clone this `git clone git@github.com:mizzunet/dots.git .dots`
 ### Setup
 <img src="/.screenshots/screenshot_mako.png" alt="Linux" />
-WM: `sway`
-Bar: `waybar`
-Notification: `mako`
+```
+WM: sway
+Bar: waybar
+Notification: mako
+```
 
 ### Artix Installation
 #### Script
