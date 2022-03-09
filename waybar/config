@@ -53,6 +53,7 @@
     },
         "network": {
 	    "interval": 5,
+        "format-linked":"󰤥",
         "format-wifi": "<span size='103%' rise='600'>{icon}</span>",
         "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
         "format-disconnected": "󰤭",
@@ -83,7 +84,7 @@
     "on-click": "wlsunset"
 },
 "custom/protonmail": {
-    "exec": "bar-protonmail -b \u200a",
+    "exec": "bar-protonmail -b \u200a -s message-new-instant",
     "return-type": "json",
     "interval": 10,
     "tooltip": false,

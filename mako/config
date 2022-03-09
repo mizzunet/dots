@@ -12,7 +12,7 @@ icon-path=/usr/share/icons/Adwaita:/usr/share/icons/elementary
 max-icon-size=36
 anchor=top-right
 group-by=summary
-on-notify=exec paplay ~/.sounds/Windows\ Notify\ Email.wav
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
 
 [urgency=normal]
 background-color=#181919
@@ -24,12 +24,14 @@ background-color=#e01b24e3
 text-color=#dedddae3
 border-color=#e01b24e3
 default-timeout=0
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 [urgency=low]
 on-notify=exec exit
 background-color=#000000
 text-color=#ffffff
 border-color=#181919
+on-notify=exec exit 
 
 [summary=Volume󰋌]
 text-alignment=center
