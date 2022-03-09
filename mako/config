@@ -20,9 +20,9 @@ text-color=#ffffff
 border-color=#ffffff
 
 [urgency=critical]
-background-color=#e01b24e3
-text-color=#dedddae3
-border-color=#e01b24e3
+background-color=#e01b24
+text-color=#ffffff
+border-color=#e01b24
 default-timeout=0
 on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
