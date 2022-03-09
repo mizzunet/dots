@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+if pidof iwgtk; then
+    exit
+else
+   iwgtk
+fi
+

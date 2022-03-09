@@ -1,0 +1,16 @@
+#!/bin/sh
+#cmd=`nmcli radio wifi`
+cmd=`iwctl adapter phy0 show | grep Powered | awk '{print $4}'`
+cmdOn='iwctl adapter phy0 set-property Powered on'
+cmdOff='iwctl adapter phy0 set-property Powered off'
+
+if [ $cmd == "on" ]
+then
+	$cmdOff
+    state="󰤭"
+else
+	$cmdOn
+    state="󰤥"
+fi
+	 notify-send -u low  \
+     "WiFi" "$state" -t 1000 

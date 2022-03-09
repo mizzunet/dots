@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+if pidof swayidle; then
+   notify-send -u low "Caffine 󰅶" -t 0 -i /usr/share/icons/elementary/status/48/dialog-information.svg
+   killall -9 swayidle
+else
+   swayidle -w timeout 30 'brightnessctl set 1%-' resume 'brightnessctl set 1%+' timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 180 'loginctl suspend' &
+   makoctl dismiss
+
+fi
+

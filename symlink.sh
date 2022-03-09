@@ -5,3 +5,6 @@ ln -s ~/.dots/mako  ~/.config/
 ln -s ~/.dots/nvim  ~/.config/
 ln -s ~/.dots/nvim  ~/.config/
 ln -s ~/.dots/mako  ~/.config/
+ln -s ~/.dots/yay  ~/.config/
+ln -s ~/.dots/mpv/mpv.conf  ~/.config/mpv/
+ln -s ~/.dots/scripts ~/.scripts

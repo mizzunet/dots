@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+if pidof /usr/bin/pipewire; then
+ echo pipewire running 
+else
+   /usr/bin/pipewire &
+fi
+if pidof /usr/bin/wireplumber; then
+ echo wireplumber running 
+else
+   /usr/bin/wireplumber &
+fi
+if pidof /usr/bin/pipewire-pulse; then
+ echo pulse running 
+else
+   /usr/bin/pipewire-pulse &
+fi
