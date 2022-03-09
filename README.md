@@ -1,6 +1,6 @@
 ## My configuration files
 ### Setup
-<img src="/screenshots/screenshot.png" alt="Linux" />
+<img src="/.screenshots/screenshot.png" alt="Linux" />
 
 ### Artix Installation
 #### Script
