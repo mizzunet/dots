@@ -10,7 +10,6 @@ Notification: mako
 
 Fonts: Materials Icons, Clear Sans
 
-
 ### Artix Installation
 #### Script
 #### Post installation 

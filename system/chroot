@@ -1,0 +1,53 @@
+echo archie > /etc/hostname
+#echo " hostname='archie'" >> /etc/conf.d/hostname
+echo archie as hostname
+
+echo "en_GB.UTF-8 UTF-8" | tee -a /etc/locale.gen
+locale-gen
+echo locales generaed
+echo "LANG=en_GB.UTF-8" > /etc/locale.conf
+
+echo set language
+ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+hwclock --systohc
+
+echo set localtime
+echo enter root password
+passwd
+
+useradd -mG audio,network,video,wheel,input,seatd missu
+echo enter user password
+passwd missu
+
+echo installing neccessary packages
+pacman -Syu
+
+echo Installing Chaotic AUR
+pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key FBA220DFC880C036
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst' --noconfim
+#echo -e "[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+
+echo Adding Arch repos
+#pacman -Syu
+pacman -Syu artix-archlinux-support  --noconfirm
+#echo -e "[extra]\nInclude = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
+#echo -e "[community]\nInclude = /etc/pacman.d/mirrorlist-arch" >> /etc/pacman.conf
+echo Added repo
+mv /etc/pacman.conf.bak /etc/pacman.conf
+pacman -Syu
+
+echo Installing additional packages
+pacman -S yay
+yay -S fish booster iwd iwd-openrc opendoas-sudo refind efitools --noconfirm
+
+yay -S alacritty sway autotiling brightnessctl clipman pamixer playerctl swayidle waybar clipman  bemenu-wayland nwg-launchers xorg-xwayland zoxide starship --noconfirm
+
+pacman -Rsc mkinitcpio 
+
+echo services
+rc-update add seatd default
+rc-update add iwd default
+
+echo refind installing
+refind-install --preloader /usr/share/efitools/efi/PreLoader.efi
