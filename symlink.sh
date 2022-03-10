@@ -11,3 +11,4 @@ ln -s ~/.dots/mpv/mpv.conf  ~/.config/mpv/
 ln -s ~/.dots/scripts ~/.scripts
 
 ln -s ~/.dots/fonts ~/.local/share/
+ ln -s ~/.dots/config/starship.toml ~/.config/

@@ -230,8 +230,8 @@ assign [title="Getting Things GNOME!"] $ws3
 for_window [app_id="[Ww]aydroid.*"] move right
 for_window [app_id="[Ww]aydroid.*"] resize set width 400px
 #for_window [app_id="qalculate-gtk"] floating enable
-for_window [title="File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
-for_window [title="iwgtk"] resize set width 500px height 300px
+for_window [title="Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
+for_window [title="Volume Control"] move position 838 0
 
 ### Executions
 exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway

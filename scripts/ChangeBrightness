@@ -8,9 +8,9 @@ case $action in
 		if [ $brightness -lt 10 ]; then  doas brightnessctl set 1%+;else doas brightnessctl set 5%+; fi
 		;;
 	down)
-		if [ $brightness -lt 10 ]; then  doas brightnessctl set 1%-;else doas brightnessctl set 5%-; fi
+		if [ $brightness -lt 10 ]; then  doas brightnessctl set 4-;else doas brightnessctl set 5%-; fi
 		;;		
 
 	esac
-	notify-send -u low  -h int:value:$(brightnessctl | grep Current | awk '{print $4}' |  sed 's/[^0-9]*//g') "Brightness󰃟" -t 1000 -i /usr/share/icons/elementary/status/48/brightness-display-symbolic.svg
+	notify-send -u low  -h int:value:$(brightnessctl | grep Current | awk '{print $4}' |  sed 's/[^0-9]*//g') "Brightness󰃟" -t 1000 
 

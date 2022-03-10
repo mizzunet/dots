@@ -22,7 +22,7 @@ window#librewolf {
 .modules-left {
     margin: 0px 0 0 8px;
 }
-#custom-protonmail,#workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
+#waybar-mpris,#custom-protonmail,#workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
     margin:0px 4px 0 4px;
 }
 

@@ -23,6 +23,6 @@ if $( pamixer --get-mute);
 then exit;
 else
    notify-send -u low \
-  -h int:value:"$(pamixer --get-volume)" Volume󰋌 -t 1000 -i /usr/share/icons/elementary/status/48/notification-audio-volume-high.svg
+  -h int:value:"$(pamixer --get-volume)" Volume󰋌 -t 1000 
 fi
 

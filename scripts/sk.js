@@ -1,9 +1,4 @@
-const {
-    aceVimMap,
-    mapkey,
-    imap,
-    imapkey,
-    getClickableElements,
+const { aceVimMap, mapkey, imap, imapkey, getClickableElements,
     vmapkey,
     map,
     cmap,
@@ -41,7 +36,6 @@ removeSearchAlias('h', 's');
 removeSearchAlias('w', 's');
 removeSearchAlias('y', 's');
 removeSearchAlias('s', 's');
-addSearchAlias('b', 'Brave', 'https://search.brave.com/search?q=');
 addSearchAlias('a', 'Amazon', 'https://www.amazon.in/s?k=');
 addSearchAlias('f', 'Flipkart', 'https://www.flipkart.com/search?q=');
 addSearchAlias('i', 'Invidious', 'https://invidio.xamh.de/search?q=', 'i');
@@ -51,7 +45,7 @@ addSearchAlias('myn','https://www.myntra.com/')
 addSearchAlias('bk','Z-Library','http://book4you.org/s/','r')
 addSearchAlias('d','Dictionary','https://www.oxfordlearnersdictionaries.com/definition/english/')
 addSearchAlias('gd','Goodreads','https://www.goodreads.com/search?q=')
-addSearchAlias('p','Paulgo','http://paulgo.io/search?q=','p')
+addSearchAlias('p','Piped','https://piped.kavin.rocks/results?search_query=','p')
 addSearchAlias('s','Searx','http://searx.be/search?q=','s')
 addSearchAlias('t','1337x','https://1337x.to/search/','t')
 
@@ -176,7 +170,7 @@ input {
   color: var(--accent-fg);
 }
 /* ---------- Omnibar ---------- */
-/* Uncomment this and use settings.omnibarPosition = 'bottom' or Pentadactyl/Tridactyl style bottom bar */
+/* Uncomment his and use settings.omnibarPosition = 'bottom' or Pentadactyl/Tridactyl style bottom bar */
 /* .sk_theme#sk_omnibar {
   width: 100%;
   left: 0;

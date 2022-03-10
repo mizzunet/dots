@@ -43,7 +43,7 @@ text-alignment=center
 format=%s
 group-by=summary
 
-[summary=WiFi]
+[summary~=WiFi]
 text-alignment=center
 format=%s\n%b
 group-by=summary

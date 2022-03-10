@@ -6,6 +6,7 @@
     "modules-center": ["clock",],
     "modules-right": ["custom/protonmail","network","pulseaudio", "battery", "tray"],
     "sway/workspaces": {
+        "icon": false,   
         "disable-scroll": true,
         "all-outputs": false,
         "format": "<span size='large'>{icon}</span>",
@@ -61,17 +62,17 @@
 	    "tooltip-format-wifi": "{essid}:{signalStrength}\nSpeed:{bandwidthDownBits} \n{ipaddr}"
     },
     "pulseaudio": {
-        "tooltip": "{percentage}",
-        //"scroll-step": 1,
-       "on-scroll-up": "~/.scripts/ChangeVolume up",
-       "on-scroll-down": "~/.scripts/ChangeVolume down",
+       "tooltip": "{volume}",
+       //"scroll-step": 1,
+       //"on-scroll-up": "~/.scripts/ChangeVolume up",
+       //"on-scroll-down": "~/.scripts/ChangeVolume down",
+        "on-click-right": "pavucontrol",
        "on-click":"~/.scripts/ChangeVolume mute",
        "format": "<span size='125%' rise='600'>{icon}</span>",
        "format-source": "<span size='105%' rise='600'>{icon}</span> {volume}%",
        "format-muted": "<span size='125%' rise='600'>󰖁</span>",
        "format-icons": {
-            "headphones": "󰋌",
-            "headset": "󰋌",
+            "headphone": "󰋌",
             "default": ["󰕿", "󰖀", "󰕾"]
         },
     },
@@ -84,7 +85,7 @@
     "on-click": "wlsunset"
 },
 "custom/protonmail": {
-    "exec": "bar-protonmail -b \u200a -s message-new-instant",
+    "exec": "bar-protonmail -b \u200a",
     "return-type": "json",
     "interval": 10,
     "tooltip": false,
@@ -108,4 +109,18 @@
             "unlocked": ""
         }
     },
+"custom/waybar-mpris": {
+    "return-type": "json",
+    "exec": "waybar-mpris --autofocus",
+    "on-click": "waybar-mpris --send toggle",
+    // This option will switch between players on right click.
+        "on-click-right": "waybar-mpris --send player-next",
+    // The options below will switch the selected player on scroll
+        // "on-scroll-up": "waybar-mpris --send player-next",
+        // "on-scroll-down": "waybar-mpris --send player-prev",
+    // The options below will go to next/previous track on scroll
+        // "on-scroll-up": "waybar-mpris --send next",
+        // "on-scroll-down": "waybar-mpris --send prev",
+    "escape": true,
+},
 }
