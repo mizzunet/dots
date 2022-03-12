@@ -13,9 +13,9 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 * Notification: `mako`
 
-* Fonts: Materials Icons, Clear Sans
-
 * Terminal: `alacritty`
+
+* Fonts: Materials Icons, Clear Sans
 
 ### Script
 ### Post installation 
