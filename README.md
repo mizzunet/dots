@@ -49,14 +49,14 @@ export GST_VAAPI_ALL_DRIVERS=1
 ```
 #### Miscellaneous
 * fstrim
-** `/etc/cron.weekly/fstrim`
+    - `/etc/cron.weekly/fstrim`
 ```
 #!/bin/sh
 # trim all mounted file systems which support it
 /usr/bin/fstrim --all || true
 ```
 * ZRAM
-** `/etc/local.d/zram.start`
+    - `/etc/local.d/zram.start`
 ```
 #!/bin/bash
 
@@ -66,7 +66,7 @@ echo 2G > /sys/block/zram0/disksize
 mkswap --label zram0 /dev/zram0
 swapon --priority 100 /dev/zram0
 ```
-** `/etc/local.d/zram.stop`
+    - `/etc/local.d/zram.stop`
 ```
 #!/bin/bash
 
@@ -79,7 +79,7 @@ modprobe -r zram
 
 
 * Disble USB wakeup
-** `/etc/local.d/disable-usb-wakeup.start`
+    - `/etc/local.d/disable-usb-wakeup.start`
 ```
 #!/bin/bash
 bash -c '\
