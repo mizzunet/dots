@@ -7,13 +7,15 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 <img src="/.screenshots/scr_mako.png" alt="Linux" />
 
-* WM: sway
+* WM: `sway`
 
-* Bar: waybar
+* Bar: `waybar`
 
-* Notification: mako
+* Notification: `mako`
 
 * Fonts: Materials Icons, Clear Sans
+
+* Terminal: `alacritty`
 
 ### Script
 ### Post installation 
