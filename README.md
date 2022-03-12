@@ -3,19 +3,19 @@ Clone this
 ```
 git clone git@github.com:mizzunet/dots.git .dots
 ```
-* Setup
+### Setup
 
 <img src="/.screenshots/scr_mako.png" alt="Linux" />
-** WM: sway
-** Bar: waybar
-** Notification: mako
-** Fonts: Materials Icons, Clear Sans
+* WM: sway
+* Bar: waybar
+* Notification: mako
+* Fonts: Materials Icons, Clear Sans
 
-* Script
-* Post installation 
-* Tweaks
+### Script
+### Post installation 
+### Tweaks
 
-* Other useful commands
+### Other useful commands
 ** Listing changed backup files
 ```
 pacman -Qii | awk '/^MODIFIED/ {print $2}'
