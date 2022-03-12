@@ -308,6 +308,7 @@ Include = /etc/pacman.d/mirrorlist-arch
 Include = /etc/pacman.d/mirrorlist-arch
 ```
 </p>
+</details>
 #### OpenRC
 ##### Unneeded services
 ```
