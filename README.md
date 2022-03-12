@@ -296,6 +296,10 @@ NoExtract = usr/share/X11/locale/*
 ```
 
 ##### Add arch repos
+<details><summary>
+* `pacman.conf`
+</summary>
+<p>
 ```
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
@@ -303,7 +307,7 @@ Include = /etc/pacman.d/mirrorlist-arch
 [community]
 Include = /etc/pacman.d/mirrorlist-arch
 ```
-
+</p>
 #### OpenRC
 ##### Unneeded services
 ```
