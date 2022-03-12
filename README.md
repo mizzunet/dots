@@ -37,7 +37,7 @@ bluez-libs
 * `iw dev wlan0 set  power_save on` in `/etc/local.d/powersave.start`
 
 #### HW acceleration
-##### Install `libva-intel-driver libva-utils`
+* Install `libva-intel-driver libva-utils`
 * Environments
 ```
 export LIBVA_DRIVER_NAME=i965
@@ -47,8 +47,15 @@ export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 ```
 #### Miscellaneous
+##### `modprobe-db` cron
+* `/etc/cron.hourly/modprobed-db`
+```
+#!/bin/sh
+
+/usr/bin/modprobed-db storesilent
+```
 ##### fstrim
-    - `/etc/cron.weekly/fstrim`
+* `/etc/cron.weekly/fstrim`
 ```
 #!/bin/sh
 # trim all mounted file systems which support it
