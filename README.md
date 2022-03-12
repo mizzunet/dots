@@ -137,7 +137,7 @@ Add
 ```
 #### modprobe options
 
-* Blacklist unwanted modules
+##### Blacklist unwanted modules
 ```
 blacklist r8169  ## ethernet
 blacklist bluetooth ## bluetooth
@@ -153,24 +153,27 @@ blacklist rtsx_pci ## Realtek
 blacklist uvcvideo ## Web Cam
 ```
 
+##### Audio power saving
 * `options snd_hda_intel power_save=1` enable power saving for audio
 
+##### WiFi adapter power saving
 * `options ath9k ps_enable=1` powersaving for WiFi adapter
 
+##### Intel graphics tweaks
 * `options i915 enable_dp_mst=0 error_capture=0 fastboot=1 enable_fbc=1`
 
 ### `sysctl.conf`
-* Enable SysRq
+##### Enable SysRq
 `kernel.sysrq = 1`
-* Laptop mode
+##### Laptop mode
 `vm.laptop_mode = 5`
-* Disable IPv6
+##### Disable IPv6
 ```
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
 ```
-* Network tweaks
+##### Network tweaks
 ```
 net.core.netdev_max_backlog = 16384
 net.core.somaxconn = 8192
@@ -243,7 +246,7 @@ net.ipv4.ping_group_range = 0 65535
 
 ```
 
-* Virtual memory 
+##### Virtual memory 
 ```
 vm.dirty_ratio = 10
 vm.dirty_background_ratio = 5
@@ -252,8 +255,9 @@ vm.dirty_background_bytes = 4194304
 vm.dirty_bytes = 4194304
 vm.dirty_writeback_centisecs = 6000
 ```
+
 #### `pacman.conf` 
-* `NoExtract`
+##### `NoExtract`
 ```
 NoExtract =  usr/share/locale/*
 NoExtract = !usr/share/locale/locale.alias
@@ -284,7 +288,7 @@ NoExtract = usr/share/kbd/locale/*
 NoExtract = usr/share/X11/locale/*
 ```
 
-* Add arch repos
+##### Add arch repos
 ```
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
@@ -293,34 +297,36 @@ Include = /etc/pacman.d/mirrorlist-arch
 Include = /etc/pacman.d/mirrorlist-arch
 ```
 
-#### `rc.conf`
-* `rc_parallel="YES"` for parallel service loading which speeds up boot
-
-### Other useful commands
-
-* Listing changed backup files
-```
-pacman -Qii | awk '/^MODIFIED/ {print $2}'
-```
-* Unowned files
-```
-lostfiles
-pacreport --unowned-files
-```
-* pacman logs
-```
-pacolog
-```
-* Delete orphans
-```
-pacman -Qtdq | pacman -Rns -
-```
-* Unneeded services
+#### OpenRC
+##### Unneeded services
 ```
 rc-update del agetty.tty1
 rm /etc/init.d/agetty./[tty4,tty5,tty6,tty}]
 ```
-* Space
+##### Parallel execution
+* `rc.conf` - `rc_parallel="YES"` 
+
+### Other useful commands
+
+##### Listing changed backup files
+```
+pacman -Qii | awk '/^MODIFIED/ {print $2}'
+```
+##### Unowned files
+```
+lostfiles
+pacreport --unowned-files
+```
+##### pacman logs
+```
+pacolog
+```
+##### Delete orphans
+```
+pacman -Qtdq | pacman -Rns -
+```
+
+##### Space
 ```
 bleachbit
 rm -rf /usr/share/doc
