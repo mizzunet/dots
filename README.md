@@ -46,63 +46,6 @@ export MESA_GLSL_CACHE_DISABLE=true
 export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 ```
-#### Miscellaneous
-##### `modprobe-db` cron
-* `/etc/cron.hourly/modprobed-db`
-```
-#!/bin/sh
-
-/usr/bin/modprobed-db storesilent
-```
-##### fstrim
-* `/etc/cron.weekly/fstrim`
-```
-#!/bin/sh
-# trim all mounted file systems which support it
-/usr/bin/fstrim --all || true
-```
-##### ZRAM
-* `/etc/local.d/zram.start`
-```
-#!/bin/bash
-
-modprobe zram
-echo lz4 > /sys/block/zram0/comp_algorithm
-echo 2G > /sys/block/zram0/disksize
-mkswap --label zram0 /dev/zram0
-swapon --priority 100 /dev/zram0
-```
-
-* `/etc/local.d/zram.stop`
-
-```
-#!/bin/bash
-
-swapoff /dev/zram0
-
-echo 1 > /sys/block/zram0/reset
-
-modprobe -r zram
-```
-
-
-##### Disable USB wakeup
-* `/etc/local.d/disable-usb-wakeup.start`
-```
-#!/bin/bash
-bash -c '\
-    while read -r device _ status _; do \
-        [[ $device == +([EX]HC*|USB*|PS2*|RP03) && $status == "*enabled" ]] && \
-            echo $device > /proc/acpi/wakeup; \
-    done < /proc/acpi/wakeup; \
-    true \
-    '
-```
-##### Enable Wayland for Firefox
-```
-export MOZ_ENABLE_WAYLAND=1
-```
-
 #### Theme
 ##### Enable thumbnails for File chooser
 * Install `gtk3-patched-filechooser-icon-view`
@@ -169,7 +112,7 @@ blacklist uvcvideo ## Web Cam
 ##### Intel graphics tweaks
 * `options i915 enable_dp_mst=0 error_capture=0 fastboot=1 enable_fbc=1`
 
-### `sysctl.conf`
+#### `sysctl.conf`
 ##### Enable SysRq
 `kernel.sysrq = 1`
 ##### Laptop mode
@@ -262,6 +205,64 @@ vm.dirty_background_bytes = 4194304
 vm.dirty_bytes = 4194304
 vm.dirty_writeback_centisecs = 6000
 ```
+
+#### Miscellaneous
+##### `modprobe-db` cron
+* `/etc/cron.hourly/modprobed-db`
+```
+#!/bin/sh
+
+/usr/bin/modprobed-db storesilent
+```
+##### fstrim
+* `/etc/cron.weekly/fstrim`
+```
+#!/bin/sh
+# trim all mounted file systems which support it
+/usr/bin/fstrim --all || true
+```
+##### ZRAM
+* `/etc/local.d/zram.start`
+```
+#!/bin/bash
+
+modprobe zram
+echo lz4 > /sys/block/zram0/comp_algorithm
+echo 2G > /sys/block/zram0/disksize
+mkswap --label zram0 /dev/zram0
+swapon --priority 100 /dev/zram0
+```
+
+* `/etc/local.d/zram.stop`
+
+```
+#!/bin/bash
+
+swapoff /dev/zram0
+
+echo 1 > /sys/block/zram0/reset
+
+modprobe -r zram
+```
+
+
+##### Disable USB wakeup
+* `/etc/local.d/disable-usb-wakeup.start`
+```
+#!/bin/bash
+bash -c '\
+    while read -r device _ status _; do \
+        [[ $device == +([EX]HC*|USB*|PS2*|RP03) && $status == "*enabled" ]] && \
+            echo $device > /proc/acpi/wakeup; \
+    done < /proc/acpi/wakeup; \
+    true \
+    '
+```
+##### Enable Wayland for Firefox
+```
+export MOZ_ENABLE_WAYLAND=1
+```
+
 
 #### `pacman.conf` 
 ##### `NoExtract`
