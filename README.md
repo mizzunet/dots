@@ -15,7 +15,7 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 * Terminal: `alacritty`
 
-* Fonts: Materials Icons, Clear Sans
+* Fonts: [Materials Design Icons](https://materialdesignicons.com/), [Clear Sans](https://aur.archlinux.org/packages/ttf-clear-sans/)
 
 ### Post installation 
 #### Performance
@@ -46,19 +46,6 @@ export MESA_GLSL_CACHE_DISABLE=true
 export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 ```
-#### Theme
-##### Enable thumbnails for File chooser
-* Install `gtk3-patched-filechooser-icon-view`
-##### Adwaita theme for QT
-* Install `qgnomeplatform` 
-* Environments
-```
-export QT_QPA_PLATFORMTHEME=gnome
-export NO_AT_BRIDGE=1
-export GDK_CORE_DEVICE_EVENTS=1
-export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
-```
-
 ### Boot
 #### Kernel parameters
 
@@ -204,6 +191,18 @@ vm.vfs_cache_pressure = 50
 vm.dirty_background_bytes = 4194304
 vm.dirty_bytes = 4194304
 vm.dirty_writeback_centisecs = 6000
+```
+#### Theme
+##### Enable thumbnails for File chooser
+* Install `gtk3-patched-filechooser-icon-view`
+##### Adwaita theme for QT
+* Install `qgnomeplatform` 
+* Environments
+```
+export QT_QPA_PLATFORMTHEME=gnome
+export NO_AT_BRIDGE=1
+export GDK_CORE_DEVICE_EVENTS=1
+export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 ```
 
 #### Miscellaneous
