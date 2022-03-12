@@ -156,16 +156,7 @@ vm.dirty_bytes = 4194304
 vm.dirty_writeback_centisecs = 6000
 ```
 #### `pacman.conf` 
-
-<details open>
-<summary>Shopping list</summary>
-
-* Vegetables
-* Fruits
-* Fish
-
-</details>
-* <details open><summary>`NoExtract`</summary>
+* `NoExtract`
 ```
 NoExtract =  usr/share/locale/*
 NoExtract = !usr/share/locale/locale.alias
@@ -195,7 +186,6 @@ NoExtract = /usr/share/gtk-doc/*
 NoExtract = usr/share/kbd/locale/*
 NoExtract = usr/share/X11/locale/*
 ```
-</details>
 
 * Add arch repos
 ```
