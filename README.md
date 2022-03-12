@@ -40,6 +40,28 @@ Add
 ```
 #### modprobe options
 
+* Blacklist unwanted modules
+```
+blacklist r8169  ## ethernet
+blacklist bluetooth ## bluetooth
+blacklist btusb ## bluetooth
+blacklist joydev ## joystick
+blacklist ath3k
+blacklist ath9k_common
+blacklist acer_wmi 
+blacklist iTCO_wdt ## watchdog
+blacklist iTCO_vendor_support ## watchdog
+blacklist pcspkr
+blacklist rtsx_pci ## Realtek
+blacklist uvcvideo ## Web Cam
+```
+
+* `options snd_hda_intel power_save=1` enable power saving for audio
+
+* `options ath9k ps_enable=1` powersaving for WiFi adapter
+
+* `options i915 enable_dp_mst=0 error_capture=0 fastboot=1 enable_fbc=1`
+
 ### Other useful commands
 
 * Listing changed backup files
