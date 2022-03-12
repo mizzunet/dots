@@ -3,44 +3,42 @@ Clone this
 ```
 git clone git@github.com:mizzunet/dots.git .dots
 ```
-### Setup
+* Setup
+
 <img src="/.screenshots/scr_mako.png" alt="Linux" />
-WM: sway
+** WM: sway
+** Bar: waybar
+** Notification: mako
+** Fonts: Materials Icons, Clear Sans
 
-Bar: waybar
+* Script
+* Post installation 
+* Tweaks
 
-Notification: mako
-
-Fonts: Materials Icons, Clear Sans
-
-### Script
-### Post installation 
-### Tweaks
-
-### Other useful commands
-* Listing changed backup files
+* Other useful commands
+** Listing changed backup files
 ```
 pacman -Qii | awk '/^MODIFIED/ {print $2}'
 ```
-* Unowned files
+** Unowned files
 ```
 lostfiles
 pacreport --unowned-files
 ```
-* pacman logs
+** pacman logs
 ```
 pacolog
 ```
-* Delete orphans
+** Delete orphans
 ```
 pacman -Qtdq | pacman -Rns -
 ```
-* Unneeded services
+** Unneeded services
 ```
 rc-update del agetty.tty1
 rm /etc/init.d/agetty./[tty4,tty5,tty6,tty}]
 ```
-* Space
+** Space
 ```
 bleachbit
 rm -rf /usr/share/doc
