@@ -156,7 +156,7 @@ vm.dirty_bytes = 4194304
 vm.dirty_writeback_centisecs = 6000
 ```
 #### `pacman.conf` 
-* `NoExtract`
+* <details><summary>`NoExtract`</summary>
 ```
 NoExtract =  usr/share/locale/*
 NoExtract = !usr/share/locale/locale.alias
@@ -185,8 +185,8 @@ NoExtract = !usr/share/i18n/locales/translit_*
 NoExtract = /usr/share/gtk-doc/*
 NoExtract = usr/share/kbd/locale/*
 NoExtract = usr/share/X11/locale/*
-
 ```
+</details>
 
 * Add arch repos
 ```
