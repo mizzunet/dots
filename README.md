@@ -17,7 +17,6 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 * Fonts: Materials Icons, Clear Sans
 
-### Script
 ### Post installation 
 #### Performance
 
@@ -38,7 +37,7 @@ bluez-libs
 * `iw dev wlan0 set  power_save on` in `/etc/local.d/powersave.start`
 
 #### HW acceleration
-* Install `libva-intel-driver libva-utils`
+##### Install `libva-intel-driver libva-utils`
 * Environments
 ```
 export LIBVA_DRIVER_NAME=i965
@@ -48,14 +47,14 @@ export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 ```
 #### Miscellaneous
-* fstrim
+##### fstrim
     - `/etc/cron.weekly/fstrim`
 ```
 #!/bin/sh
 # trim all mounted file systems which support it
 /usr/bin/fstrim --all || true
 ```
-* ZRAM
+##### ZRAM
     - `/etc/local.d/zram.start`
 ```
 #!/bin/bash
@@ -66,7 +65,9 @@ echo 2G > /sys/block/zram0/disksize
 mkswap --label zram0 /dev/zram0
 swapon --priority 100 /dev/zram0
 ```
+
     - `/etc/local.d/zram.stop`
+
 ```
 #!/bin/bash
 
@@ -78,7 +79,7 @@ modprobe -r zram
 ```
 
 
-* Disble USB wakeup
+##### Disable USB wakeup
     - `/etc/local.d/disable-usb-wakeup.start`
 ```
 #!/bin/bash
@@ -90,7 +91,7 @@ bash -c '\
     true \
     '
 ```
-* Enable Wayland for Firefox
+##### Enable Wayland for Firefox
 ```
 export MOZ_ENABLE_WAYLAND=1
 ```
