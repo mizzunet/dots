@@ -19,6 +19,12 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 ### Script
 ### Post installation 
+#### Audio
+```
+pipewire pipewire-jack pipewire-pulse wireplumber gst-plugin-pipewire 
+gst-plugins-good gst-plugins-bad 
+bluez-libs
+
 #### Power savings 
 * `intel-undervolt`
 * `auto-cpufreq` 
