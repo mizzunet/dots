@@ -2,5 +2,5 @@
 if pidof wlsunset; then
    killall -9 wlsunset
 else
-    wlsunset
+    wlsunset -l 11 -L 75 -t 3500
 fi

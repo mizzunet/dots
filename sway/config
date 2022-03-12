@@ -23,8 +23,8 @@ set $ws9 "9"
 set $ws10 "10"
 
 set $image ~/.config/sway/border-images/shadows.png
-set $bg_dir "/home/missu/Pictures/"
-set $bg "pexels-lisa-fotios-1083822.jpg"
+set $wall_dir "/home/missu/Pictures/"
+set $wall "pexels-lisa-fotios-1083822.jpg"
 
 ### Window configs
 gaps inner 5
@@ -49,7 +49,7 @@ client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.focused          #121212 #27578f #ffffff #292d2e   #222222
 
 ### Output configuration
-output * bg $bg_dir$bg fill
+output * bg $wall_dir$wall fill
 ### Input configuration
    input  type:touchpad {
        tap enabled
@@ -230,7 +230,7 @@ assign [title="Getting Things GNOME!"] $ws3
 for_window [app_id="[Ww]aydroid.*"] move right
 for_window [app_id="[Ww]aydroid.*"] resize set width 400px
 #for_window [app_id="qalculate-gtk"] floating enable
-for_window [title="Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
+for_window [title="Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
 for_window [title="Volume Control"] move position 838 0
 
 ### Executions
@@ -270,9 +270,5 @@ exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY 
   exec autotiling
 
   # Programs
-# exec $menu # Show menu
   #exec stretchly
-# exec sleep 20&& /usr/bin/signal-desktop-beta --enable-features=UseOzonePlatform  --no-sandbox
-  #exec sleep 20&&ferdi 
-  #exec sleep 30&&chromium --profile-directory=Default  --app=https://mail.protonmail.com/u/0/all-mail#filter=unread
-  #exec sleep 20&&superproductivity
+ xwayland disable 

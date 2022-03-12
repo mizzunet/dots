@@ -15,7 +15,9 @@ export MESA_GLSL_CACHE_DISABLE=true
 export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 
-## time
+## spotify_dl
+export SPOTIPY_CLIENT_SECRET=5627a7efa52a4d5ab82c8bc64a62c42e
+export SPOTIPY_CLIENT_ID=b1acb8ba1769473781009e4976250205
 
 ## path
 export PATH=/usr/local/bin:/home/missu/.local/bin:$PATH
@@ -25,3 +27,6 @@ export QT_QPA_PLATFORMTHEME=gnome
 export NO_AT_BRIDGE=1
 export GDK_CORE_DEVICE_EVENTS=1
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+
+## wayland
+export MOZ_ENABLE_WAYLAND=1

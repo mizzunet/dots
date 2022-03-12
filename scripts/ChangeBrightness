@@ -5,10 +5,10 @@ brightness="$(brightnessctl | grep Current | awk '{print $4}' |  sed 's/[^0-9]*/
 
 case $action in
 	up)
-		if [ $brightness -lt 10 ]; then  doas brightnessctl set 1%+;else doas brightnessctl set 5%+; fi
+		if [ $brightness -lt 10 ]; then  doas brightnessctl set 2+;else doas brightnessctl set 5%+; fi
 		;;
 	down)
-		if [ $brightness -lt 10 ]; then  doas brightnessctl set 4-;else doas brightnessctl set 5%-; fi
+		if [ $brightness -lt 10 ]; then  doas brightnessctl set 2-;else doas brightnessctl set 5%-; fi
 		;;		
 
 	esac

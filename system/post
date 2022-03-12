@@ -79,7 +79,7 @@ pacreport --unowned-files
 pacolog
 ###Delete orphans
 pacman -Qtdq | pacman -Rns -
-###Unneeded ttys
+###Unneeded services
 rc-update del agetty.tty1
 rm /etc/init.d/agetty./[tty4,tty5,tty6,tty}]
 ###Space
@@ -90,3 +90,5 @@ rm -rf /usr/share/themes/*-Light*
 rm -rf /usr/share/themes/*-XFWM*
 rm -rf /usr/share/themes/*-GNOME_*
 rm -rf /usr/lib/firmware/amdgpu
+find / -type f -name '*.py[co]' -delete -o -type d -name __pycac
+he__ -delete
