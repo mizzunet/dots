@@ -19,6 +19,32 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 ### Script
 ### Post installation 
+#### Performance
+
+* `prelockd` and `prelockd-openrc`
+* `ananicy-cpp` and `ananicy-cpp`
+* ZRAM
+** `/etc/local.d/zram.start`
+```
+#!/bin/bash
+
+modprobe zram
+echo lz4 > /sys/block/zram0/comp_algorithm
+echo 2G > /sys/block/zram0/disksize
+mkswap --label zram0 /dev/zram0
+swapon --priority 100 /dev/zram0
+```
+** `/etc/local.d/zram.stop`
+```
+#!/bin/bash
+
+swapoff /dev/zram0
+
+echo 1 > /sys/block/zram0/reset
+
+modprobe -r zram
+```
+
 #### Audio
 ```
 pipewire pipewire-jack pipewire-pulse wireplumber gst-plugin-pipewire 
@@ -26,10 +52,12 @@ gst-plugins-good gst-plugins-bad
 bluez-libs
 
 #### Power savings 
-* `intel-undervolt`
-* `auto-cpufreq` 
-* `tuned`
-* `tlp`
+* `intel-undervolt` and `intel-undervolt-openrc`
+* `auto-cpufreq`  and `auto-cpufreq-openrc`
+* `tuned` and `tuned-openrc`
+* `tlp` and `tlp-openrc`
+* `powertop --auto-tune`
+* `iw dev wlan0 set  power_save on` in `/etc/local.d/powersave.start`
 
 #### HW acceleration
 * Install `libva-intel-driver libva-utils`
@@ -41,11 +69,25 @@ export MESA_GLSL_CACHE_DISABLE=true
 export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 
-# Enable Wayland for Firefox
+#### Miscellaneous
+* Disble USB wakeup
+** `/etc/local.d/disable-usb-wakeup.start`
+```
+#!/bin/bash
+bash -c '\
+    while read -r device _ status _; do \
+        [[ $device == +([EX]HC*|USB*|PS2*|RP03) && $status == "*enabled" ]] && \
+            echo $device > /proc/acpi/wakeup; \
+    done < /proc/acpi/wakeup; \
+    true \
+    '
+```
+* Enable Wayland for Firefox
+```
 export MOZ_ENABLE_WAYLAND=1
 ```
 
-####Theme
+#### Theme
 * Enable thumbnails for File chooser: Install `gtk3-patched-filechooser-icon-view`
 * Install `qgnomeplatform` for Adwaita for Qt
 * Environments
