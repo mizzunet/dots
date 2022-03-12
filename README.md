@@ -28,7 +28,7 @@ git clone git@github.com:mizzunet/dots.git .dots
 pipewire pipewire-jack pipewire-pulse wireplumber gst-plugin-pipewire 
 gst-plugins-good gst-plugins-bad 
 bluez-libs
-
+```
 #### Power savings 
 * `intel-undervolt` and `intel-undervolt-openrc`
 * `auto-cpufreq`  and `auto-cpufreq-openrc`
