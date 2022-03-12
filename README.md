@@ -55,7 +55,7 @@ export GST_VAAPI_ALL_DRIVERS=1
 /usr/bin/fstrim --all || true
 ```
 ##### ZRAM
-    - `/etc/local.d/zram.start`
+* `/etc/local.d/zram.start`
 ```
 #!/bin/bash
 
@@ -66,7 +66,7 @@ mkswap --label zram0 /dev/zram0
 swapon --priority 100 /dev/zram0
 ```
 
-    - `/etc/local.d/zram.stop`
+* `/etc/local.d/zram.stop`
 
 ```
 #!/bin/bash
@@ -80,7 +80,7 @@ modprobe -r zram
 
 
 ##### Disable USB wakeup
-    - `/etc/local.d/disable-usb-wakeup.start`
+* `/etc/local.d/disable-usb-wakeup.start`
 ```
 #!/bin/bash
 bash -c '\
@@ -97,7 +97,9 @@ export MOZ_ENABLE_WAYLAND=1
 ```
 
 #### Theme
-* Enable thumbnails for File chooser: Install `gtk3-patched-filechooser-icon-view`
+##### Enable thumbnails for File chooser
+* Install `gtk3-patched-filechooser-icon-view`
+##### Adwaita theme for QT
 * Install `qgnomeplatform` for Adwaita for Qt
 * Environments
 ```
@@ -107,6 +109,7 @@ export GDK_CORE_DEVICE_EVENTS=1
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 ```
 
+### Boot
 #### Kernel parameters
 
 * `quiet` for supressing logs
@@ -116,14 +119,19 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 * `console=tty3` send logs to TTY3 rather than TTY1
 * `acpi_osi=\"Windows 2015\" acpi_osi=!` get BIOS setting of Windows
 
-* `intel-clear-ucode`
-Add 
+##### `intel-clear-ucode`
+Add
 ```
  initrd  /intel-ucode.cpio
  initrd  /i915-firmware.cpio.xz
 ```
 
-* `booster` as initramfs instead of `mkinitcpio`
+##### `booster` as initramfs generator
+* Generate manually
+```
+/usr/lib/booster/regenerate_images
+```
+* Command line
 ```
  initrd  /booster-linux-lts.img
 ```
