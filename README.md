@@ -64,7 +64,7 @@ blacklist uvcvideo ## Web Cam
 
 * `options i915 enable_dp_mst=0 error_capture=0 fastboot=1 enable_fbc=1`
 
-### sysctl.conf
+### `sysctl.conf`
 * Enable SysRq
 `kernel.sysrq = 1`
 * Laptop mode
