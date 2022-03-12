@@ -23,6 +23,14 @@ git clone git@github.com:mizzunet/dots.git .dots
 * `intel-clear-ucode`
 Add 
 ```
+ initrd  /intel-ucode.cpio
+ initrd  /i915-firmware.cpio.xz
+```
+
+* `booster` as initramfs instead of `mkinitcpio`
+```
+ initrd  /booster-linux-lts.img
+```
 #### modprobe options
 
 ###Listing changed backup files
