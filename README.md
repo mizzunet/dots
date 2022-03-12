@@ -16,30 +16,31 @@ Fonts: Materials Icons, Clear Sans
 ### Script
 ### Post installation 
 ### Tweaks
+
 ### Other useful commands
-#### Listing changed backup files
+* Listing changed backup files
 ```
 pacman -Qii | awk '/^MODIFIED/ {print $2}'
 ```
-#### Unowned files
+* Unowned files
 ```
 lostfiles
 pacreport --unowned-files
 ```
-#### pacman logs
+* pacman logs
 ```
 pacolog
 ```
-#### Delete orphans
+* Delete orphans
 ```
 pacman -Qtdq | pacman -Rns -
 ```
-#### Unneeded services
+* Unneeded services
 ```
 rc-update del agetty.tty1
 rm /etc/init.d/agetty./[tty4,tty5,tty6,tty}]
 ```
-#### Space
+* Space
 ```
 bleachbit
 rm -rf /usr/share/doc
