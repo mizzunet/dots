@@ -23,18 +23,25 @@ git clone git@github.com:mizzunet/dots.git .dots
 * `intel-clear-ucode`
 Add 
 ```
+#### modprobe options
+
 ###Listing changed backup files
 pacman -Qii | awk '/^MODIFIED/ {print $2}'
+
 ###Unowned files
 lostfiles
 pacreport --unowned-files
+
 ###pacman logs
 pacolog
+
 ###Delete orphans
 pacman -Qtdq | pacman -Rns -
+
 ###Unneeded services
 rc-update del agetty.tty1
 rm /etc/init.d/agetty./[tty4,tty5,tty6,tty}]
+
 ###Space
 bleachbit
 rm -rf /usr/share/doc
@@ -45,8 +52,7 @@ rm -rf /usr/share/themes/*-GNOME_*
 rm -rf /usr/lib/firmware/amdgpu
 find / -type f -name '*.py[co]' -delete -o -type d -name __pycac
 he__ -delete
-```
-#### modprobe options
+
 ### Other useful commands
 * Listing changed backup files
 ```
