@@ -156,6 +156,15 @@ vm.dirty_bytes = 4194304
 vm.dirty_writeback_centisecs = 6000
 ```
 #### `pacman.conf` 
+
+<details open>
+<summary>Shopping list</summary>
+
+* Vegetables
+* Fruits
+* Fish
+
+</details>
 * <details open>
 <summary>`NoExtract`</summary>
 
