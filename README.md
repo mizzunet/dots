@@ -46,7 +46,7 @@ export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export MESA_GLSL_CACHE_DISABLE=true
 export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
-
+```
 #### Miscellaneous
 * fstrim
 ** `/etc/cron.weekly/fstrim`
