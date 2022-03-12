@@ -23,28 +23,6 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 * `prelockd` and `prelockd-openrc`
 * `ananicy-cpp` and `ananicy-cpp`
-* ZRAM
-** `/etc/local.d/zram.start`
-```
-#!/bin/bash
-
-modprobe zram
-echo lz4 > /sys/block/zram0/comp_algorithm
-echo 2G > /sys/block/zram0/disksize
-mkswap --label zram0 /dev/zram0
-swapon --priority 100 /dev/zram0
-```
-** `/etc/local.d/zram.stop`
-```
-#!/bin/bash
-
-swapoff /dev/zram0
-
-echo 1 > /sys/block/zram0/reset
-
-modprobe -r zram
-```
-
 #### Audio
 ```
 pipewire pipewire-jack pipewire-pulse wireplumber gst-plugin-pipewire 
@@ -70,6 +48,36 @@ export KOOHA_VAAPI=1
 export GST_VAAPI_ALL_DRIVERS=1
 
 #### Miscellaneous
+* fstrim
+** `/etc/cron.weekly/fstrim`
+```
+#!/bin/sh
+# trim all mounted file systems which support it
+/usr/bin/fstrim --all || true
+```
+* ZRAM
+** `/etc/local.d/zram.start`
+```
+#!/bin/bash
+
+modprobe zram
+echo lz4 > /sys/block/zram0/comp_algorithm
+echo 2G > /sys/block/zram0/disksize
+mkswap --label zram0 /dev/zram0
+swapon --priority 100 /dev/zram0
+```
+** `/etc/local.d/zram.stop`
+```
+#!/bin/bash
+
+swapoff /dev/zram0
+
+echo 1 > /sys/block/zram0/reset
+
+modprobe -r zram
+```
+
+
 * Disble USB wakeup
 ** `/etc/local.d/disable-usb-wakeup.start`
 ```
