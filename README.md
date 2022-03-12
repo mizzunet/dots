@@ -62,6 +62,47 @@ blacklist uvcvideo ## Web Cam
 
 * `options i915 enable_dp_mst=0 error_capture=0 fastboot=1 enable_fbc=1`
 
+#### `pacman.conf` 
+* `NoExtract`
+```
+NoExtract =  usr/share/locale/*
+NoExtract = !usr/share/locale/locale.alias
+NoExtract = /usr/lib/firmware/amd*
+NoExtract = /usr/share/doc/*
+NoExtract = /usr/share/man/man3/*
+NoExtract = /usr/lib/modules/*/kernel/drivers/net/ethernet/*
+NoExtract = /usr/lib/modules/*/kernel/drivers/gpu/drm/amd/*
+NoExtract = /usr/lib/modules/*/kernel/drivers/gpu/drm/nouveau/*
+NoExtract = /usr/lib/modules/*/kernel/drivers/gpu/drm/radeon/*
+NoExtract = /usr/lib/firmware/ath10k/*
+NoExtract = /usr/lib/firmware/mediatek/*
+NoExtract = /usr/lib/firmware/ath11k/*
+NoExtract = /usr/lib/firmware/radeon/*
+NoExtract = /usr/lib/firmware/nvidia/*
+NoExtract = /usr/lib/firmware/iwlwifi*
+NoExtract =  usr/share/i18n/*
+NoExtract = !usr/share/i18n/charmaps/UTF-8.gz
+NoExtract = !usr/share/i18n/locales/en_CA
+NoExtract = !usr/share/i18n/locales/en_GB
+NoExtract = !usr/share/i18n/locales/en_US
+NoExtract = !usr/share/i18n/locales/i18n
+NoExtract = !usr/share/i18n/locales/i18n_ctype
+NoExtract = !usr/share/i18n/locales/iso14651_*
+NoExtract = !usr/share/i18n/locales/translit_*
+NoExtract = /usr/share/gtk-doc/*
+NoExtract = usr/share/kbd/locale/*
+NoExtract = usr/share/X11/locale/*
+
+```
+
+* Add arch repos
+```
+[extra]
+Include = /etc/pacman.d/mirrorlist-arch
+
+[community]
+Include = /etc/pacman.d/mirrorlist-arch
+```
 ### Other useful commands
 
 * Listing changed backup files
