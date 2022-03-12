@@ -103,6 +103,10 @@ Include = /etc/pacman.d/mirrorlist-arch
 [community]
 Include = /etc/pacman.d/mirrorlist-arch
 ```
+
+#### `rc.conf`
+* `rc_parallel="YES"` for parallel service loading which speeds up boot
+
 ### Other useful commands
 
 * Listing changed backup files
