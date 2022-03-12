@@ -20,6 +20,13 @@ git clone git@github.com:mizzunet/dots.git .dots
 ### Tweaks
 #### Kernel parameters
 
+* `quiet` for supressing logs
+* `nowatchdog` to disable NMI watchdog
+* `mitigations=off` for performance advantage
+* `libahci.ignore_sss=1` to disable 
+* `console=tty3` send logs to TTY3 rather than TTY1
+* `acpi_osi=\"Windows 2015\" acpi_osi=!` get BIOS setting of Windows
+
 * `intel-clear-ucode`
 Add 
 ```
