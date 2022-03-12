@@ -165,8 +165,7 @@ vm.dirty_writeback_centisecs = 6000
 * Fish
 
 </details>
-* <details open>
-<summary>`NoExtract`</summary>
+* <details open><summary>`NoExtract`</summary>
 
 NoExtract =  usr/share/locale/*
 NoExtract = !usr/share/locale/locale.alias
