@@ -19,7 +19,37 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 ### Script
 ### Post installation 
-### Tweaks
+#### Power savings 
+* `intel-undervolt`
+* `auto-cpufreq` 
+* `tuned`
+* `tlp`
+
+#### HW acceleration
+* Install `libva-intel-driver libva-utils`
+* Environments
+```
+export LIBVA_DRIVER_NAME=i965
+export LIBVA_DRIVERS_PATH=/usr/lib/dri
+export MESA_GLSL_CACHE_DISABLE=true
+export KOOHA_VAAPI=1
+export GST_VAAPI_ALL_DRIVERS=1
+
+# Enable Wayland for Firefox
+export MOZ_ENABLE_WAYLAND=1
+```
+
+####Theme
+* Enable thumbnails for File chooser: Install `gtk3-patched-filechooser-icon-view`
+* Install `qgnomeplatform` for Adwaita for Qt
+* Environments
+```
+export QT_QPA_PLATFORMTHEME=gnome
+export NO_AT_BRIDGE=1
+export GDK_CORE_DEVICE_EVENTS=1
+export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+```
+
 #### Kernel parameters
 
 * `quiet` for supressing logs
