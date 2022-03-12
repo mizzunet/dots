@@ -50,7 +50,7 @@ export GST_VAAPI_ALL_DRIVERS=1
 ##### Enable thumbnails for File chooser
 * Install `gtk3-patched-filechooser-icon-view`
 ##### Adwaita theme for QT
-* Install `qgnomeplatform` for Adwaita for Qt
+* Install `qgnomeplatform` 
 * Environments
 ```
 export QT_QPA_PLATFORMTHEME=gnome
