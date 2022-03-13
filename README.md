@@ -36,4 +36,6 @@ ln -s ~/.dots/fonts ~/.local/share/
 ln -s ~/.dots/config/starship.toml ~/.config/
 ln -s ~/.dots/config/modprobed-db.conf ~/.config/
 ln -s ~/.dots/config/modprobed.db  ~/.config/
+
+ln -s ~/.dots/fonts/ /.local/share/
 ```
