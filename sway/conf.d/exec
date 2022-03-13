@@ -1,0 +1,31 @@
+### Executions
+
+bar {
+    swaybar_command waybar
+}
+
+    exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+    exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+
+# power saving
+    exec batsignal -b -w 20 -c 15 -d 5 -m 30 -D "loginctl suspend" -I /usr/share/icons/elementary/status/48/battery-caution.svg
+    exec doas powertop --auto-tune
+    exec ~/.scripts/sleephdd
+
+# exec background
+
+  exec ~/.scripts/pipewire
+  exec ~/.scripts/swayidle
+  exec ~/.scripts/transparent-unfocused -o 0.65 
+  exec ~/.scripts/wlsunset
+
+  exec udiskie -N 
+  exec nwggrid-server
+  exec wl-paste -t text --watch clipman store 
+  exec mako 
+  exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+  exec sway-audio-idle-inhibit
+  exec autotiling
+
+# exec foreground
+  #exec stretchly
