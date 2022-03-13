@@ -24,14 +24,13 @@ set $wall_dir "/home/missu/Pictures/"
 set $wall "pexels-lisa-fotios-1083822.jpg"
 
 # input configuration
-   input  type:touchpad {
+input * xkb_numlock enable
+input  type:touchpad {
        tap enabled
        pointer_accel 0.3
        accel_profile adaptive
        middle_emulation enabled
-   }
-
-input * xkb_numlock enable
+}
 
 # gaps
 gaps inner 5
@@ -57,16 +56,23 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 output * bg $wall_dir$wall fill
 
 # condition for x apps
+for_window [title="ProtonMail"] move window to workspace $ws2
 for_window [class="Spotify"] move window to workspace $ws3
-##for_window [app_id="qalculate-gtk"] floating enable
-for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
 for_window [title="Volume Control"] move position 838 0
 for_window [app_id="[Ww]aydroid.*"] move right
 for_window [app_id="[Ww]aydroid.*"] resize set width 400px
-for_window [title="ProtonMail"] move window to workspace $ws2
 
 # condition for wayland apps
 assign [title="Signal|Ferdi"] $ws2
 assign [title="Habits"] $ws4
 assign [title="Getting Things GNOME!"] $ws3
+
+# enable floating for windows
+for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
+
+bar {
+    swaybar_command waybar
+}
+
 include ~/.config/sway/conf.d/*
+
