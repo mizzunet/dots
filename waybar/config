@@ -88,7 +88,7 @@
     "exec": "bar-protonmail -b \u200a",
     "return-type": "json",
     "interval": 30,
-    "tooltip": false,
+    "tooltip": "Open ProtonMail",
     "format": "{} <span size='108%' >󰇯</span>",
     "on-click": "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
 },

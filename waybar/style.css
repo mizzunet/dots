@@ -9,10 +9,6 @@ window#waybar {
     background: transparent;
     color: #bebebe;
 }
-window#librewolf {
-    background: transparent;
-    color: #bebebe;
-}
 .modules-right {
     margin: 0px 15px 0 0;
 }
