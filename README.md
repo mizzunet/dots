@@ -1,6 +1,6 @@
 ## My configuration files
 
-<img src="/.screenshots/scr_mako.png" alt="Linux" />
+<img src="/.screenshots/proximanova.png" alt="Linux" />
 
 * WM: `sway`
 
