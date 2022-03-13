@@ -34,13 +34,8 @@ default_border pixel 1
 default_floating_border pixel 1
 smart_borders on
 
-font pango:Clear Mono 10
+font pango:Proxima Nova 10.5
 #smart_gaps on
-
-#border_images.focused $image
-#border_images.focused_inactive $image
-#border_images.unfocused $image
-#border_images.urgent $image
 
 ### Colors
 # class                 border  backgr. text    indicator child_border
@@ -215,8 +210,8 @@ bar {
  bindsym control+mod1+e exec rofimoji
 
  # screen rotation
- bindsym control+mod1+Left exec swaymsg 'output * transform 90' 
- bindsym control+mod1+Right exec swaymsg 'output * transform 270'
+ bindsym control+mod1+Right exec swaymsg 'output * transform 90' 
+ bindsym control+mod1+Left exec swaymsg 'output * transform 270'
  bindsym control+mod1+Up exec swaymsg 'output * transform 0'
 
  # caffine mode
@@ -230,7 +225,7 @@ assign [title="Getting Things GNOME!"] $ws3
 for_window [app_id="[Ww]aydroid.*"] move right
 for_window [app_id="[Ww]aydroid.*"] resize set width 400px
 #for_window [app_id="qalculate-gtk"] floating enable
-for_window [title="Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
+for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
 for_window [title="Volume Control"] move position 838 0
 
 ### Executions
@@ -271,4 +266,4 @@ exec dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY 
 
   # Programs
   #exec stretchly
- xwayland disable 
+ exec ~/.scripts/sleephdd
