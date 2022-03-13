@@ -1,14 +1,17 @@
+# UI
+layer=overlay
 margin=5,11,2,0
 border-size=1
+border-radius=5
 text-alignment=left
 width=260
 progress-color=#ffffff
+
 format=%s\n%b
-layer=overlay
-border-radius=5
+
 font=Proxima Nova 11.3
 default-timeout=8000
-icon-path=/usr/share/icons/Adwaita:/usr/share/icons/elementary
+icon-path=/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 max-icon-size=36
 anchor=top-right
 group-by=summary
