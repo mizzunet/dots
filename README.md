@@ -1,9 +1,4 @@
 ## My configuration files
-Clone this 
-```
-git clone git@github.com:mizzunet/dots.git .dots
-```
-### Setup
 
 <img src="/.screenshots/scr_mako.png" alt="Linux" />
 
@@ -15,5 +10,29 @@ git clone git@github.com:mizzunet/dots.git .dots
 
 * Terminal: `alacritty`
 
-* Fonts: [Materials Design Icons](https://materialdesignicons.com/), [Clear Sans](https://aur.archlinux.org/packages/ttf-clear-sans/)
+* Fonts: [Materials Design Icons](https://materialdesignicons.com/), [Proxima Nova](https://aur.archlinux.org/packages/ttf-clear-sans/)
 
+### Setup
+Clone this 
+```
+git clone git@github.com:mizzunet/dots.git .dots
+```
+Backup your configs first!!
+```
+ln -s ~/.dots/fish  ~/.config/
+ln -s ~/.dots/sway  ~/.config/
+ln -s ~/.dots/alacritty  ~/.config/
+ln -s ~/.dots/mako  ~/.config/
+ln -s ~/.dots/nvim  ~/.config/
+ln -s ~/.dots/nvim  ~/.config/
+ln -s ~/.dots/mako  ~/.config/
+ln -s ~/.dots/yay  ~/.config/
+ln -s ~/.dots/swappy ~/.config/
+ln -s ~/.dots/mpv/mpv.conf  ~/.config/mpv/
+
+ln -s ~/.dots/scripts ~/.scripts
+
+ln -s ~/.dots/fonts ~/.local/share/
+ln -s ~/.dots/config/starship.toml ~/.config/
+
+```
