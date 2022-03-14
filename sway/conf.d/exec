@@ -10,8 +10,8 @@ gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e'
 gsettings set org.gnome.desktop.interface enable-animations false
 }
 
-exec {
 
+exec {
     dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
     dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 
