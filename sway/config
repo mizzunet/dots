@@ -60,14 +60,15 @@ bar {
     swaybar_command waybar
 }
 
-# condition for x apps
+# window manipulation
 for_window [title="ProtonMail"] move window to workspace $ws2
 for_window [class="Spotify"] move window to workspace $ws3
 for_window [title="Volume Control"] move position 838 0
+
 for_window [app_id="[Ww]aydroid.*"] move right
 for_window [app_id="[Ww]aydroid.*"] resize set width 400px
 
-# condition for wayland apps
+# Send windows
 assign [title="Signal|Ferdi"] $ws2
 assign [title="Habits"] $ws4
 assign [title="Getting Things GNOME!"] $ws3
