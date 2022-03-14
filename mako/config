@@ -10,7 +10,7 @@ progress-color=#ffffff
 format=%s\n%b
 
 font=Proxima Nova 11.3
-default-timeout=8000
+default-timeout=6000
 icon-path=/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 max-icon-size=36
 anchor=top-right
