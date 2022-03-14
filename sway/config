@@ -55,6 +55,11 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # wallpaper
 output * bg $wall_dir$wall fill
 
+# waybar
+bar {
+    swaybar_command waybar
+}
+
 # condition for x apps
 for_window [title="ProtonMail"] move window to workspace $ws2
 for_window [class="Spotify"] move window to workspace $ws3
@@ -70,9 +75,6 @@ assign [title="Getting Things GNOME!"] $ws3
 # enable floating for windows
 for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
 
-bar {
-    swaybar_command waybar
-}
 
 include ~/.config/sway/conf.d/*
 
