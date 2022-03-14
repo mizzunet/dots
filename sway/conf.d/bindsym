@@ -2,11 +2,13 @@
     floating_modifier $mod normal
 
 bindsym {
+
+# foreground
+# htop
+    control+Shift+Escape exec alacritty -e htop
+
 # Start a terminal
     $mod+Return exec alacritty
-
-# Kill focused window
-    $mod+Shift+q kill
 
 # Start your launcher
     $mod+space exec $menu
@@ -17,11 +19,66 @@ bindsym {
 # Open Broweser
     $mod+b exec $browser
 
+# clipmenu
+    Control+Shift ~/.clipman_swap
+    $mod+c exec  ~/.scripts/clipmenu
+
+
+# control
+# caffine mode
+    $mod+Shift+c exec ~/.scripts/swayidle 
+
+# wifi toggle
+    $mod+Shift+w exec ~/.scripts/wifi
+    XF86WLAN exec ~/.scripts/wifi
+
+# wlsunset toggle
+    $mod+Shift+n exec ~/.scripts/wlsunset
+
+# Use amixer to adjust volume
+    XF86AudioRaiseVolume exec ~/.scripts/ChangeVolume up
+    XF86AudioLowerVolume exec ~/.scripts/ChangeVolume down
+    XF86AudioMute        exec ~/.scripts/ChangeVolume mute
+
+# Sreen brightness controls
+    XF86MonBrightnessUp   exec ~/.scripts/ChangeBrightness up
+    XF86MonBrightnessDown exec ~/.scripts/ChangeBrightness down
+
+# Audio controls
+    XF86AudioPlay exec playerctl play-pause
+    XF86AudioNext exec playerctl next
+    XF86AudioPrev exec playerctl previous
+
+# Screenshot
+    Print exec exec grim -g "$(slurp)" - | swappy -f -
+    Shift+Print exec grim /tmp/screen.png && wl-copy < /tmp/screen.png  && notify-send "Screenshot Copied to Clipboard"
+    #Shift+Print grim ~/Pictures/Screenshot/$(date +%d%m%y-%I%M%S) | wl-copy && notify-send "Screenshot Copied to Clipboard"
+    
+# waydroid
+    control+mod1+a exec ~/.scripts/waydroid 
+ 
+# waydroid: antennaPod controls
+    control+mod1+j exec ~/.scripts/antennapod toggle
+    control+mod1+h exec ~/.scripts/antennapod rewind
+    control+mod1+l exec ~/.scripts/antennapod forward
+
+# ctrl+alt+delete to reboot
+    control+mod1+Delete exec loginctl reboot
+
+# sway
+# Kill focused window
+    $mod+Shift+q kill
+
 # Reload the configuration file
     $mod+Shift+Escape reload
 
 # Exit sway (logs you out of your Wayland session)
     $mod+Shift+End exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+# screen rotation
+    control+mod1+Right exec swaymsg 'output * transform 90' 
+    control+mod1+Left exec swaymsg 'output * transform 270'
+    control+mod1+Up exec swaymsg 'output * transform 0'
 
 # Moving around:
 
@@ -87,57 +144,7 @@ bindsym {
 
 # Resizing containers:
 
-
 $mod+r mode "resize"
-
-# clipmenu
-    Control+Shift ~/.clipman_swap
-    $mod+c exec  ~/.scripts/clipmenu
-
-# Use amixer to adjust volume
-    XF86AudioRaiseVolume exec ~/.scripts/ChangeVolume up
-    XF86AudioLowerVolume exec ~/.scripts/ChangeVolume down
-    XF86AudioMute        exec ~/.scripts/ChangeVolume mute
-
-# Sreen brightness controls
-    XF86MonBrightnessUp   exec ~/.scripts/ChangeBrightness up
-    XF86MonBrightnessDown exec ~/.scripts/ChangeBrightness down
-
-# Audio controls
-    XF86AudioPlay exec playerctl play-pause
-    XF86AudioNext exec playerctl next
-    XF86AudioPrev exec playerctl previous
-
-# Screenshot
-    Print exec exec grim -g "$(slurp)" - | swappy -f -
-    Shift+Print exec grim /tmp/screen.png && wl-copy < /tmp/screen.png  && notify-send "Screenshot Copied to Clipboard"
-    #Shift+Print grim ~/Pictures/Screenshot/$(date +%d%m%y-%I%M%S) | wl-copy && notify-send "Screenshot Copied to Clipboard"
-# waydroid
-    control+mod1+a exec ~/.scripts/waydroid 
- 
-# waydroid: antennaPod controls
-    control+mod1+j exec ~/.scripts/antennapod toggle
-    control+mod1+h exec ~/.scripts/antennapod rewind
-    control+mod1+l exec ~/.scripts/antennapod forward
-
-# wifi toggle
-    $mod+Shift+w exec ~/.scripts/wifi
-    XF86WLAN exec ~/.scripts/wifi
-
-# wlsunset toggle
-    $mod+Shift+n exec ~/.scripts/wlsunset
-
-# ctrl+alt+delete to reboot
-    control+mod1+Delete exec loginctl reboot
-
-# screen rotation
-    control+mod1+Right exec swaymsg 'output * transform 90' 
-    control+mod1+Left exec swaymsg 'output * transform 270'
-    control+mod1+Up exec swaymsg 'output * transform 0'
-
-# caffine mode
-    $mod+Shift+c exec ~/.scripts/swayidle 
-
 }
 
 mode "resize" {
