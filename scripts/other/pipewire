@@ -2,15 +2,18 @@
 if pidof /usr/bin/pipewire; then
  echo pipewire running 
 else
-   /usr/bin/pipewire &
+   /usr/bin/pipewire  > /dev/null 2>&1 &
+   echo pipewire started
 fi
 if pidof /usr/bin/wireplumber; then
  echo wireplumber running 
 else
-   /usr/bin/wireplumber &
+   /usr/bin/wireplumber  > /dev/null 2>&1 &
+   echo wireplumber started
 fi
 if pidof /usr/bin/pipewire-pulse; then
  echo pulse running 
 else
-   /usr/bin/pipewire-pulse &
+   /usr/bin/pipewire-pulse  > /dev/null 2>&1 &
+   echo pipewire-pulse started
 fi

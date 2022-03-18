@@ -1,1 +1,0 @@
-doas /usr/bin/hdparm -q -S 120 -y /dev/sda
