@@ -35,6 +35,7 @@ ecb
 ecdh_generic
 ec_sys
 fat
+fuse
 ghash_clmulni_intel
 hid_multitouch
 i2c_hid

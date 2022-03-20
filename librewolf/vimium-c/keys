@@ -1,0 +1,97 @@
+unmapAll
+
+
+# Scroll
+map j scrollDown count=1
+map k scrollUp count=1
+map G scrollToBottom
+map gg scrollToTop
+map e scrollPageUp
+map d scrollPageDown
+map h scrollLeft
+map l scrollRight
+map # scrollToLeft
+map $ scrollToRight
+
+# Navigating the page
+map gu goUp
+map gU goToRoot
+map r reload
+
+# Link
+map f LinkHints.activate
+map F LinkHints.activateOpenInNewForegroundTab
+map gf LinkHints.activateOpenInNewTab
+map cf LinkHints.activateWithQueue
+map q LinkHints.activateHover
+map Q LinkHints.activateFocus
+
+# Using the vomnibar
+#map go Vomnibar.activate clickLike 
+map : Vomnibar.activate clickLike
+map t Vomnibar.activateInNewTab clickLike
+map ;U Vomnibar.activateEditUrlInNewTab
+map ;u Vomnibar.activateEditUrl
+
+# Visual
+map v LinkHints.activateSelect
+#map enterVisualLineMode
+#map enterVisualMode
+
+# Clipboard
+map yy copyCurrentUrl
+map ya LinkHints.activateCopyLinkUrl
+map yt copyCurrentTitle
+map yT LinkHints.activateCopyLinkText
+#map yu autoCopy
+map P openCopiedUrlInCurrentTab
+map ;P openCopiedUrlInNewTab
+
+#map LinkHints.activateCopyLinkText
+
+# Input
+map i focusInput
+map I LinkHints.activateEdit
+
+# Using find
+map / enterFindMode
+map n performFind
+map N performBackwardsFind
+
+# Navigating history
+map D goForward
+map S goBack
+
+# Manipulating tabs
+map R nextTab
+map E previousTab
+map ww moveTabToNextWindow
+map W joinTabs
+map on createTab
+map x removeTab mayClose
+map X restoreTab
+map g1 firstTab
+map g9 lastTab
+map zd duplicateTab
+map zp togglePinTab
+map zm toggleMuteTab
+map >> moveTabRight
+map << moveTabLeft
+map gx0 closeTabsOnLeft
+map gx$ closeTabsOnRight
+
+# Zoom
+map zi zoomIn
+map zo zoomOut
+map zr zoomReset
+
+# Download
+map zwl LinkHints.activateDownloadLink
+map zwi LinkHints.activateDownloadImage
+map zwI LinkHints.activateOpenImage
+
+# Miscellaneous
+map ;e openUrl url="moz-extension://8a60ac56-72f7-4eaf-b0aa-727c82e71ffe/pages/options.html"
+map p passNextKey
+map sb searchAs
+map ? showHelp

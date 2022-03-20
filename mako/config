@@ -2,39 +2,37 @@
 layer=overlay
 margin=5,11,2,0
 border-size=1
-border-radius=5
+border-radius=2
 text-alignment=left
 width=260
 progress-color=#ffffff
 
 format=%s\n%b
 
-font=Proxima Nova 11.3
+font=Google Sans 11.3
 default-timeout=6000
 icon-path=/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 max-icon-size=36
 anchor=top-right
 group-by=summary
-on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
-
-[urgency=normal]
-background-color=#181919
-text-color=#ffffff
-border-color=#ffffff
-
-[urgency=critical]
-background-color=#e01b24
-text-color=#ffffff
-border-color=#e01b24
-default-timeout=0
-on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 [urgency=low]
-on-notify=exec exit
 background-color=#000000
+border-color=#2D2D2D
 text-color=#ffffff
-border-color=#181919
-on-notify=exec exit 
+
+[urgency=normal]
+background-color=#161616
+border-color=#565656
+text-color=#ffffff
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
+
+[urgency=critical]
+background-color=#F10000
+border-color=#E92727
+text-color=#ffffff
+default-timeout=0
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 [summary=Volume󰋌]
 text-alignment=center

@@ -4,7 +4,7 @@
     "height": 32, // Waybar height
     "modules-left": ["sway/workspaces","sway/mode"],
     "modules-center": ["clock",],
-    "modules-right": ["custom/protonmail","network","pulseaudio", "battery", "tray"],
+    "modules-right": ["keyboard-state","custom/protonmail","network","pulseaudio", "battery", "tray"],
     "sway/workspaces": {
         "icon": false,   
         "disable-scroll": true,
@@ -92,6 +92,16 @@
     "format": "{} <span size='108%' >󰇯</span>",
     "on-click": "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
 },
+"custom/pw-volume": {
+    "exec": "pw-volume status",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{icon} {percentage}",
+    "format-icons": {
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+},
+
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
@@ -101,12 +111,11 @@
     },
 
     "keyboard-state": {
-        "numlock": true,
         "capslock": true,
-        "format": " {name} {icon}",
+        "format": "<span size='105%' >{icon}</span>",
         "format-icons": {
             "locked": "",
-            "unlocked": ""
+            "unlocked": ""
         }
     },
 "custom/waybar-mpris": {

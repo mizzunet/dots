@@ -1,25 +1,25 @@
 * {
     border: none;
-    font-family: "Proxima Nova";
-    font-size: 17px;
+    font-family: "Google Sans", Inconsolata;
+    font-size: 17.6px;
     min-height: 0;
 }
 
 window#waybar {
     background: transparent;
-    color: #bebebe;
+    color: #F1F1F1;
 }
 .modules-right {
-    margin: 0px 15px 0 0;
+    padding: 0px 15px 0 0;
 }
 .modules-center {
-    margin: 0px 0 0 0;
+    padding: 0px 0 0 0;
 }
 .modules-left {
-    margin: 0px 0 0 8px;
+    padding: 0px 0 0 8px;
 }
-#waybar-mpris,#custom-protonmail,#workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
-    margin:0px 4px 0 4px;
+#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
+    padding: 2px 4px 0 4px;
 }
 
 #workspaces button:hover {
@@ -35,6 +35,9 @@ window#waybar {
 
 #workspaces button.focused {
     color: white;
+}
+#workspaces button.focused {
+    color: #F1F1F1;
 }
 #mode {
     padding: 0px 12px 0px 12px;
@@ -68,17 +71,18 @@ window#waybar {
 }
  
 #tray {
-    margin: 7px 15px 0 4px;
+    margin: 0px 15px 0 4px;
     background: rgba(40,40,40, .65);
     border-radius: 6px;
-    padding: 1px 5px 1px 5px;
+    padding: 11px 5px 1px 5px;
 }
 #custom-protonmail{
-    padding-top:4px;
-    padding-right:4px;
+    padding: 7px 6px 0 0 ;
 }
 #custom-protonmail.error {
-    color: darkred;
+}
+#keyboard-state {
+    margin-top: 1px;
 }
 #tray {
     background-color: #2980b9;

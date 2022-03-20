@@ -1,0 +1,7 @@
+# border
+default_border pixel 1
+default_floating_border pixel 1
+smart_borders on
+
+bindsym Mod4+Shift+q exit
+bindsym Control+f fullscreen

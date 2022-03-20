@@ -1,0 +1,6 @@
+markup_highlight = 'foreground="#dc69ff" underline="double"'
+icon_size = 24  # icon size in pixels
+extra_field = []
+recent_first = false
+command_prefix = ":"
+term_command = "alacritty -e {}"

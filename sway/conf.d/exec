@@ -4,39 +4,38 @@ exec {
     gsettings set org.gnome.desktop.interface gtk-theme 'Skeuos-White-Dark'
     gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
     gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface font-name 'Proxima Nova 10.5'
-    gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
-    gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e'
+    gsettings set org.gnome.desktop.interface font-name "Google Sans 10.5"
+    gsettings set org.gnome.desktop.default-applications.terminal exec foot
+    gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
     gsettings set org.gnome.desktop.interface enable-animations false
 }
 
 
 exec {
-    dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-    dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+    dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway > /dev/null 2>&1
+    dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus > /dev/null 2>&1
 
 # power saving
-
-  batsignal -b -w 20 -c 15 -d 5 -m 30 -D "loginctl suspend" -I /usr/share/icons/elementary/status/48/battery-caution.svg
-  doas powertop --auto-tune
-  #~/.scripts/sleephdd
+  doas powertop --auto-tune > /dev/null 2>&1
 
 # exec background
 
-  ~/.scripts/pipewire
-  ~/.scripts/transparent-unfocused -o 0.65 
-  ~/.scripts/wlsunset
+  ~/.scripts/other/pipewire
+  ~/.scripts/sway_transparent-unfocused -o 0.65 
+  ~/.scripts/nightlight_wlsunset
 
+  batsignal -b -w 20 -c 15 -d 5 -m 30 -D "loginctl suspend" > /dev/null 2>&1
   udiskie -N 
-  nwggrid-server
   wl-paste -t text --watch clipman store 
-  sway-audio-idle-inhibit
+  sway-audio-idle-inhibit  > /dev/null 2>&1
   autotiling
 
 # exec foreground
 
-  mako 
-  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
-  ~/.scripts/swayidle
+  mako  > /dev/null 2>&1
+  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1  > /dev/null 2>&1
+  ~/.scripts/caffeine_swayidle > /dev/null 2>&1
 } 
  
+exec_always ~/.scripts/bar_waybar > /dev/null 2>&1
+

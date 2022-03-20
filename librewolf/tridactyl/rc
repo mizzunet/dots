@@ -1,0 +1,197 @@
+" General Settings
+set update.lastchecktime 1647339349300
+set update.nag true
+set update.nagwait 7
+set update.lastnaggedversion 1.14.0
+set update.checkintervalsecs 86400
+set configversion 2.0
+set autocontainmode relaxed
+set modeindicator false
+set smoothscroll true
+set theme midnight
+set : fillcmdline_notrail
+set hintchars asdfgqwertzxcv
+set G scrollto 0
+
+" Binds
+unbind $
+unbind .
+unbind #
+unbind ;#
+unbind ;;
+unbind ;A
+unbind ;I
+unbind ;i
+unbind ;K
+unbind ;k
+unbind ;M
+unbind ;m
+unbind ;P
+unbind ;p
+unbind ;o
+unbind ;O
+unbind ;t
+unbind ;T
+unbind ;v
+unbind ;s
+unbind ;S
+unbind ;V
+unbind ;w
+unbind ;W
+unbind ;x
+unbind ;y
+unbind ;Y
+unbind ;X
+unbind ;a
+unbind ;b
+unbind ;g#
+unbind ;g;
+unbind ;gA
+unbind ;gF
+unbind ;gl
+unbind ;gP
+unbind ;gS
+unbind ;gI
+unbind ;ga
+unbind ;gb
+unbind ;gf
+unbind ;gi
+unbind ;gk
+unbind ;gp
+unbind <A-p>
+unbind <A-m>
+unbind <F1>
+bind o fillcmdline open
+bind O tabnew
+unbind w
+unbind W
+unbind t
+unbind ]]
+unbind [[
+unbind [c
+unbind ]c
+unbind <C-x>
+unbind <C-a>
+unbind T
+bind yy yank
+unbind ys
+unbind yc
+unbind ym
+unbind yo
+unbind yt
+unbind gh
+unbind gH
+bind p clipboard
+bind P clipboard tabopen
+bind j scrollline 5
+unbind <C-e>
+bind k scrollline -5
+unbind <C-y>
+unbind h
+bind l 0 3
+bind G scrollto 100
+bind gg scrollto 0
+unbind <C-u>
+unbind <C-d>
+unbind <C-f>
+unbind <C-b>
+unbind <C-v>
+unbind ^
+unbind H
+unbind L
+unbind <C-o>
+unbind <C-i>
+bind d scrollpage 0.8
+bind D forward
+unbind gx0
+unbind gx$
+unbind <<
+unbind >>
+bind u scrollpage
+unbind U
+bind r reload
+bind R tabnext
+bind x tabclose
+unbind gi
+unbind g?
+unbind g!
+unbind g;
+unbind J
+unbind K
+unbind gt
+unbind gT
+unbind g^
+unbind g0
+unbind g$
+unbind ga
+unbind gr
+bind gu urlparent
+bind gU urlroot
+bind gf hint -b
+bind : fillcmdline_notrail
+unbind s
+bind S back
+unbind M
+unbind B
+unbind b
+unbind ZZ
+bind f hint
+bind F hint -qb
+unbind gF
+unbind ;h
+bind v hint -h
+unbind ;r
+unbind ;z
+unbind ;gy
+unbind ;gr
+unbind ;gs
+unbind ;gv
+unbind ;gw
+unbind <S-Insert>
+unbind <AC-Escape>
+unbind <AC-`>
+unbind <S-Escape>
+unbind <Escape>
+unbind <C-[>
+unbind a
+unbind A
+bind zi zoom 0.8 rel=true
+bind zo zoom 0.3 rel=true
+unbind zm
+bind zr zoom 1
+unbind zM
+unbind zR
+unbind zz
+unbind zI
+unbind zO
+unbind <AS-ArrowUp><AS-ArrowUp><AS-ArrowDown><AS-ArrowDown><AS-ArrowLeft><AS-ArrowRight><AS-ArrowLeft><AS-ArrowRight>ba
+unbind /
+unbind n
+bind i focusinput
+bind ya hint -y
+bind yp hint -p
+bind zwi hint -S
+unbind zwd
+bind zwl hint -s
+bind q mode ignore
+bind zp pin
+bind e scrollpage -0.8
+bind zd tabduplicate
+bind E tabprev
+unbind on
+unbind nn
+bind ;e tabopen moz-extension://cf054d3b-f584-480c-8ead-0eaa53816f03/static/docs/classes/_src_lib_config_.default_config.html
+bind X undo
+bind ;u urlmodify
+unbind z
+bind zoom 10
+unbind ,<Space>
+unbind N
+
+" Removed settings
+setnull amazonuk
+setnull bind
+setnull bing
+
+" For syntax highlighting see https://github.com/tridactyl/vim-tridactyl
+" vim: set filetype=tridactyl

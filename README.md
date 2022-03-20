@@ -1,6 +1,6 @@
 ## My configuration files
 
-<img src="/.screenshots/proximanova.png" alt="Linux" />
+<img src="/.screenshots/googlesans.png" alt="Linux" />
 
 * WM: `sway`
 
@@ -10,7 +10,7 @@
 
 * Terminal: `alacritty`
 
-* Fonts: [Materials Design Icons](https://materialdesignicons.com/), [Proxima Nova](https://aur.archlinux.org/packages/ttf-clear-sans/)
+* Fonts: [Materials Design Icons](https://materialdesignicons.com/), [Google Sans]
 
 ### Setup
 Clone this 

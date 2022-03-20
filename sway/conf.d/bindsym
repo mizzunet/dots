@@ -5,10 +5,10 @@ bindsym {
 
 # foreground
 # htop
-    control+Shift+Escape exec alacritty -e htop
+    control+Shift+Escape exec $term gotop $bg_cmd
 
 # Start a terminal
-    $mod+Return exec alacritty
+    $mod+Return exec $term 
 
 # Start your launcher
     $mod+space exec $menu
@@ -18,31 +18,30 @@ bindsym {
 
 # Open Broweser
     $mod+b exec $browser
-
+    $mod+Shift+m exec xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread
 # clipmenu
     Control+Shift ~/.clipman_swap
-    $mod+c exec  ~/.scripts/clipmenu
-
+    $mod+c exec  ~/.scripts/clipboard_clipmenu
 
 # control
 # caffine mode
-    $mod+Shift+c exec ~/.scripts/swayidle 
+    $mod+Shift+c exec ~/.scripts/caffeine_swayidle
 
 # wifi toggle
-    $mod+Shift+w exec ~/.scripts/wifi
-    XF86WLAN exec ~/.scripts/wifi
+    $mod+Shift+w exec ~/.scripts/wifi_iwctl
+    XF86WLAN exec ~/.scripts/wifi_iwctl
 
 # wlsunset toggle
-    $mod+Shift+n exec ~/.scripts/wlsunset
+    $mod+Shift+n exec ~/.scripts/nightlight_wlsunset
 
 # Use amixer to adjust volume
-    XF86AudioRaiseVolume exec ~/.scripts/ChangeVolume up
-    XF86AudioLowerVolume exec ~/.scripts/ChangeVolume down
-    XF86AudioMute        exec ~/.scripts/ChangeVolume mute
+    XF86AudioRaiseVolume exec ~/.scripts/volume_pamixer up
+    XF86AudioLowerVolume exec ~/.scripts/volume_pamixer down
+    XF86AudioMute        exec ~/.scripts/volume_pamixer mute
 
 # Sreen brightness controls
-    XF86MonBrightnessUp   exec ~/.scripts/ChangeBrightness up
-    XF86MonBrightnessDown exec ~/.scripts/ChangeBrightness down
+    XF86MonBrightnessUp   exec ~/.scripts/brightness_light up
+    XF86MonBrightnessDown exec ~/.scripts/brightness_light down
 
 # Audio controls
     XF86AudioPlay exec playerctl play-pause
@@ -65,12 +64,14 @@ bindsym {
 # ctrl+alt+delete to reboot
     control+mod1+Delete exec loginctl reboot
 
+# Clear all notifications
+    control+Escape exec makoctl dismiss -a
 # sway
 # Kill focused window
     $mod+Shift+q kill
 
 # Reload the configuration file
-    $mod+Shift+Escape reload
+    $mod+Shift+Escape reload 
 
 # Exit sway (logs you out of your Wayland session)
     $mod+Shift+End exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
@@ -143,8 +144,10 @@ bindsym {
     $mod+minus scratchpad show
 
 # Resizing containers:
+    $mod+r mode "resize"
 
-$mod+r mode "resize"
+# Power button
+    #bindsym XF86PowerOff exec loginctl poweroff
 }
 
 mode "resize" {
