@@ -1,9 +1,19 @@
 #!/usr/bin/bash
+cmd=light
+change=1
+timeout_1=30
+timeout_2=60
+timeout_3=180
+notify_info="Caffine 󰅶"
+
 if pidof swayidle; then
-   notify-send -u low "Caffine 󰅶" -t 0 -i /usr/share/icons/elementary/status/48/dialog-information.svg
+   notify-send -u low "Caffine 󰅶" -t 0 
    killall -9 swayidle
 else
-   swayidle -w timeout 30 'brightnessctl set 1%-' resume 'brightnessctl set 1%+' timeout 60 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' timeout 180 'loginctl suspend' &
+   swayidle -w \
+       timeout 30 'light -U 1' resume 'light -A 1' \
+       timeout 60 'light -O && swaymsg "output * dpms off"' resume 'light -I && swaymsg "output * dpms on"' \
+       timeout 180 '~/.scripts/other/swayidle_check' &
    makoctl dismiss
 
 fi

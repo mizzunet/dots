@@ -1,16 +1,16 @@
 #!/bin/bash
 action="$@"
 current="$(light -G)"
-threshold=8
-lower=0.4
-higher=5
+threshold=5
+lower=0.2
+higher=6
 
 case $action in
 	up)
         if (( $(bc <<<"$current < $threshold") ));  then light -A $lower;else light -A $higher; fi
 		;;
 	down)
-        if (( $(bc <<<"$current < $threshold") ));  then light -U $lower ;else light -U $higher; fi
+        if (( $(bc <<<"$current < $threshold+5") ));  then light -U $lower ;else light -U $higher; fi
 		;;		
 
 	esac

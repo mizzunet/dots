@@ -1,0 +1,11 @@
+#!/bin/bash
+
+programs="yay aria2c"
+if (pidof $programs); 
+then
+    echo Programs running, not suspending
+    exit;
+else
+    loginctl suspend;
+fi
+
