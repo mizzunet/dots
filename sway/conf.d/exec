@@ -1,41 +1,38 @@
 
 exec {
     gsettings set org.gtk.Settings.FileChooser window-size '(740, 371)'
-    gsettings set org.gnome.desktop.interface gtk-theme 'Skeuos-White-Dark'
-    gsettings set org.gnome.desktop.interface icon-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface cursor-theme 'Adwaita'
-    gsettings set org.gnome.desktop.interface font-name "Google Sans 10.5"
-    gsettings set org.gnome.desktop.default-applications.terminal exec foot
+    gsettings set org.gnome.desktop.interface gtk-theme $theme
+    gsettings set org.gnome.desktop.interface icon-theme $icon
+    gsettings set org.gnome.desktop.interface cursor-theme $cursor
+    gsettings set org.gnome.desktop.interface font-name $font
+    gsettings set org.gnome.desktop.default-applications.terminal exec $term
     gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
     gsettings set org.gnome.desktop.interface enable-animations false
 }
 
-
 exec {
-    dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway > /dev/null 2>&1
-    dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus > /dev/null 2>&1
+    dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway $bg_cmd
+    dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus $bg_cmd
+
 
 # power saving
-  doas powertop --auto-tune > /dev/null 2>&1
+  doas powertop --auto-tune $bg_cmd
 
 # exec background
-
-  ~/.scripts/other/pipewire
+  ~/.scripts/other/pipewire $bg_cmd
   ~/.scripts/sway_transparent-unfocused -o 0.65 
   ~/.scripts/nightlight_wlsunset
-
-  batsignal -b -w 20 -c 15 -d 5 -m 30 -D "loginctl suspend" > /dev/null 2>&1
-  udiskie -N 
-  wl-paste -t text --watch clipman store 
-  sway-audio-idle-inhibit  > /dev/null 2>&1
-  autotiling
+  ~/.scripts/automount_udiskie $bg_cmd
+  ~/.scripts/low_battery_batsignal $bg_cmd
+  ~/.scripts/clipboard watcher
+  sway-audio-idle-inhibit $bg_cmd
+  autotiling $bg_cmd
 
 # exec foreground
-
-  mako  > /dev/null 2>&1
-  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1  > /dev/null 2>&1
-  ~/.scripts/caffeine_swayidle > /dev/null 2>&1
+  mako $bg_cmd
+  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 $bg_cmd
+  ~/.scripts/caffeine_swayidle $bg_cmd
 } 
  
-exec_always ~/.scripts/bar_waybar > /dev/null 2>&1
+  exec_always ~/.scripts/bar_waybar $bg_cmd
 

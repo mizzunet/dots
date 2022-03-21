@@ -25,10 +25,11 @@ set $wall_dir "/home/missu/Pictures/"
 set $wall "pexels-lisa-fotios-1083822.jpg"
 set $bg_cmd "> /dev/null 2>&1"
 
-#gstting
-set $font "Google Sans"
-set $font_size "10.5"
+#gsttings
+set $font "Google Sans 10 10.5."
 set $theme "Skeuos-White-Dark'"
+set $icon "Adwaita"
+set $cursor "Adwaita"
 
 # input configuration
 input * xkb_numlock enable
@@ -79,4 +80,3 @@ for_window [title="Properties|Page Info|Volume Control|File Operation Progress|C
 
 
 include ~/.config/sway/conf.d/*
-

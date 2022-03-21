@@ -1,0 +1,3 @@
+#!/bin/bash
+
+udiskie --file-manager nemo --no-tray --notify --automount

@@ -25,14 +25,14 @@ text-color=#ffffff
 background-color=#161616
 border-color=#565656
 text-color=#ffffff
-on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
+on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
 
 [urgency=critical]
 background-color=#F10000
 border-color=#E92727
 text-color=#ffffff
 default-timeout=0
-on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 [summary=Volume󰋌]
 text-alignment=center

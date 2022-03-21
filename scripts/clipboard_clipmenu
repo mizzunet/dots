@@ -1,3 +1,0 @@
-#!/bin/bash
-clipman pick -t bemenu --tool-args='-l 30 -n -b -i --fn "Inconsolata 12" --hb #ffffff --hf #00000 --nb #000000 --nf #ffffff'
-

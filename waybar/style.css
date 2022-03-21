@@ -85,7 +85,6 @@ window#waybar {
     margin-top: 1px;
 }
 #tray {
-    background-color: #2980b9;
 }
 
 #tray > .passive {
@@ -94,5 +93,4 @@ window#waybar {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
 }

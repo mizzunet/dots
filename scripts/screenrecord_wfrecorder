@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+geometry=$(slurp)
+file=/tmp/record.gif
+
+wf-recorder -f "$file" -g $geometry -c gif
+curl -F"file=@$file"  https://0x0.st | wl-copy

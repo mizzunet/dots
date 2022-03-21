@@ -1,27 +1,24 @@
-# mouse button for dragging.
-    floating_modifier $mod normal
-
 bindsym {
 
 # foreground
 # htop
-    control+Shift+Escape exec $term gotop $bg_cmd
+    control+Shift+Escape exec $term htop
 
 # Start a terminal
-    $mod+Return exec $term 
+    $mod+Return exec "$term$bg_cmd"
 
 # Start your launcher
-    $mod+space exec $menu
+    $mod+space exec "$menu$bg_cmd"
 
 # Start Files
-    $mod+m exec $files
+    $mod+m exec "$files$bg_cmd"
 
 # Open Broweser
-    $mod+b exec $browser
+    $mod+b exec "$browser$bg_cmd" 
     $mod+Shift+m exec xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread
 # clipmenu
     Control+Shift ~/.clipman_swap
-    $mod+c exec  ~/.scripts/clipboard_clipmenu
+    $mod+c exec  ~/.scripts/clipboard clipman
 
 # control
 # caffine mode
@@ -53,6 +50,9 @@ bindsym {
     Shift+Print exec grim /tmp/screen.png && wl-copy < /tmp/screen.png  && notify-send "Screenshot Copied to Clipboard"
     #Shift+Print grim ~/Pictures/Screenshot/$(date +%d%m%y-%I%M%S) | wl-copy && notify-send "Screenshot Copied to Clipboard"
     
+# Screen recording
+   Control+Print exec ~/.scrpts/screenrecord_wfrecorder
+
 # waydroid
     control+mod1+a exec ~/.scripts/waydroid 
  
@@ -149,6 +149,9 @@ bindsym {
 # Power button
     #bindsym XF86PowerOff exec loginctl poweroff
 }
+
+# mouse button for dragging.
+    floating_modifier $mod normal
 
 mode "resize" {
     bindsym {
