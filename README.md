@@ -1,4 +1,4 @@
-## My configuration files
+# My configuration files
 
 <img src="/.screenshots/googlesans.png" alt="Linux" />
 
