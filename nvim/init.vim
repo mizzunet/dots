@@ -17,16 +17,6 @@ set hidden
 set number
 set title
 
-call plug#begin()
-Plug 'https://github.com/vim-airline/vim-airline'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-
-
-call plug#end()
-
-
-autocmd BufReadPost * if @% !~# '\.git[\/\\]COMMIT_EDITMSG$' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-syntax on
-
 map ` :set invnumber<CR>
 
+lua require('plugins')

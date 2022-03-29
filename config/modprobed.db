@@ -14,6 +14,7 @@ ath9k_hw
 atkbd
 blake2b_generic
 bluetooth
+bnep
 btbcm
 btintel
 btrfs

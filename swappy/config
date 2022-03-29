@@ -1,8 +1,9 @@
 
 [Default]
-save_dir=$HOME/Pictures/Screenshot
-save_filename_format=swappy-%Y%m%d-%H%M%S.png
+#save_dir=$HOME/Pictures/Screenshot
+#save_filename_format=swappy-%Y%m%d-%H%M%S.png
+save_dir=/tmp
+save_filename_format=swappy.png
 show_panel=false
 line_size=5
 text_size=20
-text_font=Proxima Nova

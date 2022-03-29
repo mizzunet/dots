@@ -1,7 +1,7 @@
 * {
     border: none;
-    font-family: "Google Sans", Inconsolata;
-    font-size: 17.6px;
+    font-family: "SF Compact Display", Inconsolata;
+    font-size: 17px;
     min-height: 0;
 }
 
@@ -71,10 +71,7 @@ window#waybar {
 }
  
 #tray {
-    margin: 0px 15px 0 4px;
-    background: rgba(40,40,40, .65);
-    border-radius: 6px;
-    padding: 11px 5px 1px 5px;
+    padding: 0px 5px 0px 5px;
 }
 #custom-protonmail{
     padding: 7px 6px 0 0 ;
@@ -83,14 +80,4 @@ window#waybar {
 }
 #keyboard-state {
     margin-top: 1px;
-}
-#tray {
-}
-
-#tray > .passive {
-    -gtk-icon-effect: dim;
-}
-
-#tray > .needs-attention {
-    -gtk-icon-effect: highlight;
 }

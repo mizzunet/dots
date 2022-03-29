@@ -5,40 +5,40 @@ bindsym {
     control+Shift+Escape exec $term htop
 
 # Start a terminal
-    $mod+Return exec "$term$bg_cmd"
+    $mod+Return exec "$term"
 
 # Start your launcher
-    $mod+space exec "$menu$bg_cmd"
+    $mod+space exec "$menu"
 
 # Start Files
-    $mod+m exec "$files$bg_cmd"
+    $mod+m exec "$files"
 
 # Open Broweser
-    $mod+b exec "$browser$bg_cmd" 
+    $mod+b exec "$browser" 
     $mod+Shift+m exec xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread
 # clipmenu
     Control+Shift ~/.clipman_swap
-    $mod+c exec  ~/.scripts/clipboard clipman
+    $mod+c exec sway_clipboard clipman
 
 # control
 # caffine mode
-    $mod+Shift+c exec ~/.scripts/caffeine_swayidle
+    $mod+Shift+c exec sway_swayidle
 
 # wifi toggle
-    $mod+Shift+w exec ~/.scripts/wifi_iwctl
-    XF86WLAN exec ~/.scripts/wifi_iwctl
+    $mod+Shift+w exec sway_wifi
+    XF86WLAN exec sway_wifi
 
 # wlsunset toggle
-    $mod+Shift+n exec ~/.scripts/nightlight_wlsunset
+    $mod+Shift+n exec sway_nightlight
 
 # Use amixer to adjust volume
-    XF86AudioRaiseVolume exec ~/.scripts/volume_pamixer up
-    XF86AudioLowerVolume exec ~/.scripts/volume_pamixer down
-    XF86AudioMute        exec ~/.scripts/volume_pamixer mute
+    XF86AudioRaiseVolume exec sway_volume up
+    XF86AudioLowerVolume exec sway_volume down
+    XF86AudioMute        exec sway_volume mute
 
 # Sreen brightness controls
-    XF86MonBrightnessUp   exec ~/.scripts/brightness_light up
-    XF86MonBrightnessDown exec ~/.scripts/brightness_light down
+    XF86MonBrightnessUp   exec sway_brightness up
+    XF86MonBrightnessDown exec sway_brightness down
 
 # Audio controls
     XF86AudioPlay exec playerctl play-pause
@@ -51,10 +51,10 @@ bindsym {
     #Shift+Print grim ~/Pictures/Screenshot/$(date +%d%m%y-%I%M%S) | wl-copy && notify-send "Screenshot Copied to Clipboard"
     
 # Screen recording
-   Control+Print exec ~/.scrpts/screenrecord_wfrecorder
+   Control+Shift+Print exec sway_screenrecord
 
 # waydroid
-    control+mod1+a exec ~/.scripts/waydroid 
+    #control+mod1+a exec ~/.scripts/waydroid 
  
 # waydroid: antennaPod controls
     control+mod1+j exec ~/.scripts/antennapod toggle
@@ -122,8 +122,9 @@ bindsym {
 # Layout stuff:
 
 # Switch the current container between different layout styles
-    $mod+w layout tabbed
     $mod+e layout toggle split
+    $mod+w layout tabbed
+    $mod+v splitt
 
 # Make the current focus fullscreen
     $mod+f fullscreen

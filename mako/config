@@ -2,16 +2,16 @@
 layer=overlay
 margin=5,11,2,0
 border-size=1
-border-radius=2
+border-radius=8
 text-alignment=left
 width=260
 progress-color=#ffffff
 
 format=%s\n%b
 
-font=Google Sans 11.3
+font=SF Compact Display 12.3
 default-timeout=6000
-icon-path=/usr/share/icons/Adwaita:/usr/share/icons/hicolor
+icon-path=/usr/share/icons/WhiteSur-dark:/usr/share/icons/WhiteSur:/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 max-icon-size=36
 anchor=top-right
 group-by=summary
@@ -28,11 +28,14 @@ text-color=#ffffff
 on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
 
 [urgency=critical]
-background-color=#F10000
-border-color=#E92727
+background-color=#C20618
+border-color=#D70015
 text-color=#ffffff
 default-timeout=0
 on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+
+[app-name=Geary]
+default-timeout=10000
 
 [summary=Volume󰋌]
 text-alignment=center

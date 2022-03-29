@@ -1,0 +1,40 @@
+
+#exec {
+    #gsettings set org.gtk.Settings.FileChooser window-size '(740, 371)'
+    #gsettings set org.gnome.desktop.interface gtk-theme $theme
+    #gsettings set org.gnome.desktop.interface icon-theme $icon
+    #gsettings set org.gnome.desktop.interface cursor-theme $cursor
+    #gsettings set org.gnome.desktop.interface font-name $font
+    #gsettings set org.gnome.desktop.default-applications.terminal exec $term
+    #gsettings set org.gnome.desktop.default-applications.terminal exec-arg ''
+    #gsettings set org.gnome.desktop.interface enable-animations false
+#}
+
+exec {
+    dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway 
+    dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus 
+
+
+# power saving
+  doas /usr/bin/powertop --auto-tune 
+
+# exec background
+  hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide
+  pipewire_start
+  sway_transparent -o 0.65 
+  sway_nightlight
+  sway_automount
+  sway_low_battery
+  sway_clipboard watcher
+  /usr/bin/sway-audio-idle-inhibit 
+  /usr/bin/autotiling 
+
+# exec foreground
+  geary --gapplication-service
+  /usr/bin/mako 
+  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+  sway_swayidle
+} 
+ 
+  exec_always sway_bar
+

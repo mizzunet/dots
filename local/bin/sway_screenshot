@@ -2,8 +2,6 @@
 # changeBrightness
 if pidof grim; then
     exit;
-else
-    break
 fi
 # Arbitrary but unique message id
 msgId="891049"

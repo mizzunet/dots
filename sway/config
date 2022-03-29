@@ -6,8 +6,9 @@ set $up k
 set $right l
 
 set $menu sirula
-set $files nemo
+set $files thunar
 set $browser firefox
+#set $term kitty
 set $term foot
 
 set $ws1 "1"
@@ -22,14 +23,15 @@ set $ws9 "9"
 set $ws10 "10"
 
 set $wall_dir "/home/missu/Pictures/"
-set $wall "pexels-lisa-fotios-1083822.jpg"
+set $wall "pexels-cátia-matos-1072179.jpg"
+
 set $bg_cmd "> /dev/null 2>&1"
 
-#gsttings
-set $font "Google Sans 10 10.5."
-set $theme "Skeuos-White-Dark'"
-set $icon "Adwaita"
-set $cursor "Adwaita"
+set $font "SF Compact Display"
+set $font_size "11"
+set $theme "WhiteSur-dark"
+set $icon "WhiteSur-dark"
+set $cursor "WhiteSur-dark"
 
 # input configuration
 input * xkb_numlock enable
@@ -50,15 +52,14 @@ default_floating_border pixel 1
 smart_borders on
 
 # font
-font pango: Google Sans 11.2
-
+font pango: $font $font_size
 # colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #222222 #5A5A5A #E1E1E1 #000000   #000000
-client.focused_inactive #222222 #5A5A5A #E1E1E1 #484e50   #000000
-client.unfocused        #222222 #323232 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+client.focused          #222222 #0860f2 #E1E1E1 #ffffff   #000000
+client.focused_inactive #222222 #616168 #E1E1E1 #ffffff   #000000
+client.unfocused        #222222 #373737 #888888 #ffffff   #222222
+client.urgent           #2f343a #900000 #ffffff #ffffff   #900000
+client.placeholder      #000000 #0c0c0c #000000 #ffffff   #0c0c0c
 
 # wallpaper
 output * bg $wall_dir$wall fill
@@ -71,12 +72,13 @@ for_window [app_id="[Ww]aydroid.*"] move right
 for_window [app_id="[Ww]aydroid.*"] resize set width 400px
 
 # Send windows
-assign [title="Signal|Ferdi"] $ws2
+assign [title="Signal"] $ws2
+assign [app_id="geary"] $ws2
 assign [title="Habits"] $ws4
 assign [title="Getting Things GNOME!"] $ws3
 
 # enable floating for windows
-for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk|Library"] floating enable
+for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk"] floating enable
 
 
-include ~/.config/sway/conf.d/*
+include ~/.config/sway/*

@@ -36,5 +36,6 @@ export QT_QPA_PLATFORM=wayland-egl
 export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
 export BROWSER=firefox
 
-export LC_ALL="en_GB.UTF-8"
+#export LC_ALL="en_GB.UTF-8"
 
+export HYDROXIDE_BRIDGE_PASS=iIh714gawmWOWnWVDst9Y3dA/u9MUMkuxu/OBMNQmcE=

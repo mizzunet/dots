@@ -1,0 +1,21 @@
+#!/bin/bash
+action="$@"
+current="$(brillo)"
+threshold=5
+lower=0.2
+higher=6
+
+case $action in
+	up)
+        brillo -q -u 100000 -A 8
+		;;
+	down)
+        brillo -q -u 100000 -U 2
+		;;		
+
+	esac
+
+current="$(brillo)"
+
+notify-send -u low  -h int:value:$current "Brightness󰃟" -t 1000 
+

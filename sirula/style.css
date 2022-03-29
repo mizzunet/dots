@@ -1,6 +1,6 @@
 * {
-    font-family: "Google Sans";
-    font-size: 18px;
+    font-family: "SF Compact Display";
+    font-size: 20px;
 }
 
 .background {
@@ -8,7 +8,7 @@
 }
 
 #root-box, .background, #app-list, .overlay-indicator {
-    background: rgba(50,50,50,0.1);
+    background: rgba(50,50,50,0.0);
 }
 
 .app-row {

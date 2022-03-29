@@ -1,0 +1,18 @@
+#DejaVu Sans Mono!/bin/sh
+#cmd=`nmcli radio wifi`
+cmd=`iwctl adapter phy0 show | grep Powered | awk '{print $4}'`
+cmdOn='iwctl adapter phy0 set-property Powered on'
+cmdOff='iwctl adapter phy0 set-property Powered off'
+
+if [ $cmd == "on" ]
+then
+	$cmdOff
+    state="󰤭"
+    icon="/usr/share/icons/WhiteSur-dark/status/symbolic/network-wireless-disconnected-symbolic.svg"
+else
+	$cmdOn
+    state="󰤥"
+    icon="/usr/share/icons/WhiteSur-dark/status/symbolic/network-wireless-connected-symbolic.svg"
+fi
+	 notify-send -u low -i $icon \
+     "WiFi" -t 1000 

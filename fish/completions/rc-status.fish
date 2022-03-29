@@ -1,4 +1,4 @@
-set -l levels '(set -l p /etc/runlevels/*; string replace /etc/runlevels "" $p)'
+set -l levels '(set -l p /etc/runlevels/*; string replace /etc/runlevels/ "" $p)'
 
 complete -f rc-status
 complete -c rc-status -n "test (__fish_number_of_cmd_args_wo_opts) = 1" \
