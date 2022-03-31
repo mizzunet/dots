@@ -18,7 +18,7 @@ window#waybar {
 .modules-left {
     padding: 0px 0 0 8px;
 }
-#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
+#netstatus,#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
     padding: 2px 4px 0 4px;
 }
 
@@ -35,9 +35,6 @@ window#waybar {
 
 #workspaces button.focused {
     color: white;
-}
-#workspaces button.focused {
-    color: #F1F1F1;
 }
 #mode {
     padding: 0px 12px 0px 12px;

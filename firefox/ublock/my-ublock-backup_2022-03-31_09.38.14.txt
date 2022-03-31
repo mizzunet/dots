@@ -1,0 +1,46 @@
+{
+  "timeStamp": 1648719494300,
+  "version": "1.41.8",
+  "userSettings": {
+    "advancedUserEnabled": true,
+    "cloudStorageEnabled": true,
+    "uiTheme": "dark",
+    "importedLists": [],
+    "largeMediaSize": 15,
+    "popupPanelSections": 31
+  },
+  "selectedFilterLists": [
+    "ublock-quick-fixes",
+    "user-filters",
+    "ublock-filters",
+    "ublock-badware",
+    "ublock-privacy",
+    "ublock-abuse",
+    "ublock-unbreak",
+    "easylist",
+    "LegitimateURLShortener",
+    "adguard-spyware-url",
+    "easyprivacy",
+    "urlhaus-1",
+    "curben-phishing",
+    "plowe-0"
+  ],
+  "hiddenSettings": {},
+  "whitelist": [
+    "chrome-extension-scheme",
+    "chrome-scheme",
+    "edge-scheme",
+    "merchant.onlinesbi.sbi",
+    "moz-extension-scheme",
+    "new.lewd.ninja",
+    "old.reddit.com",
+    "opera-scheme",
+    "vivaldi-scheme",
+    "www.imdb.com",
+    "wyciwyg-scheme"
+  ],
+  "dynamicFilteringString": "behind-the-scene * * noop\nbehind-the-scene * inline-script noop\nbehind-the-scene * 1p-script noop\nbehind-the-scene * 3p-script noop\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * image noop\nbehind-the-scene * 3p noop\n* * 3p-script block\n* * 3p-frame block\napp.schildi.chat * 3p-script noop\naccounts.firefox.com * 3p-script noop\nwww.etmoney.com * 3p-script noop\nwww.etmoney.com * 3p-frame noop\ngithub.com * 3p-script noop\nwww.imdb.com * 3p-script noop\nwww.seedr.cc * 3p-script noop\nwww.seedr.cc * 3p-frame noop\nscylla.danilafe.com * 3p-script noop\neconomictimes.indiatimes.com * 3p-script noop\nwww.oxfordlearnersdictionaries.com * 3p-script noop\nwww.goodreads.com * 3p-script noop\nmy.nextdns.io * 3p-script noop\nhub.docker.com * 3p-script noop\nwww.youtube.com * 3p-script noop\napp.simplelogin.io * 3p-script noop\nwww.katacoda.com * 3p-script noop\nwww.amazon.in * 3p-script noop\nmerchant.onlinesbi.sbi * 3p-script noop",
+  "urlFilteringString": "",
+  "hostnameSwitchesString": "no-large-media: behind-the-scene false\nno-large-media: * true\nno-csp-reports: * true",
+  "userFilters": "! 2022-03-11 https://mail.protonmail.com\nmail.protonmail.com##.bg-info.no-print.text-bold.relative.text-center.flex-nowrap.flex-item-noshrink.flex\n\n! 2022-03-13 https://askubuntu.com\naskubuntu.com##.js-consent-banner.r16.l16.b16.bar-lg.fc-white.bg-black-750.sm\\:p16.p32.sm\\:w-auto.ws4.z-nav-fixed.ps-fixed.ff-sans\n\n! 2022-03-13 https://stackoverflow.com\nstackoverflow.com##.js-consent-banner.r16.l16.b16.bar-lg.fc-white.bg-black-750.sm\\:p16.p32.sm\\:w-auto.ws4.z-nav-fixed.ps-fixed.ff-sans\n\n! 2022-03-14 https://economictimes.indiatimes.com\neconomictimes.indiatimes.com##.pop_wraper\neconomictimes.indiatimes.com##.popup_bg.pop_layer\neconomictimes.indiatimes.com##.popup_bg.primeOffers\neconomictimes.indiatimes.com##.popup_bg.bgLayer\n\n! 2022-03-15 https://economictimes.indiatimes.com\neconomictimes.indiatimes.com##.dyContent.nyo_sticky_ftr\neconomictimes.indiatimes.com##.short.stickyBand\n\n! 2022-03-17 https://unix.stackexchange.com\nunix.stackexchange.com##.js-consent-banner.r16.l16.b16.bar-lg.fc-white.bg-black-750.sm\\:p16.p32.sm\\:w-auto.ws4.z-nav-fixed.ps-fixed.ff-sans\n\n! 2022-03-20 https://raspberrypi.stackexchange.com\n||i.stack.imgur.com/0RHVo.png$image\nraspberrypi.stackexchange.com##.js-consent-banner.r16.l16.b16.bar-lg.fc-white.bg-black-750.sm\\:p16.p32.sm\\:w-auto.ws4.z-nav-fixed.ps-fixed.ff-sans\n\n! 2022-03-21 https://superuser.com\nsuperuser.com##.js-consent-banner.r16.l16.b16.bar-lg.fc-white.bg-black-750.sm\\:p16.p32.sm\\:w-auto.ws4.z-nav-fixed.ps-fixed.ff-sans\n\n! 2022-03-23 https://1lib.in\n1lib.in##.fundraising-banner\n\n! 2022-03-23 https://book4you.org\nbook4you.org##.fundraising-banner\n\n! 2022-03-24 https://app.thestorygraph.com\napp.thestorygraph.com##.m-2.md\\:w-13.max-w-full.text-sm.shadow-2xl.pr-2.pl-4.pb-4.pt-2.mx-2.rounded-md.left-0.bottom-0.border-darkGrey.bg-white.border-2.fixed\n\n! 2022-03-28 https://serverfault.com\nserverfault.com##.js-consent-banner.r16.l16.b16.bar-lg.fc-white.bg-black-750.sm\\:p16.p32.sm\\:w-auto.ws4.z-nav-fixed.ps-fixed.ff-sans\n"
+}

@@ -2,7 +2,7 @@
 layer=overlay
 margin=5,11,2,0
 border-size=1
-border-radius=0
+border-radius=8
 text-alignment=left
 width=260
 progress-color=#ffffff

@@ -1,0 +1,119 @@
+#!/bin/bash
+# Generate ipsec.conf of ProtonVPN's free servers. Username is to be passed as argument
+file=ipsec.conf
+username="$@"
+if [ "$username" == "" ]; then echo Pass Username as arguemnt;exit;fi
+JP_number=4
+NL_number=4
+US_number=4
+
+echo "# JAPAN" >> $file
+for country in JP NL US
+do
+    for i in $(seq 1 8)
+    do
+        if [ $i lt 10 ]; then i=0$i;fi
+
+        JP_server=$country-free-$i.protonvpn.com
+        NL_server=$country-free-$i.protonvpn.com
+        US_server=$country-free-$i.protonvpn.com
+        name=$country-FREE0$i
+
+        echo "conn $name" >> $file
+        echo " left=%defaultroute" >> $file
+        echo " leftsourceip=%config" >> $file
+        echo " leftauth=eap-mschapv2" >> $file
+        echo " eap_identity=$username" >> $file
+        echo " right=$$country_server" >> $file
+        echo " rightsubnet=0.0.0.0/0" >> $file
+        echo " rightid=%$srv-free-0$i.protonvpn.com" >> $file
+        echo " rightca=/etc/ipsec.d/cacerts/protonvpn.der" >> $file
+        echo " keyexchange=ikev2" >> $file
+        echo " type=tunnel" >> $file
+        echo " auto=add" >> $file
+        echo -e >> $file
+    done
+
+echo "# Netherlands" >> $file
+for i in $(seq 1 9)
+do
+    conn=NL-FREE0$i
+    srv=nl
+
+    echo "conn $conn" >> $file
+    echo " left=%defaultroute" >> $file
+    echo " leftsourceip=%config" >> $file
+    echo " leftauth=eap-mschapv2" >> $file
+    echo " eap_identity=$username" >> $file
+    echo " right=$srv-free-0$i.protonvpn.com" >> $file
+    echo " rightsubnet=0.0.0.0/0" >> $file
+    echo " rightauth=pubkey" >> $file
+    echo " rightid=%$srv-free-0$i.protonvpn.com" >> $file
+    echo " rightca=/etc/ipsec.d/cacerts/protonvpn.der" >> $file
+    echo " keyexchange=ikev2" >> $file
+    echo " type=tunnel" >> $file
+    echo " auto=add" >> $file
+    echo -e >> $file
+done
+for i in $(seq 10 47)
+do
+    conn=NL-FREE$i
+    srv=nl
+
+    echo "conn $conn" >> $file
+    echo " left=%defaultroute" >> $file
+    echo " leftsourceip=%config" >> $file
+    echo " leftauth=eap-mschapv2" >> $file
+    echo " eap_identity=$username" >> $file
+    echo " right=$srv-free-$i.protonvpn.com" >> $file
+    echo " rightsubnet=0.0.0.0/0" >> $file
+    echo " rightauth=pubkey" >> $file
+    echo " rightid=%$srv-free-$i.protonvpn.com" >> $file
+    echo " rightca=/etc/ipsec.d/cacerts/protonvpn.der" >> $file
+    echo " keyexchange=ikev2" >> $file
+    echo " type=tunnel" >> $file
+    echo " auto=add" >> $file
+    echo -e >> $file
+done
+
+echo "# United States" >> $file
+for i in $(seq 1 9)
+do
+    conn=US-FREE0$i
+    srv=us
+
+    echo "conn $conn" >> $file
+    echo " left=%defaultroute" >> $file
+    echo " leftsourceip=%config" >> $file
+    echo " leftauth=eap-mschapv2" >> $file
+    echo " eap_identity=$username" >> $file
+    echo " right=$srv-free-0$i.protonvpn.com" >> $file
+    echo " rightsubnet=0.0.0.0/0" >> $file
+    echo " rightauth=pubkey" >> $file
+    echo " rightid=%$srv-free-0$i.protonvpn.com" >> $file
+    echo " rightca=/etc/ipsec.d/cacerts/protonvpn.der" >> $file
+    echo " keyexchange=ikev2" >> $file
+    echo " type=tunnel" >> $file
+    echo " auto=add" >> $file
+    echo -e >> $file
+done
+for i in $(seq 10 48)
+do
+    conn=US-FREE$i
+    srv=us
+
+    echo "conn $conn" >> $file
+    echo " left=%defaultroute" >> $file
+    echo " leftsourceip=%config" >> $file
+    echo " leftauth=eap-mschapv2" >> $file
+    echo " eap_identity=$username" >> $file
+    echo " right=$srv-free-$i.protonvpn.com" >> $file
+    echo " rightsubnet=0.0.0.0/0" >> $file
+    echo " rightauth=pubkey" >> $file
+    echo " rightid=%$srv-free-$i.protonvpn.com" >> $file
+    echo " rightca=/etc/ipsec.d/cacerts/protonvpn.der" >> $file
+    echo " keyexchange=ikev2" >> $file
+    echo " type=tunnel" >> $file
+    echo " auto=add" >> $file
+    echo -e >> $file
+done

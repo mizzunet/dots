@@ -22,6 +22,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+set $gaps_inner 10
+set $gaps_outer 1
+set $border 2
+
 set $wall_dir "/home/missu/Pictures/"
 set $wall "pexels-cátia-matos-1072179.jpg"
 
@@ -43,23 +47,45 @@ input  type:touchpad {
 }
 
 # gaps
-gaps inner 5
-gaps outer 8
+gaps inner $gaps_inner
+gaps outer $gaps_outer
 
 # border
-default_border pixel 1
-default_floating_border pixel 1
-smart_borders on
+default_border pixel $border
+default_floating_border pixel 0.5
+#smart_borders on
 
 # font
 font pango: $font $font_size
-# colors
-# class                 border  backgr. text    indicator child_border
-client.focused          #222222 #0860f2 #E1E1E1 #ffffff   #000000
-client.focused_inactive #222222 #616168 #E1E1E1 #ffffff   #000000
-client.unfocused        #222222 #373737 #888888 #ffffff   #222222
-client.urgent           #2f343a #900000 #ffffff #ffffff   #900000
-client.placeholder      #000000 #0c0c0c #000000 #ffffff   #0c0c0c
+# class border backgr. text indic. child_border
+set $base00 #2E3440
+set $base01 #3B4252
+set $base02 #434C5E
+set $base03 #4C566A
+set $base04 #D8DEE9
+# tab top font color
+set $base05 #E5E9F0
+set $base06 #ECEFF4
+set $base07 #8FBCBB
+set $base08 #88C0D0
+set $base09 #81A1C1
+set $base0A #5E81AC
+set $base0B #BF616A
+#border
+set $base0C #89dceb
+set $base0D #EBCB8B
+set $base0E #A3BE8C
+set $base0F #B48EAD
+set $blue #0860f2
+set $text #ffffff
+# Property Name         Border  BG      Text    Indicator Child Border
+client.focused          $base05 $blue   $text   $base0D $base0C
+client.focused_inactive $base01 $base01 $base05 $base03 $base01
+client.unfocused        $base01 $base00 $base05 $base01 $base01
+client.urgent           $base08 $base08 $base00 $base08 $base08
+client.placeholder      $base00 $base00 $base05 $base00 $base00
+client.background $base07
+
 
 # wallpaper
 output * bg $wall_dir$wall fill

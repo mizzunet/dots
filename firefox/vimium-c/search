@@ -1,1 +1,29 @@
-https://spot.ecloud.global/search?q=$s SearX
+# Web search
+ss: https://searx.mha.fi/search?q=%s SearX
+s: https://spot.ecloud.global/search?q=%s SearX
+#t: https://searx.be/search?q=%s&categories=files Torrent
+t: https://1337x.to/search/%s/1/ Torrent
+b: https://search.brave.com/search?q=%s Brave
+g: https://www.whooglesearch.ml/search?q=%s Whoogle
+
+# Invidious
+i: https://invidious.kavin.rocks/search?q=%s Invidious
+
+# Shopping
+myn: https://www.myntra.com/%s Myntra
+f: https://www.flipkart.com/search?q=%s Flipkart
+a: https://www.amazon.in/s?k=%s Amazon
+
+# Other
+gh: https://github.com/search?q=%s GitHub
+
+# Read
+d: https://www.oxfordlearnersdictionaries.com/definition/english/%s Dictionary
+th: https://www.powerthesaurus.org/%s Thesaurus
+gd: https://www.goodreads.com/search?q=%s Goodreads
+hw: https://howlongtoread.com/results/%s TIme to Read
+bk: https://1lib.in/s/${s:%20}?languages%5B%5D=english&languages%5B%5D=malayalam&extensions%5B%5D=azw&extensions%5B%5D=azw3&extensions%5B%5D=epub Books
+
+# Wiki
+aw: https://wiki.archlinux.org/index.php?search=%s ArchWiki
+w: https://wiki.604kph.xyz/w/index.php?search=%s Wikiless

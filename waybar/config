@@ -4,7 +4,7 @@
     "height": 32, // Waybar height
     "modules-left": ["sway/workspaces","sway/mode"],
     "modules-center": ["clock",],
-    "modules-right": ["keyboard-state","custom/protonmail","network","pulseaudio", "battery", "tray"],
+    "modules-right": ["custom/netstatus","keyboard-state","custom/protonmail","network","pulseaudio", "battery", "tray"],
     "sway/workspaces": {
         "icon": false,   
         "disable-scroll": true,
@@ -132,4 +132,10 @@
         // "on-scroll-down": "waybar-mpris --send prev",
     "escape": true,
 },
+"custom/netstatus": {
+    "exec": "netstatus",
+    "interval": 32,
+    "format": "{}",
+},
+
 }

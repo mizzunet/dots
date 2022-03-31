@@ -3,7 +3,6 @@ bindsym {
 # foreground
 # htop
     control+Shift+Escape exec $term htop
-
 # Start a terminal
     $mod+Return exec "$term"
 
@@ -149,10 +148,15 @@ bindsym {
 
 # Power button
     #bindsym XF86PowerOff exec loginctl poweroff
+
+## play with mpv
+    Mod1+Shift+P exec playwithmpv
+
 }
 
 # mouse button for dragging.
     floating_modifier $mod normal
+
 
 mode "resize" {
     bindsym {

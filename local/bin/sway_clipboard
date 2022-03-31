@@ -1,4 +1,5 @@
 #!/bin/bash
+# Starts watching clipboard and shows list of items by bemenu
 action="$@"
 case $action in
 	clipman)

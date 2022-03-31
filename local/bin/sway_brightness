@@ -1,4 +1,5 @@
 #!/bin/bash
+# Script to change brightness level by brillo with animation. Also send notification
 action="$@"
 current="$(brillo)"
 threshold=5

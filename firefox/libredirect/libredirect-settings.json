@@ -1,0 +1,54 @@
+{
+  "OnlyEmbeddedVideo": "onlyNotEmbedded",
+  "alwaysUsePreferred": true,
+  "applyThemeToSites": true,
+  "autoRedirect": false,
+  "disableMedium": false,
+  "disableReddit": false,
+  "disableSearch": true,
+  "disableYoutube": true,
+  "enableYoutubeCustomSettings": true,
+  "instancesCookies": [
+    "https://insta.trom.tf",
+    "https://bib.riverside.rocks",
+    "https://bibliogram.1d4.us",
+    "https://bibliogram.snopyta.org",
+    "https://biblio.alefvanoon.xyz"
+  ],
+  "invidiousComments": [
+    "",
+    ""
+  ],
+  "invidiousNormalRedirectsChecks": [
+    "https://invidious.kavin.rocks",
+    "https://invidious-us.kavin.rocks"
+  ],
+  "invidiousPlayerStyle": "youtube",
+  "invidiousQuality": "dash",
+  "invidiousQualityDash": "360p",
+  "invidiousRelatedVideos": false,
+  "invidiousSavePlayerPos": true,
+  "invidiousVrMode": false,
+  "mapsFrontend": "osm",
+  "redditFrontend": "libreddit",
+  "scribeNormalRedirectsChecks": [
+    "https://scribe.rip"
+  ],
+  "searxNormalRedirectsChecks": [
+    "https://searx.org",
+    "https://searx.josie.lol",
+    "https://searx.lavatech.top",
+    "https://searx.roughs.ru",
+    "https://searx.run"
+  ],
+  "simplyTranslateEngine": "google",
+  "tedditNormalRedirectsChecks": [
+    "https://teddit.net"
+  ],
+  "theme": "dark",
+  "wikilessNormalRedirectsChecks": [
+    "https://wikiless.alefvanoon.xyz",
+    "https://wiki.604kph.xyz"
+  ],
+  "youtubeAutoplay": true
+}

@@ -38,4 +38,4 @@ export BROWSER=firefox
 
 #export LC_ALL="en_GB.UTF-8"
 
-export HYDROXIDE_BRIDGE_PASS=iIh714gawmWOWnWVDst9Y3dA/u9MUMkuxu/OBMNQmcE=
+export HYDROXIDE_BRIDGE_PASS=TCbbVI04PmrRCmDGnHWGson/GEJIgcg0VpFSwiy0RRM=

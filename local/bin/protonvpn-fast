@@ -1,0 +1,17 @@
+#!/bin/bash
+#Script to find which ProtonVPN server is fastest
+
+file=/etc/ipsec.conf
+attempts=5
+servers=$(cat $file | grep right= | sed 's/right=//')
+
+echo "" > /tmp/ping
+for server in $servers
+do
+    avg=$(ping -c $attempts $server 2> /dev/null | tail -1 | cut -d" " -f 4 | cut -d"/" -f2)
+    
+    if [ "$avg" = "" ]; then continue; else echo "$avg"ms $server >> /tmp/ping; fi
+done
+
+sort /tmp/ping
+    

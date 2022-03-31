@@ -1,5 +1,4 @@
-set cmd hydroxide
-
+set cmd bar-protonmail
 # Disable files
 complete -f $cmd
 

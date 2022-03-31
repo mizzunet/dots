@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+# A script to start waybar if not running
 if pidof waybar; then
     killall -SIGUSR2 waybar
 else

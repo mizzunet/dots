@@ -31,6 +31,7 @@ crc32_pclmul
 crct10dif_pclmul
 cryptd
 crypto_simd
+crypto_user
 des_generic
 ecb
 ecdh_generic

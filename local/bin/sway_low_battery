@@ -1,3 +1,4 @@
 #!/bin/bash
+# Starts batsignal which notifies and take action on low battery condition
 
 batsignal -b -w 20 -c 15 -d 5 -m 30 -D "loginctl suspend"

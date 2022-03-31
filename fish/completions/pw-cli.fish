@@ -52,6 +52,8 @@ complete -k -c $cmd -n "test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish
     -xa "$client_ids"
 complete -k -c $cmd -n "test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from info" \
     -xa "$object_ids all"
+complete -k -c $cmd -n "test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from list-objects" \
+    -xa "Module Device Node Client"
 complete -k -c $cmd -n "test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from load-module" \
     -xa "$pipewire_modules"
 complete -k -c $cmd -n "test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from permissions" \
