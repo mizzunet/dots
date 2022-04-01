@@ -77,9 +77,11 @@ set $base0D #EBCB8B
 set $base0E #A3BE8C
 set $base0F #B48EAD
 set $blue #0860f2
-set $text #ffffff
+set $pastel #1d1b2d
+set $text #89dceb
+
 # Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $base05 $blue   $text   $base0D $base0C
+client.focused          $base05 $pastel $text   $base0D $base0C
 client.focused_inactive $base01 $base01 $base05 $base03 $base01
 client.unfocused        $base01 $base00 $base05 $base01 $base01
 client.urgent           $base08 $base08 $base00 $base08 $base08
@@ -99,7 +101,8 @@ for_window [app_id="[Ww]aydroid.*"] resize set width 400px
 
 # Send windows
 assign [title="Signal"] $ws2
-assign [app_id="geary"] $ws2
+### Chats
+assign [app_id="geary|fractal"] $ws2
 assign [title="Habits"] $ws4
 assign [title="Getting Things GNOME!"] $ws3
 

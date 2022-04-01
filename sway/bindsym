@@ -151,7 +151,6 @@ bindsym {
 
 ## play with mpv
     Mod1+Shift+P exec playwithmpv
-
 }
 
 # mouse button for dragging.
