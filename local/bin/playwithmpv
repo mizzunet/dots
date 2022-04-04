@@ -2,18 +2,20 @@
 # playwithmpv - script to copy Firefox's current page URL by Vimium-c and play the URL with mpv
 
 FOCUS=$(swaymsg -t get_tree | jq -r '..|try select(.focused == true)' | jq ."app_id")
-MPV_ARGS="--speed=2.5"
+MPV_ARGS="--pause --speed=2.5 save-position-on-quit hwdec=auto gpu-context=wayland ytdl-format=(bestvideo[vcodec^=avc1]/bestvideo)[height<=?360]+bestaudio/best[height<=?360]/worst ao=pipewire"
 TIME="0.8"
 
 if [[ $FOCUS == '"firefox"' ]]; then
     #wtype yy
     #sleep $TIME
     URL=$(wl-paste)
-    if [[ $URL == https://* ]]; then
-        shopt -s nocasematch extglob
+    if [[ $URL == https://* || $URL == http://*  ]]; then
+        #shopt -s nocasematch extglob
         notify-send -u low 'Video will be played on mpv' -t 3000
-        mpv $MPV_ARGS $URL || notify-send -u low 'Failed to recognize file format" -t 1000
+        mpv $MPV_ARGS $URL || notify-send -u low 'Failed to recognize file format' -t 1000
+    else
+        notify-send 'No URL copied' -t 1000 -u low
     fi
 else
-    notify-send -u low 'Firefox is not focused' -t 3000
+    notify-send -u low 'Firefox is not focused' -t 1000
 fi

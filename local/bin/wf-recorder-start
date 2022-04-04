@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+AREA=$(slurp)
+FILE=/tmp/record.gif
+
+wf-recorder -f "$FILE" -c gif -g "$AREA"
+curl -F"file=@$FILE"  https://0x0.st | wl-copy

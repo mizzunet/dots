@@ -4,18 +4,19 @@ change=1
 timeout_1=30
 timeout_2=60
 timeout_3=180
+ICONA=󰅶
 notify_info="Caffine 󰅶"
-icon=/usr/share/icons/WhiteSur-dark/status/symbolic/my-caffeine-on-symbolic.svg
+ICON=󰅶
 
-if pidof swayidle; then
-   notify-send -u low "Caffine" -t 0 -i $icon
+if (pidof swayidle > /dev/null); then
+   notify-send -u low "Caffine" -t 0
    killall -9 swayidle
+   #echo {\"text\": \"$ICON\", \"class\": []}
 else
    swayidle -w \
        timeout 30 'light -U 1' resume 'light -A 1' \
        timeout 60 'light -O && swaymsg "output * dpms off"' resume 'light -I && swaymsg "output * dpms on"' \
        timeout 180 'sway_swayidle_check' &
+   #echo {\"text\": \"\", \"class\": []}
    makoctl dismiss
-
 fi
-

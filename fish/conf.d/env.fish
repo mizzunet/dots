@@ -39,3 +39,9 @@ export BROWSER=firefox
 #export LC_ALL="en_GB.UTF-8"
 
 export HYDROXIDE_BRIDGE_PASS=TCbbVI04PmrRCmDGnHWGson/GEJIgcg0VpFSwiy0RRM=
+
+
+## Go
+export GOMODCACHE=/home/missu/.local/go
+export GOPATH=/home/missu/.local/go
+

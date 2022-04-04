@@ -21,7 +21,7 @@ bindsym {
 
 # control
 # caffine mode
-    $mod+Shift+c exec sway_swayidle
+    $mod+Shift+c exec sway_caffiene
 
 # wifi toggle
     $mod+Shift+w exec sway_wifi

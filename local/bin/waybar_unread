@@ -1,0 +1,15 @@
+#!/bin/bash
+
+if !(pidof hydroxide> /dev/null);then
+    exit
+fi
+
+COUNT=$(unread)
+ICON_READ=󰗯
+ICON_UNREAD=󰗰
+
+if [ $COUNT -gt 0 ]; then
+   echo {\"text\": \"$COUNT $ICON_UNREAD\", \"class\": [\"unread\"]}
+#else
+   #echo {\"text\": \"$ICON_READ\", \"class\": []}
+fi

@@ -18,7 +18,7 @@ window#waybar {
 .modules-left {
     padding: 0px 0 0 8px;
 }
-#netstatus,#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
+ #netstatus,#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
     padding: 2px 4px 0 4px;
 }
 
@@ -62,19 +62,17 @@ window#waybar {
     border-radius: 6px;
     padding: 4px 6px 0px 0px;
 }
-
 #clock:hover {
 	background: rgba(40,40,40, .95);
 }
  
 #tray {
-    padding: 0px 5px 0px 5px;
+    padding: 0px 4px 0px 5px;
 }
-#custom-protonmail{
-    padding: 7px 6px 0 0 ;
-}
-#custom-protonmail.error {
+#custom-unreadcount{
+    padding: 3px 4px 0 0 ;
 }
 #keyboard-state {
     margin-top: 1px;
 }
+

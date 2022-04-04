@@ -1,11 +1,12 @@
 #!/bin/bash
 # Generate ipsec.conf of ProtonVPN's free servers. Username is to be passed as argument
-file=ipsec.conf
-username="$@"
+
+FILE=ipsec.conf
+USERNAME="$@"
 if [ "$username" == "" ]; then echo Pass Username as arguemnt;exit;fi
-JP_number=4
-NL_number=4
-US_number=4
+JP_MAX=4
+NL_MAX=4
+US_MAX=4
 
 echo "# JAPAN" >> $file
 for country in JP NL US
@@ -14,10 +15,10 @@ do
     do
         if [ $i lt 10 ]; then i=0$i;fi
 
-        JP_server=$country-free-$i.protonvpn.com
-        NL_server=$country-free-$i.protonvpn.com
-        US_server=$country-free-$i.protonvpn.com
-        name=$country-FREE0$i
+        JP_SERVER=$country-free-$i.protonvpn.com
+        NL_SERVER=$country-free-$i.protonvpn.com
+        US_SERVER=$country-free-$i.protonvpn.com
+        NAME=$country-FREE0$i
 
         echo "conn $name" >> $file
         echo " left=%defaultroute" >> $file
