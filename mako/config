@@ -9,7 +9,7 @@ progress-color=#ffffff
 
 format=%s\n%b
 
-font=SF Compact Display 12.3
+font=Proxima Nova 12
 default-timeout=6000
 icon-path=/usr/share/icons/WhiteSur-dark:/usr/share/icons/WhiteSur:/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 max-icon-size=36

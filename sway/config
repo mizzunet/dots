@@ -22,8 +22,8 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-set $gaps_inner 10
-set $gaps_outer 1
+set $gaps_inner 0
+set $gaps_outer 12
 set $border 2
 
 set $wall_dir "/home/missu/Pictures/"
@@ -31,8 +31,8 @@ set $wall "pexels-cátia-matos-1072179.jpg"
 
 set $bg_cmd "> /dev/null 2>&1"
 
-set $font "SF Compact Display"
-set $font_size "11"
+set $font "Roboto Mono"
+set $font_size "10.4"
 set $theme "WhiteSur-dark"
 set $icon "WhiteSur-dark"
 set $cursor "WhiteSur-dark"
@@ -107,7 +107,7 @@ assign [title="Habits"] $ws4
 assign [title="Getting Things GNOME!"] $ws3
 
 # enable floating for windows
-for_window [title="Properties|Page Info|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk"] floating enable
+for_window [title="Properties|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk"] floating enable
 
 
 include ~/.config/sway/*

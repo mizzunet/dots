@@ -1,25 +1,164 @@
-set cmd signaldctl 
-set -l actions account  completion config db-move device group help key message protocol raw session version
+# fish completion for signaldctl                           -*- shell-script -*-
 
-# Disable files
-complete -f $cmd
+function __signaldctl_debug
+    set file "$BASH_COMP_DEBUG_FILE"
+    if test -n "$file"
+        echo "$argv" >> $file
+    end
+end
 
-# First
-complete -c $cmd -n "__fish_use_subcommand" -xa "$actions"
+function __signaldctl_perform_completion
+    __signaldctl_debug "Starting __signaldctl_perform_completion with: $argv"
 
-# Second
+    set args (string split -- " " "$argv")
+    set lastArg "$args[-1]"
 
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " delete an account from the local signald instance, and optionally from the server as well"
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " create a local account by linking to an existing Signal account"
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " return a list of accounts"
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " begin the process of creating a new account"
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " return a list of accounts"
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " updates the profile data with a new name"
-complete -k -c signaldctl -n test (__fish_number_of_cmd_args_wo_opts) = 2; and __fish_seen_subcommand_from account -xa  -d " verify an account and complete the registration process"
-complete -c $cmd -n "__fish_seen_subcommand_from help" -xa "$actions"
+    __signaldctl_debug "args: $args"
+    __signaldctl_debug "last arg: $lastArg"
 
-# Options
-complete -c $cmd -s h -l help -d "Show help"
-complete -c $cmd -l config 
-complete -c $cmd -s o -l output-format
-complete -c $cmd -s i -l socket
+    set emptyArg ""
+    if test -z "$lastArg"
+        __signaldctl_debug "Setting emptyArg"
+        set emptyArg \"\"
+    end
+    __signaldctl_debug "emptyArg: $emptyArg"
+
+    if not type -q "$args[1]"
+        # This can happen when "complete --do-complete signaldctl" is called when running this script.
+        __signaldctl_debug "Cannot find $args[1]. No completions."
+        return
+    end
+
+    set requestComp "$args[1] __complete $args[2..-1] $emptyArg"
+    __signaldctl_debug "Calling $requestComp"
+
+    set results (eval $requestComp 2> /dev/null)
+    set comps $results[1..-2]
+    set directiveLine $results[-1]
+
+    # For Fish, when completing a flag with an = (e.g., <program> -n=<TAB>)
+    # completions must be prefixed with the flag
+    set flagPrefix (string match -r -- '-.*=' "$lastArg")
+
+    __signaldctl_debug "Comps: $comps"
+    __signaldctl_debug "DirectiveLine: $directiveLine"
+    __signaldctl_debug "flagPrefix: $flagPrefix"
+
+    for comp in $comps
+        printf "%s%s\n" "$flagPrefix" "$comp"
+    end
+
+    printf "%s\n" "$directiveLine"
+end
+
+# This function does three things:
+# 1- Obtain the completions and store them in the global __signaldctl_comp_results
+# 2- Set the __signaldctl_comp_do_file_comp flag if file completion should be performed
+#    and unset it otherwise
+# 3- Return true if the completion results are not empty
+function __signaldctl_prepare_completions
+    # Start fresh
+    set --erase __signaldctl_comp_do_file_comp
+    set --erase __signaldctl_comp_results
+
+    # Check if the command-line is already provided.  This is useful for testing.
+    if not set --query __signaldctl_comp_commandLine
+        # Use the -c flag to allow for completion in the middle of the line
+        set __signaldctl_comp_commandLine (commandline -c)
+    end
+    __signaldctl_debug "commandLine is: $__signaldctl_comp_commandLine"
+
+    set results (__signaldctl_perform_completion "$__signaldctl_comp_commandLine")
+    set --erase __signaldctl_comp_commandLine
+    __signaldctl_debug "Completion results: $results"
+
+    if test -z "$results"
+        __signaldctl_debug "No completion, probably due to a failure"
+        # Might as well do file completion, in case it helps
+        set --global __signaldctl_comp_do_file_comp 1
+        return 1
+    end
+
+    set directive (string sub --start 2 $results[-1])
+    set --global __signaldctl_comp_results $results[1..-2]
+
+    __signaldctl_debug "Completions are: $__signaldctl_comp_results"
+    __signaldctl_debug "Directive is: $directive"
+
+    set shellCompDirectiveError 1
+    set shellCompDirectiveNoSpace 2
+    set shellCompDirectiveNoFileComp 4
+    set shellCompDirectiveFilterFileExt 8
+    set shellCompDirectiveFilterDirs 16
+
+    if test -z "$directive"
+        set directive 0
+    end
+
+    set compErr (math (math --scale 0 $directive / $shellCompDirectiveError) % 2)
+    if test $compErr -eq 1
+        __signaldctl_debug "Received error directive: aborting."
+        # Might as well do file completion, in case it helps
+        set --global __signaldctl_comp_do_file_comp 1
+        return 1
+    end
+
+    set filefilter (math (math --scale 0 $directive / $shellCompDirectiveFilterFileExt) % 2)
+    set dirfilter (math (math --scale 0 $directive / $shellCompDirectiveFilterDirs) % 2)
+    if test $filefilter -eq 1; or test $dirfilter -eq 1
+        __signaldctl_debug "File extension filtering or directory filtering not supported"
+        # Do full file completion instead
+        set --global __signaldctl_comp_do_file_comp 1
+        return 1
+    end
+
+    set nospace (math (math --scale 0 $directive / $shellCompDirectiveNoSpace) % 2)
+    set nofiles (math (math --scale 0 $directive / $shellCompDirectiveNoFileComp) % 2)
+
+    __signaldctl_debug "nospace: $nospace, nofiles: $nofiles"
+
+    # Important not to quote the variable for count to work
+    set numComps (count $__signaldctl_comp_results)
+    __signaldctl_debug "numComps: $numComps"
+
+    if test $numComps -eq 1; and test $nospace -ne 0
+        # To support the "nospace" directive we trick the shell
+        # by outputting an extra, longer completion.
+        __signaldctl_debug "Adding second completion to perform nospace directive"
+        set --append __signaldctl_comp_results $__signaldctl_comp_results[1].
+    end
+
+    if test $numComps -eq 0; and test $nofiles -eq 0
+        __signaldctl_debug "Requesting file completion"
+        set --global __signaldctl_comp_do_file_comp 1
+    end
+
+    # If we don't want file completion, we must return true even if there
+    # are no completions found.  This is because fish will perform the last
+    # completion command, even if its condition is false, if no other
+    # completion command was triggered
+    return (not set --query __signaldctl_comp_do_file_comp)
+end
+
+# Since Fish completions are only loaded once the user triggers them, we trigger them ourselves
+# so we can properly delete any completions provided by another script.
+# The space after the the program name is essential to trigger completion for the program
+# and not completion of the program name itself.
+complete --do-complete "signaldctl " > /dev/null 2>&1
+# Using '> /dev/null 2>&1' since '&>' is not supported in older versions of fish.
+
+# Remove any pre-existing completions for the program since we will be handling all of them.
+complete -c signaldctl -e
+
+# The order in which the below two lines are defined is very important so that __signaldctl_prepare_completions
+# is called first.  It is __signaldctl_prepare_completions that sets up the __signaldctl_comp_do_file_comp variable.
+#
+# This completion will be run second as complete commands are added FILO.
+# It triggers file completion choices when __signaldctl_comp_do_file_comp is set.
+complete -c signaldctl -n 'set --query __signaldctl_comp_do_file_comp'
+
+# This completion will be run first as complete commands are added FILO.
+# The call to __signaldctl_prepare_completions will setup both __signaldctl_comp_results and __signaldctl_comp_do_file_comp.
+# It provides the program's completion choices.
+complete -c signaldctl -n '__signaldctl_prepare_completions' -f -a '$__signaldctl_comp_results'
+

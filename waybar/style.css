@@ -1,6 +1,5 @@
 * {
     border: none;
-    font-family: "SF Compact Display", Inconsolata;
     font-size: 17px;
     min-height: 0;
 }
@@ -18,7 +17,8 @@ window#waybar {
 .modules-left {
     padding: 0px 0 0 8px;
 }
- #netstatus,#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
+
+#netstatus,#keyboard-state,#waybar-mpris, #workspaces,#clock,#mode,#battery,#pulseaudio,#backlight,#network {
     padding: 2px 4px 0 4px;
 }
 
@@ -27,9 +27,8 @@ window#waybar {
 }
 
 #workspaces button {
-    margin: 0px 5px 0 5px;
     background: transparent;
-    padding: 4px 4px 4px 4px;
+    padding: 4px 6px 4px 6px;
     border-radius: 6px;
 }
 

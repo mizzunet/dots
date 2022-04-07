@@ -22,7 +22,7 @@ exec {
   hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide
   bubblemaild
   pipewire_start
-  #sway_transparent -o 0.65 
+  sway_transparent -o 0.80 
   sway_nightlight
   sway_automount
   sway_low_battery
@@ -35,6 +35,10 @@ exec {
   /usr/bin/mako 
   /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
   sway_swayidle
+
+# Firefox
+  mkdir /tmp/firefox
+  ln -sf  /tmp/firefox ~/.cache/mozilla/firefox
 } 
  
   exec_always sway_bar
