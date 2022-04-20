@@ -3,6 +3,7 @@ bindsym {
 # foreground
 # htop
     control+Shift+Escape exec $term htop
+
 # Start a terminal
     $mod+Return exec "$term"
 
@@ -45,8 +46,8 @@ bindsym {
     XF86AudioPrev exec playerctl previous
 
 # Screenshot
-    Print exec exec grim -g "$(slurp)" - > /tmp/screen.png && swappy -f /tmp/screen.png
-    Shift+Print exec grim /tmp/screen.png && wl-copy < /tmp/screen.png  && notify-send "Screenshot Copied to Clipboard"
+    Print exec grim -g "$(slurp)" - > /tmp/screen.png && wl-copy < /tmp/screen.png && notify-send "Screenshot Copied to Clipboard" && swappy -f /tmp/screen.png 
+    Shift+Print exec grim -c /tmp/screen.png && wl-copy < /tmp/screen.png  && notify-send "Screenshot Copied to Clipboard" && swappy -f /tmp/screen.png
     #Shift+Print grim ~/Pictures/Screenshot/$(date +%d%m%y-%I%M%S) | wl-copy && notify-send "Screenshot Copied to Clipboard"
     
 # Screen recording
@@ -61,6 +62,7 @@ bindsym {
     control+mod1+l exec ~/.scripts/antennapod forward
 
 # ctrl+alt+delete to reboot
+    #control+mod1+Delete exec reboot
     control+mod1+Delete exec loginctl reboot
 
 # Clear all notifications
@@ -123,6 +125,7 @@ bindsym {
 # Switch the current container between different layout styles
     $mod+e layout toggle split
     $mod+w layout tabbed
+    $mod+s layout stacking
     $mod+v splitt
 
 # Make the current focus fullscreen
@@ -151,6 +154,9 @@ bindsym {
 
 ## play with mpv
     Mod1+Shift+P exec playwithmpv
+
+## emote
+    control+Shift+e exec emote
 }
 
 # mouse button for dragging.

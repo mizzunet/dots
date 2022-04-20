@@ -1,54 +1,56 @@
-# variables
-set $mod Mod4
-set $left h
-set $down j
-set $up k
-set $right l
+set {
+   $menu sirula  
+   $files nemo
+   $browser firefox
+   $term foot
+   $font "JetBrains Mono Light"
+   $font_size "10.5"
+   $theme "Adwaita-dark"
+   $icon "Adwaita"
+   $cursor "Adwaita"
+   $wall_dir "/home/missu/Pictures/"
+   $wall "pexels-cátia-matos-1072179.jpg"
 
-set $menu sirula
-set $files thunar
-set $browser firefox
-#set $term kitty
-set $term foot
+   $interface "gsettings set org.gnome.desktop.interface"
 
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+   $gaps_inner 0
+   $gaps_outer 12
+   $border 2
 
-set $gaps_inner 0
-set $gaps_outer 12
-set $border 2
+   $bg_cmd "> /dev/null 2>&1"
 
-set $wall_dir "/home/missu/Pictures/"
-set $wall "pexels-cátia-matos-1072179.jpg"
+   $mod Mod4
+   $left h
+   $down j
+   $up k
+   $right l
 
-set $bg_cmd "> /dev/null 2>&1"
+   $ws1 "1"
+   $ws2 "2"
+   $ws3 "3"
+   $ws4 "4"
+   $ws5 "5"
+   $ws6 "6"
+   $ws7 "7"
+   $ws8 "8"
+   $ws9 "9"
+   $ws10 "10"
+}
 
-set $font "Roboto Mono"
-set $font_size "10.4"
-set $theme "WhiteSur-dark"
-set $icon "WhiteSur-dark"
-set $cursor "WhiteSur-dark"
-
-# input configuration
-input * xkb_numlock enable
-input  type:touchpad {
+input {
+   *   xkb_numlock enable
+   type:touchpad {
        tap enabled
        pointer_accel 0.3
        accel_profile adaptive
        middle_emulation enabled
+   }
 }
 
-# gaps
-gaps inner $gaps_inner
-gaps outer $gaps_outer
+gaps {
+       inner $gaps_inner
+       outer $gaps_outer  
+}
 
 # border
 default_border pixel $border
@@ -57,28 +59,28 @@ default_floating_border pixel 0.5
 
 # font
 font pango: $font $font_size
-# class border backgr. text indic. child_border
-set $base00 #2E3440
-set $base01 #3B4252
-set $base02 #434C5E
-set $base03 #4C566A
-set $base04 #D8DEE9
-# tab top font color
-set $base05 #E5E9F0
-set $base06 #ECEFF4
-set $base07 #8FBCBB
-set $base08 #88C0D0
-set $base09 #81A1C1
-set $base0A #5E81AC
-set $base0B #BF616A
-#border
-set $base0C #89dceb
-set $base0D #EBCB8B
-set $base0E #A3BE8C
-set $base0F #B48EAD
-set $blue #0860f2
-set $pastel #1d1b2d
-set $text #89dceb
+
+set {
+   $base00 #2E3440
+   $base01 #3B4252
+   $base02 #434C5E
+   $base03 #4C566A
+   $base04 #D8DEE9
+   $base05 #E5E9F0
+   $base06 #ECEFF4
+   $base07 #8FBCBB
+   $base08 #88C0D0
+   $base09 #81A1C1
+   $base0A #5E81AC
+   $base0B #BF616A
+   $base0C #89dceb
+   $base0D #EBCB8B
+   $base0E #A3BE8C
+   $base0F #B48EAD
+   $blue #0860f2
+   $pastel #1d1b2d
+   $text #89dceb
+}
 
 # Property Name         Border  BG      Text    Indicator Child Border
 client.focused          $base05 $pastel $text   $base0D $base0C
@@ -88,26 +90,24 @@ client.urgent           $base08 $base08 $base00 $base08 $base08
 client.placeholder      $base00 $base00 $base05 $base00 $base00
 client.background $base07
 
-
 # wallpaper
 output * bg $wall_dir$wall fill
 
 # window manipulation
-for_window [class="Spotify"] move window to workspace $ws3
-for_window [title="Volume Control"] move position 838 0
-
-for_window [app_id="[Ww]aydroid.*"] move right
-for_window [app_id="[Ww]aydroid.*"] resize set width 400px
+for_window {
+   [title="Volume Control"] move position 838 0     
+   [app_id="[Ww]aydroid.*"] move right
+   [app_id="[Ww]aydroid.*"] resize set width 400px
+   [class="Spotify"] move window to workspace $ws3
+# enable floating for windows
+   [title="Properties|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk"] floating enable
+}
 
 # Send windows
-assign [title="Signal"] $ws2
-### Chats
-assign [app_id="geary|fractal"] $ws2
-assign [title="Habits"] $ws4
-assign [title="Getting Things GNOME!"] $ws3
-
-# enable floating for windows
-for_window [title="Properties|Volume Control|File Operation Progress|Choose a folder|Select books|xdg-desktop-portal-gtk|iwgtk"] floating enable
-
+assign {
+   [title="Firefox"] $ws1       
+   [app_id="Signal|geary|fractal"] $ws2
+   [app_id="rhythmbox"] $ws3
+}
 
 include ~/.config/sway/*
