@@ -13,6 +13,7 @@ exec {
 exec {
     dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway 
     dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus 
+    dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK
 
 # power saving
   doas /usr/bin/powertop --auto-tune 

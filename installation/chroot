@@ -1,0 +1,49 @@
+set -e
+
+mount /dev/sdb2 -o rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@var_cache /var/cache
+mount /dev/sdb2 -o rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@home /mnt/home
+mount /dev/sdb2 -o rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@var_tmp /mnt/var/tmp
+mount /dev/sdb2 -o rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@var_log /mnt/var/log
+
+ln -sf /usr/share/zoneinfo/Asia/Chennai /etc/localtime
+hwclock --systohc
+echo en_GB.UTF-8 UTF-8  >> /etc/locale.gen
+echo LANG=en_GB.UTF-8 >> /etc/locale.conf
+locale-gen
+
+echo archie >> /etc/hostname
+echo "ParallelDownloads = 25" >> /etc/pacman.conf
+
+pacman-key --recv-key FBA220DFC880C036 --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key FBA220DFC880C036
+pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+echo "[chaotic-aur]" >> /etc/pacman.conf
+echo "Include = /etc/pacman.d/chaotic-mirrorlist" >> /etc/pacman.conf
+pacman -Syu
+pacman -S yay
+
+yay -S linux-lts booster fish helix iwd opendoas opendoas-sudo zoxide starship btrfs-progs 
+yay -S gnome-themes-extra otf-manjari ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-twemoji ttf-roboto-mono 
+yay -S sway waybar xorg-xwayland wl-clipboard 
+
+systemctl enable iwd
+
+
+echo "UUID=8e77f93a-a048-41b4-878e-c9675ea77193    /             btrfs     rw,noatime,compress=zstd:3,ssd,space_cache=v2,commit=120,subvol=/@root    0 0" >> /etc/fstab
+echo "UUID=0E78-4092          /boot         vfat          rw,noatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro    0 2" >> /etc/fstab
+echo "UUID=8e77f93a-a048-41b4-878e-c9675ea77193    /home         btrfs     rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@home    0 0" >> /etc/fstab
+echo "UUID=8e77f93a-a048-41b4-878e-c9675ea77193    /var/tmp      btrfs     rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@var_tmp    0 0" >> /etc/fstab
+echo "UUID=8e77f93a-a048-41b4-878e-c9675ea77193    /var/log      btrfs     rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@var_log    0 0" >> /etc/fstab
+echo "UUID=8e77f93a-a048-41b4-878e-c9675ea77193    /var/cache    btrfs     rw,noatime,ssd,space_cache=v2,compress=zstd:3,commit=120,subvol=/@var_cache    0 0" >> /etc/fstab
+echo "tmpfs /tmp tmpfs defaults,noatime,nosuid,nodev,mode=1777,size=1024M 0 0" >> /etc/fstab
+
+mkdir /etc/iwd
+echo [General]\nEnableNetworkConfiguration=true\n[Network]\nEnableIPv6=false\n >> /etc/iwd/main.conf
+
+echo permit nopass keepenv root\npermit nopass keepenv :wheel\npermit nopass :missu as root cmd /usr/bin/psd-overlay-helper\npermit nopass :missu as root cmd /usr/bin/psdns >> /etc/doas.conf
+
+passwd
+chsh /usr/bin/fish
+useradd -mG wheel,audio,video,storage,rfkill,network --shell /usr/bin/fish  missu
+passwd missu
+

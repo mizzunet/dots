@@ -1,8 +1,8 @@
 export HYDROXIDE_BRIDGE_PASS=TCbbVI04PmrRCmDGnHWGson/GEJIgcg0VpFSwiy0RRM=
 
 ## Editor
-export EDITOR="kak"
-export VISUAL="kak"
+export EDITOR="hx"
+export VISUAL="hx"
 
 ## Wine
 #export WINEDLLOVERRIDES="mscoree,mshtml="
@@ -23,7 +23,8 @@ export SPOTIPY_CLIENT_SECRET=5627a7efa52a4d5ab82c8bc64a62c42e
 export SPOTIPY_CLIENT_ID=b1acb8ba1769473781009e4976250205
 
 ## PATH
-export PATH=/usr/local/bin:/home/missu/.local/bin:$PATH
+# export PATH=/home/missu/.local/bin:/home/missu/.local/go/bin:$PATH
+fish_add_path /home/missu/.local/bin /home/missu/.local/go/bin
 
 ## Theme
 export QT_QPA_PLATFORMTHEME=gnome
@@ -34,6 +35,7 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 # Wayland
 export QT_QPA_PLATFORM=wayland-egl
 export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
+export  GTK_USE_PORTAL=0
 
 # Firefox
 export MOZ_ENABLE_WAYLAND=1

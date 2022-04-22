@@ -1,6 +1,6 @@
 set {
    $menu sirula  
-   $files nemo
+   $files thunar
    $browser firefox
    $term foot
    $font "JetBrains Mono Light"
@@ -39,18 +39,25 @@ set {
 
 input {
    *   xkb_numlock enable
+   type:keyboard {
+   repeat_delay 300
+   repeat_rate 50
+   }
    type:touchpad {
        tap enabled
-       pointer_accel 0.3
+       pointer_accel 0.7
        accel_profile adaptive
        middle_emulation enabled
    }
 }
 
 gaps {
-       inner $gaps_inner
-       outer $gaps_outer  
+   inner $gaps_inner
+   outer $gaps_outer  
 }
+
+mouse_warping container
+focus_wrapping no
 
 # border
 default_border pixel $border

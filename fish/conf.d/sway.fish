@@ -1,7 +1,9 @@
-# Autostart sway when user login on tty1
-set TTY1 (tty)
-
-if test -z "$DISPLAY"; and test $TTY1 = "/dev/tty1"
-  # Debug
-  exec dbus-run-session sway -d 2> /tmp/sway.log
+switch $(tty)
+    #case /dev/tty\*
+  case /dev/tty1
+    exec dbus-run-session river 2> /tmp/river.log
+    # exec sway
+ case /dev/tty2
+  # exec dbus-run-session -- gnome-shell --display-server --wayland
+  # exec river
 end

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if !(pidof charon> /dev/null);then
+    exit 1
+fi
+
+ICON=󰖂
+
+if $(doas ipsec status | grep -q ESTABLISHED); then
+   echo {\"text\": \"$ICON\", \"class\": [\"up\"]}
+fi

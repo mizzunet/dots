@@ -2,7 +2,7 @@
 # Starts watching clipboard and shows list of items by bemenu
 ACTION="$@"
 PICKER=bemenu
-ARGS='-l 30 -n -b -i --fn "Roboto Mono 10" --hb #ffffff --hf #00000 --nb #000000 --nf #ffffff'
+ARGS='-l 30 -n -b -i --wrap --fn "Roboto Mono Light 11" --hb #ffffff --hf #00000 --nb #000000 --nf #ffffff'
 
 case $ACTION in
 	clipman)

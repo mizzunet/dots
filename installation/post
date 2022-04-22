@@ -1,0 +1,63 @@
+set -e
+
+# Linux
+yay -S linux-lts intel-ucode-clear 
+
+# Performance & Power
+yay -S hdparm nohang powertop prelockd tuned udiskie zramd --needed
+
+# GUI
+yay -S anki-bin bleachbit calibre cheese firefox foot geary gnome-pomodoro-git gucharmap imv  mpv-pipewire nemo qalculate-gtk  rhythmbox scrcpy signal-desktop-beta spotify ventoy-bin zathura zathura-pdf-poppler --needed
+
+# Sway
+yay -S autotiling batsignal bemenu-wayland brillo clipman grim mako pamixer polkit-gnome qt5-wayland sirula-git slurp swappy sway-audio-idle-inhibit-git swayidle sirula-git waybar-git wf-recorder wl-clipboard wlsunset-git wtype xorg-xwayland  --needed
+
+# Audio
+yay -S gst-plugin-pipewire gst-plugin-bad gst-plugin-good pipewire pipewire-jack pipewire-pulse  wireplumber  --needed
+
+# HW
+yay -S gstreamer-vaapi intel-gpu-tools mesa-amber libva-intel-driver libva-utils --needed
+
+# Sevices
+yay -S ananicy-cpp hydroxide pdnsd strongswan thermald --needed
+
+# Tools
+yay -S advcpmv aria2-fast calc croc duf extramaus fd glow htop-vim lostfiles ncdu nnn subdl taskwarrior-tui tmpmail --needed
+
+# Other
+yay -S appimagelauncher bluez bluez-libs bluez-utils hunspell-en_gb  man-db ntfs-3g pacman-cleanup-hook rmlint  up upx  --needed
+
+# UI
+yay -S gnome-themes-extra gtk-engine-murrine  otf-manjari qgnomeplatform ttf-font-nerd ttf-jetbrains-mono ttf-nerd-fonts-symbols ttf-twemoji ttf-roboto-mono whitesur-cursor-theme-git whitesur-icon-theme --needed 
+
+# fish
+yay -S exa starship trash-cli zoxide --needed
+
+# Helix
+yay -S bash-language-server --needed
+
+# libvirt
+yay -S edk2-ovmf  --needed
+
+# waydroid
+yay -S waydroid linux-lts-headers anbox-modules-dkms-git
+
+## change sysetmd defautl runlevel
+systemctl isolate multi-user
+
+## enable system services
+## scripts
+## Auto login
+## USB Disable
+## sysctl
+## modprobe
+## zram
+## configs
+## dns
+## hosts
+https://raw.githubusercontent.com/StevenBlack/hosts/master/alternates/fakenews-gambling-porn-social/hosts
+
+
+### Save configs
+lostfiles
+pacman -Qii | awk '/^MODIFIED/ {print $2}'

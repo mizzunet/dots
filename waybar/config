@@ -1,10 +1,10 @@
 {
-"layer": "top", // Waybar at top layer
-"position": "top", // Waybar at the bottom of your screen
-"height": 32, // Waybar height
-"modules-left": ["sway/workspaces","sway/mode"],
+"layer": "top", 
+"position": "top", 
+"height": 32, 
+"modules-left": ["river/tags","sway/workspaces","sway/mode"],
 "modules-center": ["clock",],
-"modules-right": ["custom/netstatus","keyboard-state","custom/unreadcount","network","pulseaudio", "battery", "tray"],
+"modules-right": ["custom/netstatus","custom/unreadcount","network","custom/vpn","pulseaudio", "battery", "tray"],
 
 "sway/workspaces": {
     "icon": false,   
@@ -24,9 +24,17 @@
         "10":"<span size='135%'>󰽽</span>",
     }
 },
-"sway/mode": {
-    "format": "{}"
+
+"river/tags": {
+    "num-tags": 4,
+    "tag-lables":{
+        "1": "󰛄",
+        "2": "󱀡",
+        "3": "󰓇",
+        "4": "󰎭",
+    }
 },
+
 "tray": {
     "icon-size": 18,
     "spacing": 8
@@ -42,7 +50,6 @@
     "on-scroll-down": "~/.scripts/ChangeBrightness down",
     "on-click": "~/.scripts/ChangeBrightness 0%",
     "states": {
-        // "good": 95,
         "warning": 30,
         "critical": 20
     },
@@ -53,6 +60,7 @@
     "format-full": "<span size='100%' rise='-1500'>󱟢</span>",
     "format-charging": "<span size='100%'>󰂄</span>{capacity}%"
 },
+
 "network": {
     "interval": 5,
     "format-linked":"󰤥",
@@ -88,8 +96,7 @@
     "format": "{icon} {percentage}",
     "format-icons": {
     "default": ["󰕿", "󰖀", "󰕾"]
-},
-
+    },
 },
 
 "custom/netstatus": {
@@ -97,17 +104,30 @@
     "interval": 32,
     "format": "{}",
 },
+
 "custom/unreadcount": {
-    "exec": " unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143",
+    "exec": "waybar_unread",
     "return-type": "json",
-    "interval": 10,
+    "interval": 30,
     "tooltip": "Open ProtonMail",
     "format": "<span size='118%' >{}</span>",
     "on-click": "geary"
 },
+
 "custom/caffiene": {
     "exec": "sway_caffiene",
     "interval": "once",
     "signal": 8,
 },
+
+"custom/vpn": {
+  "interval": 60,
+  "tooltip": false,
+  "format": "<span size='112%' >{}</span>",
+  "return-type": "json",
+  "exec": "waybar_vpn"
+},
+
+
+
 }

@@ -2,7 +2,7 @@
 layer=overlay
 margin=5,11,2,0
 border-size=1
-border-radius=0
+border-radius=4
 text-alignment=left
 width=260
 progress-color=#ffffff
@@ -37,17 +37,17 @@ on-notify=exec pw-play /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 [app-name=Geary]
 default-timeout=10000
 
-[summary=Volume󰋌]
+[summary~=Volume]
 text-alignment=center
 format=%s
 group-by=summary
 
-[summary=Brightness󰃟]
+[summary~=Brightness.*]
 text-alignment=center
 format=%s
 group-by=summary
 
-[summary~=WiFi]
+[summary~=WiFi.*]
 text-alignment=center
 format=%s\n%b
 group-by=summary

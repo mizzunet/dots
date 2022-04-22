@@ -27,6 +27,7 @@ window#waybar {
 }
 
 #workspaces button {
+    font-weight: normal; 
     background: transparent;
     padding: 4px 6px 4px 6px;
     border-radius: 6px;
@@ -34,6 +35,15 @@ window#waybar {
 
 #workspaces button.focused {
     color: white;
+}
+#tags button {
+    color:#F1F1F1 ;
+}
+#tags button.focused {
+    color: white;
+}
+#tags button.urgent {
+    color: red;    
 }
 #mode {
     padding: 0px 12px 0px 12px;
@@ -73,5 +83,8 @@ window#waybar {
 }
 #keyboard-state {
     margin-top: 1px;
+}
+#custom-vpn {
+    margin: 0 2px;
 }
 

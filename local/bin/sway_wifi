@@ -7,12 +7,12 @@ cmdOff='iwctl adapter phy0 set-property Powered off'
 if [ $cmd == "on" ]
 then
 	$cmdOff
-    state="󰤭"
-    icon="/usr/share/icons/WhiteSur-dark/status/symbolic/network-wireless-disconnected-symbolic.svg"
+    // state="󰤭"
+	state="Off"
 else
 	$cmdOn
-    state="󰤥"
-    icon="/usr/share/icons/WhiteSur-dark/status/symbolic/network-wireless-connected-symbolic.svg"
+    // state="󰤥"
+	state="On"
 fi
-	 notify-send -u low -i $icon \
-     "WiFi" -t 1000 
+	 notify-send -u low \
+     "WiFi $state" -t 1000 
