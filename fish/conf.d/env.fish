@@ -46,3 +46,4 @@ export BROWSER=firefox
 # Go
 export GOMODCACHE=/home/missu/.local/go
 export GOPATH=/home/missu/.local/go
+# export WLR_NO_HARDWARE_CURSORS=1

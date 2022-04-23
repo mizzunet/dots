@@ -2,22 +2,22 @@
 # Start pipewire,wireplumber and pipewir-pulse if they aren't running. To be ran with Sway
 
 if pidof /usr/bin/pipewire; then
- echo pipewire running 
+ echo PipeWire alredy running 
 else
    /usr/bin/pipewire &
-   echo pipewire started
+   echo PipeWire started
 fi
 if pidof /usr/bin/wireplumber; then
- echo wireplumber running 
+  echo WirePlumber already running 
 else
    /usr/bin/wireplumber&
-   echo wireplumber started
+   echo WirePlumber started
 fi
 if pidof /usr/bin/pipewire-pulse; then
- echo pulse running 
+ echo PipeWire-Pulse already running 
 else
    /usr/bin/pipewire-pulse &
-   echo pipewire-pulse started
+   echo PipeWire-Pulse started
 fi
 
 

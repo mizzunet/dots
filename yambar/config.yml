@@ -67,10 +67,9 @@ bar:
           - string: {text: "{time} {date}"}
   right:
     - script:
-        path: /home/missu/.local/bin/mails.sh
+        path: /home/missu/.local/bin/_yambar_unread
         args: []
         content: {string: {text: "{count}", font: *icon}}
-
     - network:
           name: wlan0
           content:
@@ -104,12 +103,12 @@ bar:
                       ramp:
                         tag: volume
                         items:
-                          - string: {text: 󰕿, font: *icon}
+                          - string: {text: 󰖀, font: *icon}
                           - string: {text: 󰖀, font: *icon}
                           - string: {text: 󰕾, font: *icon}
     - battery:
         name: BAT1
-        poll-interval: 30
+        poll-interval: 20
         anchors:
           discharging: &discharging
             list:
@@ -126,7 +125,7 @@ bar:
                       - string: {text: 󰂀, font: *icon}
                       - string: {text: 󰂁, font: *icon}
                       - string: {text: 󰂂, font: *icon}
-                      - string: {text: 󰁹, foreground: 00ff00ff, font: *icon}
+                      - string: {text: 󰁹, font: *icon}
         content:
           map:
             tag: state
@@ -140,18 +139,3 @@ bar:
                 - string: {text: "{capacity}%"}
               full:
                 - string: {text: 󱟢, foreground: 00ff00ff, font: *icon}
-              # not charging:
-              #   - ramp:
-              #       tag: capacity
-              #       items:
-              #         - string: {text:  , foreground: ff0000ff, font: *icon}
-              #         - string: {text:  , foreground: ffa600ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #         - string: {text:  , foreground: 00ff00ff, font: *icon}
-              #   - string: {text: "{capacity}%"}

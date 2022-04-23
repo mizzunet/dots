@@ -106,7 +106,7 @@
 },
 
 "custom/unreadcount": {
-    "exec": "waybar_unread",
+    "exec": "_waybar_unread",
     "return-type": "json",
     "interval": 30,
     "tooltip": "Open ProtonMail",

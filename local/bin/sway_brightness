@@ -3,15 +3,16 @@
 action="$@"
 current="$(brillo)"
 threshold=5
-lower=0.2
-higher=6
+
+up=5
+down=4
 
 case $action in
 	up)
-        brillo -q -u 100000 -A 8
+        brillo -q -u 150000 -A $up
 		;;
 	down)
-        brillo -q -u 100000 -U 2
+        brillo -q -u 150000 -U $down
 		;;		
 
 	esac

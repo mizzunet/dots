@@ -5,10 +5,10 @@ term=foot
 files=thunar
 menu=sirula
 browser=firefox
-#gtk-theme=''
-#cursor-theme=''
-#icon-theme=''
-#font=''
+gtk-theme=''
+cursor-theme=''
+icon-theme=''
+font=''
 
 map='riverctl map normal'
 input='riverctl input'
@@ -21,7 +21,7 @@ interface='org.gnome.desktop.interface'
 ############
 # MAPPINGS #
 ############
-$map Super+Shift Return spawn $term
+$map Super Return spawn $term
 $map Control+Shift escape spawn 'foot htop'
 $map Super Space spawn $menu
 $map Super m spawn $files
@@ -58,15 +58,17 @@ $map Super J focus-view next
 $map Super K focus-view previous
 $map Super+Shift J swap next
 $map Super+Shift K swap previous
-#$map Super+Shift Return zoom
+$map Super+Shift Return zoom
 $map Super H send-layout-cmd rivertile "main-ratio -0.05"
 $map Super L send-layout-cmd rivertile "main-ratio +0.05"
 $map Super+Shift H send-layout-cmd rivertile "main-count +1"
 $map Super+Shift L send-layout-cmd rivertile "main-count -1"
-$map Super+Shift Space to toggle float
-$map Super F toggle-fullscreen
-$cmd map-pointer normal Super BTN_RIGHT resize-view
 $cmd map-pointer normal Super BTN_LEFT move-view
+$cmd map-pointer normal Super BTN_RIGHT resize-view
+$cmd Super+Shift+Space to toggle float
+$cmd Super+Alt Space toggle-float
+$cmd Super+F to toggle fullscreen
+$map Super F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
 $map Super Up    send-layout-cmd rivertile "main-location top"
@@ -78,9 +80,8 @@ $map Super Left  send-layout-cmd rivertile "main-location left"
 ## Tags
 # Super+0 to focus all tags
 # Super+Shift+0 to tag focused view with all tags
-all_tags=$(((1 << 32) - 1))
-$map Super 0 set-focused-tags $all_tags
-$map Super+Shift 0 set-view-tags $all_tags
+all_tags=$(((1 << 32) - 1))$cmd Super 0 set-focused-tags $all_tags
+$cmd Super+Shift 0 set-view-tags $all_tags
 for i in $(seq 1 9)
 do
     tags=$((1 << ($i - 1)))
@@ -101,23 +102,7 @@ done
 ##########
 # SPAWNS #
 ##########
-$spawn 'yambar'
-$spawn 'swaybg -i /home/missu/Pictures/pexels-cátia-matos-1072179.jpg'
-$spawn 'mako'
-#$spawn 'dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river'
-$spawn 'dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus '
-$spawn 'dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK'
-$spawn 'doas /usr/bin/powertop --auto-tune '
-$spawn 'hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide'
-$spawn 'geary --gapplication-service'
-$spawn '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 '
-$spawn 'emote'
-$spawn '_pipewire'
-$spawn 'sway_caffiene'
-$spawn 'sway_nightlight'
-$spawn 'sway_automount'
-$spawn 'sway_low_battery'
-$spawn 'sway_clipboard watcher'
+#$spawn 'yambar'
 
 #$spawn '$gset $interface gtk-theme adw-gtk3-dark'
 #$spawn '$gset $interface icon-theme breeze-dark'
@@ -137,20 +122,9 @@ $input $touchpad pointer-accel 0.5
 $input $touchpad tap enabled
 $input $touchpad tap-button-map left-right-middle
 
+
 ##################
 # CONFIGURATIONS #
 ##################
-$cmd focus-follows-cursor normal
-$cmd set-cursor-warp on-output-change
-$cmd set-repeat 50 250
-$cmd border-color-focused 0xE5E9F0
-$cmd border-color-unfocused 0x3B4252
-$cmd border-color-urgent 0x88C0D0
-$cmd border-width 2
-
-# Make certain views start floating
-$cmd float-filter-add app-id float
-$cmd float-filter-add title "popup title with spaces"
-
 $cmd default-layout rivertile
 exec rivertile -view-padding 2 -outer-padding 6
