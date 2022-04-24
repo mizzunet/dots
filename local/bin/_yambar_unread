@@ -2,21 +2,21 @@
 
 #unread-count-yambar -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143
 
-interval=30
+INTERVAL=30
 
 printf -- '%s\n' "count|string|"
 printf -- '%s\n' ""
 
 while true;do
   if ! (pidof hydroxide> /dev/null);then
-      sleep $interval
+      sleep $INTERVAL
       continue
   fi
 
-  count=$(unread-count-yambar -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
+  count=$(unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
 
   printf -- '%s\n' "count|string|${count}"
   printf -- '%s\n' ""
 
-  sleep $interval
+  sleep $INTERVAL
 done

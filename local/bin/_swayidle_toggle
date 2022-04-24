@@ -1,0 +1,13 @@
+#!/usr/bin/bash
+notify_info="Caffine 󰅶"
+
+if (pidof swayidle > /dev/null); then
+   notify-send -u low "Caffine" -t 0
+   killall -9 swayidle
+else
+   swayidle -w \
+             timeout 30 'brillo -O && brillo -q -u 100000 -U 8' resume  'brillo -q -u 100000 -A 8' \
+             timeout 60 'wlr-randr --output eDP-1 --off' resume 'wlr-randr --output eDP-1 --on' \
+             timeout 180 'sway_swayidle_check'
+   makoctl dismiss
+fi

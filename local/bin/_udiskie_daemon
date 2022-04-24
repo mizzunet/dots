@@ -1,0 +1,3 @@
+#!/bin/bash
+# Just a script for udiskie for automount and notify
+udiskie --file-manager thunar --no-tray --notify --automount

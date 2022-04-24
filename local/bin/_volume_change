@@ -1,0 +1,33 @@
+#!/bin/bash
+
+action="$@"
+volume="$(pamixer --get-volume)"
+
+case $action in
+	down)
+	pamixer -d 5 > /dev/null;
+    icon=/usr/share/icons/WhiteSur/status/symbolic/audio-volume-muted-blocking-symbolic.svg	
+    ;;
+
+	up)
+	pamixer -i 5 > /dev/null;
+    icon=/usr/share/icons/WhiteSur/status/symbolic/audio-volume-muted-blocking-symbolic.svg	
+	;;
+
+	mute)
+    if $( pamixer --get-mute); then pamixer -u; else pamixer -m; fi
+    icon=/usr/share/icons/WhiteSur-dark/status/symbolic/audio-volume-muted-blocking-symbolic.svg	
+
+	;;
+esac
+if $( pamixer --get-mute);
+   notify-send -u low \
+  -h int:value:"$(pamixer --get-volume)" Volume󰋌 -t 1000 
+ then exit;
+else
+ notify-send -u low \
+  "Volume󰋌 " Muted -t 1000 -i $icon
+
+
+fi
+

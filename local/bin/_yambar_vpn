@@ -1,0 +1,22 @@
+#!/bin/bash
+
+printf -- '%s\n' "status|string|"
+printf -- '%s\n' ""
+
+ICON=󰖂
+INTERVAL=30
+
+while true; do
+
+  if !(pidof charon> /dev/null);then
+    continue
+  fi
+
+  if $(doas ipsec status | grep -q ESTABLISHED); then
+    printf -- '%s\n' "status|string|$ICON"
+    printf -- '%s\n' ""
+  fi
+
+  sleep $INTERVAL
+
+done

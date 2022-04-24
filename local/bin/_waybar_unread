@@ -1,13 +1,22 @@
-#!/bin/bash
-# if ! $(iw dev wlan0 info | grep -q ssid);then
-#    exit
-# fi
-#if ! $(netstatus > /dev/null); then
-  #exit
-#fi
+#!/usr/bin/bash
 
-if ! (pidof hydroxide> /dev/null);then
-    exit
+#unread-count-yambar -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143
+
+# interval=30
+
+# printf -- '%s\n' "count|string|"
+# printf -- '%s\n' ""
+  if ! (pidof hydroxide> /dev/null);then
+      sleep $interval
+      continue
+  fi
+
+# ICON_UNREAD='󰗰'
+COUNT=$(unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
+
+# while true;do
+if [ -n "$COUNT" ]; then
+  echo {\"text\": \"$COUNT\",  \"class\":  \"unread\"} 
 fi
-
-unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143
+  # sleep $interval
+# done

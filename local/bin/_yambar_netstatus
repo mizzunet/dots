@@ -1,0 +1,28 @@
+#!/bin/bash
+# Script to check ineternet connection if wifi is connected. To be used as Waybar module
+printf -- '%s\n' "status|string|"
+printf -- '%s\n' ""
+
+if ! [ -e /tmp/netstatus ];
+then
+   touch /tmp/netstatus
+   sleep 20;
+fi
+
+INTERVAL=10
+
+while true; do
+
+if $(iw dev wlan0 info | grep -q ssid);then
+    wget -q --spider 1.1.1.1
+    if !([ $? -eq 0 ]); then
+        touch /tmp/netstatus
+        printf -- '%s\n' "status|string|Offline!"
+        printf -- '%s\n' ""
+    fi
+else
+    printf -- '%s\n' "status|string|"
+    printf -- '%s\n' ""
+fi
+sleep $INTERVAL
+done

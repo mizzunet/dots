@@ -22,6 +22,6 @@ obj.select()
 COUNT = len(obj.search(None, 'UnSeen')[1][0].split())
 
 if COUNT > 0:
-    print('{"text":" ' + str(COUNT) + ' ' + ICON_UNREAD + '", "class": ["unread"]}' )
+    print(str(COUNT) + ' ' + ICON_UNREAD)
 else:
     exit()

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+ACTION=$1
+TMP=/tmp/screen.png 
+
+case $ACTION in 
+  select-copy)
+  grim -g "$(slurp)" - > $TMP
+  wl-copy < $TMP
+  notify-send "Screenshot copied to clipboard" 
+  swappy -f $TMP
+  ;;
+
+  copy)
+  grim -c $TMP 
+  wl-copy < $TMP 
+  notify-send "Screenshot copied to clipboard" 
+  swappy -f $TMP
+  ;;
+
+  *)
+  echo Some action needed
+  exit 1
+  ;;
+esac

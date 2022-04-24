@@ -1,0 +1,10 @@
+#!/usr/bin/bash
+# Start pipewire,wireplumber and pipewir-pulse if they aren't running. To be ran with Sway
+
+pkill wireplumber pipewire-pulse pipewire 
+/usr/bin/pipewire &
+echo PipeWire started
+/usr/bin/wireplumber&
+echo WirePlumber started
+/usr/bin/pipewire-pulse &
+echo PipeWire-Pulse started
