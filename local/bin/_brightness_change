@@ -3,9 +3,9 @@
 action=$1
 current=$(brillo)
 
-if (( $(bc <<<"$current < 8.0") ));then
-	up=3
-	down=1
+if (( $(bc <<<"$current < 5.0") ));then
+	up=2
+	down=2
 else
 	up=4
 	down=8
