@@ -16,6 +16,7 @@ MAP='riverctl map normal'
 INPUT='riverctl input'
 SPAWN='riverctl spawn'
 CMD='riverctl'
+ROTATE='wlr-randr --output eDP-1 --transform '
 TOUCHPAD='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
 GSET='gsettings set'
 INTERFACE='org.gnome.desktop.interface'
@@ -23,59 +24,57 @@ INTERFACE='org.gnome.desktop.interface'
 ############
 # MAPPINGS #
 ############
-$MAP Super+Shift Return spawn $TERM
+$MAP Super+Shift   Return spawn "$TERM"
 $MAP Control+Shift escape spawn "$TERM gotop"
-$MAP Super Space spawn $MENU
-$MAP Super m spawn $FILES
-$MAP Super b spawn $BROWSER
-$MAP Super+Shift m spawn "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
-$MAP Control+Alt Delete spawn "loginctl reboot"
-$MAP Control Escape spawn "makoctl dismiss -a"
-$MAP Control+Alt Up spawn "wlr-randr --output eDP-1 --transform normal"
-$MAP Control+Alt Right spawn "wlr-randr --output eDP-1 --transform 90"
-$MAP Control+Alt Left spawn "wlr-randr --output eDP-1 --transform 270"
-$MAP Control+Shift E spawn emote
+$MAP Super          Space spawn "$MENU"
+$MAP Super              m spawn "$FILES"
+$MAP Super              b spawn "$BROWSER"
+$MAP Super+Shift        m spawn "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
+$MAP Control+Alt   Delete spawn "loginctl reboot"
+$MAP Control       Escape spawn "makoctl dismiss -a"
+$MAP Control+Shift      E spawn "emote"
+$MAP Control+Alt       Up spawn "$ROTATE normal"
+$MAP Control+Alt     Down spawn "$ROTATE 180"
+$MAP Control+Alt    Right spawn "$ROTATE 270"
+$MAP Control+Alt     Left spawn "$ROTATE 90"
 
 ## SCRIPTS
-$MAP None Print spawn "_screenshot select-copy"
-$MAP Shift Print spawn "_screenshot copy"
-$MAP Super c spawn "_clipboard clipman"
-$MAP Super+Shift C spawn _swayidle_toggle
-$MAP Super+Shift W spawn _wifi_toggle
-$MAP Super+Shift N spawn _nightlight_toggle
-$MAP Control+Shift Print spawn _screenrecord
-$MAP Alt+Shift P spawn _playwithmpv
+$MAP None          Print spawn "_screenshot select-copy"
+$MAP Shift         Print spawn "_screenshot copy"
+$MAP Super             c spawn "_clipboard clipman"
+$MAP Super+Shift       C spawn "_swayidle_toggle"
+$MAP Super+Shift       W spawn "_wifi_toggle"
+$MAP Super+Shift       N spawn "_nightlight_toggle"
+$MAP Control+Shift Print spawn "_screenrecord"
+$MAP Alt+Shift         P spawn "_playwithmpv"
 
 ## CONTROLS
-$MAP None XF86AudioRaiseVolume  spawn "_volume_change up"
-$MAP None XF86AudioLowerVolume  spawn "_volume_change down"
-$MAP None XF86AudioMute         spawn "_volume_change mute"
-$MAP None XF86MonBrightnessUp   spawn "_brightness_change up"
+$MAP None  XF86AudioRaiseVolume spawn "_volume_change up"
+$MAP None  XF86AudioLowerVolume spawn "_volume_change down"
+$MAP None         XF86AudioMute spawn "_volume_change mute"
+$MAP None   XF86MonBrightnessUp spawn "_brightness_change up"
 $MAP None XF86MonBrightnessDown spawn "_brightness_change down"
 
 ## BUILT-IN COMMANDS
-$MAP Super Q close
-$MAP Super+Shift End exit
-$MAP Super J focus-view next
-$MAP Super K focus-view previous
-$MAP Super+Shift J swap next
-$MAP Super+Shift K swap previous
-$MAP Super Return zoom
-$MAP Super H send-layout-cmd rivertile "main-ratio -0.05"
-$MAP Super L send-layout-cmd rivertile "main-ratio +0.05"
-$MAP Super+Shift L send-layout-cmd rivertile "main-count +1"
-$MAP Super+Shift H send-layout-cmd rivertile "main-count -1"
-$MAP Super+Shift Space spawn "riverctl toggle-float"
-$MAP Super F toggle-fullscreen
-$CMD map-pointer normal Super BTN_RIGHT resize-view
-$CMD map-pointer normal Super BTN_LEFT move-view
+$MAP Super           Q close
+$MAP Super+Shift   End exit
+$MAP Super           J focus-view next
+$MAP Super           K focus-view previous
+$MAP Super+Shift     J swap next
+$MAP Super+Shift     K swap previous
+$MAP Super      Return zoom
+$MAP Super           H send-layout-cmd rivertile "main-ratio -0.05"
+$MAP Super           L send-layout-cmd rivertile "main-ratio +0.05"
+$MAP Super+Shift     L send-layout-cmd rivertile "main-count +1"
+$MAP Super+Shift     H send-layout-cmd rivertile "main-count -1"
+$MAP Super+Shift Space toggle-float
+$MAP Super           F toggle-fullscreen
 
 # Super+{Up,Right,Down,Left} to change layout orientation
-$MAP Super Up    send-layout-cmd rivertile "main-location top"
+$MAP Super    Up send-layout-cmd rivertile "main-location top"
 $MAP Super Right send-layout-cmd rivertile "main-location right"
-$MAP Super Down  send-layout-cmd rivertile "main-location bottom"
-$MAP Super Left  send-layout-cmd rivertile "main-location left"
-
+$MAP Super  Down send-layout-cmd rivertile "main-location bottom"
+$MAP Super  Left send-layout-cmd rivertile "main-location left"
 
 ## TAGS
 $MAP Super 0 set-focused-tags $ALL_TAGS
@@ -88,24 +87,27 @@ do
     $MAP Super+Shift $i set-view-tags $tags
 done
 
+$CMD map-pointer normal Super BTN_RIGHT resize-view
+$CMD map-pointer normal Super BTN_LEFT move-view
+
 ##########
 # SPAWNS #
 ##########
 $SPAWN yambar
 $SPAWN "swaybg -i $WALLPAPER"
-$SPAWN mako
+$SPAWN "mako"
 $SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
 $SPAWN "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
 $SPAWN "doas /usr/bin/powertop --auto-tune"
 $SPAWN "hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide"
 $SPAWN "geary --gapplication-service"
 $SPAWN "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-#$SPAWN emote
-$SPAWN _pipewire_start
-$SPAWN _swayidle_toggle
-$SPAWN _nightlight_toggle
-$SPAWN _udiskie_daemon
-$SPAWN _notify_battery
+#$SPAWN "emote"
+$SPAWN "_pipewire_start"
+$SPAWN "_swayidle_toggle"
+$SPAWN "_nightlight_toggle"
+$SPAWN "_udiskie_daemon"
+$SPAWN "_notify_battery"
 $SPAWN "_clipboard watcher"
 $SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
 
@@ -131,7 +133,6 @@ $INPUT $TOUCHPAD tap-button-map left-right-middle
 # CONFIGURATIONS #
 ##################
 $CMD float-filter-add app-id "qalculate-gtk"
-$CMD csd-filter-remove app-id "qalculate-gtk"
 $CMD focus-follows-cursor normal
 $CMD set-repeat 50 250
 $CMD border-color-focused 0xE5E9F0
