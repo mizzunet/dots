@@ -1,7 +1,0 @@
-#!/bin/fish
-
-for i in (cat servers)
-    set result (ping $i -c 10)
-    set avg (echo $result | grep avg | cut -d'/' -f 5')
-    cat $avg $i >> result
-end

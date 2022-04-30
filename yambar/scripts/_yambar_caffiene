@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+INTERVAL=15
+
+printf -- '%s\n' "CAFFIENE|string|"
+printf -- '%s\n' ""
+
+while true;do
+
+  if ! (pidof swayidle> /dev/null);then
+    CAFFIENE=󰅶
+  else
+    CAFFIENE=""
+  fi
+
+  printf -- '%s\n' "CAFFIENE|string|${CAFFIENE}"
+  printf -- '%s\n' ""
+
+  sleep $INTERVAL
+done

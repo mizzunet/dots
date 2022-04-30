@@ -1,156 +1,144 @@
 #############
 # VARIABLES #
 #############
-term=foot
-files=thunar
-menu=sirula
-browser=firefox
+TERM=foot
+FILES=thunar
+MENU=sirula
+BROWSER=firefox
+WALLPAPER=/home/missu/Pictures/pexels-cátia-matos-1072179.jpg
+ALL_TAGS=$(((1 << 32) - 1))
 #gtk-theme=''
 #cursor-theme=''
 #icon-theme=''
 #font=''
 
-map='riverctl map normal'
-input='riverctl input'
-spawn='riverctl spawn'
-cmd='riverctl'
-touchpad='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
-gset='gsettings set'
-interface='org.gnome.desktop.interface'
+MAP='riverctl map normal'
+INPUT='riverctl input'
+SPAWN='riverctl spawn'
+CMD='riverctl'
+TOUCHPAD='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
+GSET='gsettings set'
+INTERFACE='org.gnome.desktop.interface'
 
 ############
 # MAPPINGS #
 ############
-$map Super+Shift Return spawn $term
-$map Control+Shift escape spawn 'foot htop'
-$map Super Space spawn $menu
-$map Super m spawn $files
-$map Super b spawn $browser
-$map Super+Shift m spawn xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread
-#$map None Print spawn 'grim -g "$(slurp)" - > /tmp/screen.png && wl-copy < /tmp/screen.png && notify-send "Screenshot Copied to Clipboard" && swappy -f /tmp/screen.png' 
-#$map Shift Print spawn 'grim -c /tmp/screen.png && wl-copy < /tmp/screen.png  && notify-send "Screenshot Copied to Clipboard" && swappy -f /tmp/screen.png'
-$map Control+Alt Delete spawn 'loginctl reboot'
-$map Control Escape spawn 'makoctl dismiss -a'
-$map Control+Alt Up spawn 'wlr-randr --output eDP-1 --transform normal'
-$map Control+Alt Right spawn 'wlr-randr --output eDP-1 --transform 90'
-$map Control+Alt Left spawn 'wlr-randr --output eDP-1 --transform 270'
+$MAP Super+Shift Return spawn $TERM
+$MAP Control+Shift escape spawn "$TERM gotop"
+$MAP Super Space spawn $MENU
+$MAP Super m spawn $FILES
+$MAP Super b spawn $BROWSER
+$MAP Super+Shift m spawn "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
+$MAP Control+Alt Delete spawn "loginctl reboot"
+$MAP Control Escape spawn "makoctl dismiss -a"
+$MAP Control+Alt Up spawn "wlr-randr --output eDP-1 --transform normal"
+$MAP Control+Alt Right spawn "wlr-randr --output eDP-1 --transform 90"
+$MAP Control+Alt Left spawn "wlr-randr --output eDP-1 --transform 270"
+$MAP Control+Shift E spawn emote
 
-## Scripts
-$map Super c spawn 'sway_clipboard clipman'
-$map Super+Shift C spawn sway_caffiene
-$map Super+Shift W spawn sway_wifi
-$map Super+Shift N spawn sway_nightlight
-$map Control+Shift Print spawn _screenrecord
-$map Alt+Shift P spawn _playwithmpv
-$map Control+Shift E spawn emote
+## SCRIPTS
+$MAP None Print spawn "_screenshot select-copy"
+$MAP Shift Print spawn "_screenshot copy"
+$MAP Super c spawn "_clipboard clipman"
+$MAP Super+Shift C spawn _swayidle_toggle
+$MAP Super+Shift W spawn _wifi_toggle
+$MAP Super+Shift N spawn _nightlight_toggle
+$MAP Control+Shift Print spawn _screenrecord
+$MAP Alt+Shift P spawn _playwithmpv
 
-## Controls
-$map None XF86AudioRaiseVolume spawn 'sway_volume up'
-$map None XF86AudioLowerVolume spawn 'sway_volume down'
-$map None XF86AudioMute        spawn 'sway_volume mute'
-$map None XF86MonBrightnessUp spawn '_brightness up'
-$map None XF86MonBrightnessDown spawn '_brightness down'
+## CONTROLS
+$MAP None XF86AudioRaiseVolume  spawn "_volume_change up"
+$MAP None XF86AudioLowerVolume  spawn "_volume_change down"
+$MAP None XF86AudioMute         spawn "_volume_change mute"
+$MAP None XF86MonBrightnessUp   spawn "_brightness_change up"
+$MAP None XF86MonBrightnessDown spawn "_brightness_change down"
 
-## Built-in commands
-$map Super Q close
-$map Super+Shift End exit
-$map Super J focus-view next
-$map Super K focus-view previous
-$map Super+Shift J swap next
-$map Super+Shift K swap previous
-#$map Super+Shift Return zoom
-$map Super H send-layout-cmd rivertile "main-ratio -0.05"
-$map Super L send-layout-cmd rivertile "main-ratio +0.05"
-$map Super+Shift H send-layout-cmd rivertile "main-count +1"
-$map Super+Shift L send-layout-cmd rivertile "main-count -1"
-$map Super+Shift Space to toggle float
-$map Super F toggle-fullscreen
-$cmd map-pointer normal Super BTN_RIGHT resize-view
-$cmd map-pointer normal Super BTN_LEFT move-view
+## BUILT-IN COMMANDS
+$MAP Super Q close
+$MAP Super+Shift End exit
+$MAP Super J focus-view next
+$MAP Super K focus-view previous
+$MAP Super+Shift J swap next
+$MAP Super+Shift K swap previous
+$MAP Super Return zoom
+$MAP Super H send-layout-cmd rivertile "main-ratio -0.05"
+$MAP Super L send-layout-cmd rivertile "main-ratio +0.05"
+$MAP Super+Shift L send-layout-cmd rivertile "main-count +1"
+$MAP Super+Shift H send-layout-cmd rivertile "main-count -1"
+$MAP Super+Shift Space spawn "riverctl toggle-float"
+$MAP Super F toggle-fullscreen
+$CMD map-pointer normal Super BTN_RIGHT resize-view
+$CMD map-pointer normal Super BTN_LEFT move-view
 
 # Super+{Up,Right,Down,Left} to change layout orientation
-$map Super Up    send-layout-cmd rivertile "main-location top"
-$map Super Right send-layout-cmd rivertile "main-location right"
-$map Super Down  send-layout-cmd rivertile "main-location bottom"
-$map Super Left  send-layout-cmd rivertile "main-location left"
+$MAP Super Up    send-layout-cmd rivertile "main-location top"
+$MAP Super Right send-layout-cmd rivertile "main-location right"
+$MAP Super Down  send-layout-cmd rivertile "main-location bottom"
+$MAP Super Left  send-layout-cmd rivertile "main-location left"
 
 
-## Tags
-# Super+0 to focus all tags
-# Super+Shift+0 to tag focused view with all tags
-all_tags=$(((1 << 32) - 1))
-$map Super 0 set-focused-tags $all_tags
-$map Super+Shift 0 set-view-tags $all_tags
+## TAGS
+$MAP Super 0 set-focused-tags $ALL_TAGS
+$MAP Super+Shift 0 set-view-tags $ALL_TAGS
 for i in $(seq 1 9)
 do
     tags=$((1 << ($i - 1)))
 
-    # Super+[1-9] to focus tag [0-8]
-    $map Super $i set-focused-tags $tags
-
-    # Super+Shift+[1-9] to tag focused view with tag [0-8]
-    $map Super+Shift $i set-view-tags $tags
-
-    # Super+Ctrl+[1-9] to toggle focus of tag [0-8]
-    $map Super+Control $i toggle-focused-tags $tags
-
-    # Super+Shift+Ctrl+[1-9] to toggle tag [0-8] of focused view
-    $map Super+Shift+Control $i toggle-view-tags $tags
+    $MAP Super $i set-focused-tags $tags
+    $MAP Super+Shift $i set-view-tags $tags
 done
 
 ##########
 # SPAWNS #
 ##########
-$spawn 'yambar'
-$spawn 'swaybg -i /home/missu/Pictures/pexels-cátia-matos-1072179.jpg'
-$spawn 'mako'
-#$spawn 'dbus-update-activation-environment DISPLAY I3SOCK SWAYSOCK WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river'
-$spawn 'dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus '
-$spawn 'dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK'
-$spawn 'doas /usr/bin/powertop --auto-tune '
-$spawn 'hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide'
-$spawn 'geary --gapplication-service'
-$spawn '/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 '
-$spawn 'emote'
-$spawn '_pipewire'
-$spawn 'sway_caffiene'
-$spawn 'sway_nightlight'
-$spawn 'sway_automount'
-$spawn 'sway_low_battery'
-$spawn 'sway_clipboard watcher'
+$SPAWN yambar
+$SPAWN "swaybg -i $WALLPAPER"
+$SPAWN mako
+$SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
+$SPAWN "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
+$SPAWN "doas /usr/bin/powertop --auto-tune"
+$SPAWN "hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide"
+$SPAWN "geary --gapplication-service"
+$SPAWN "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+#$SPAWN emote
+$SPAWN _pipewire_start
+$SPAWN _swayidle_toggle
+$SPAWN _nightlight_toggle
+$SPAWN _udiskie_daemon
+$SPAWN _notify_battery
+$SPAWN "_clipboard watcher"
+$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
 
-#$spawn '$gset $interface gtk-theme adw-gtk3-dark'
-#$spawn '$gset $interface icon-theme breeze-dark'
-#$spawn '$gset $interface cursor-theme Adwaita'
-#$spawn '$gset $interface font-name Proxima Nova 11.3'
-#$spawn '$gset $interface enable-animations false'
-#$spawn '$gset $interface color-scheme prefer-dark'
-#$spawn '$gset org.gtk.Settings.FileChooser window-size "(740, 371)"'
-#$spawn '$gset org.gnome.desktop.default-applications.terminal exec $term'
-#$spawn '$gset org.gnome.desktop.default-applications.terminal exec-arg ""'
+#$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"
+#$SPAWN "$GSET $INTERFACE icon-theme breeze-dark"
+#$SPAWN "$GSET $INTERFACE cursor-theme Adwaita"
+#$SPAWN "$GSET $INTERFACE font-name Proxima Nova 11.3"
+#$SPAWN "$GSET $INTERFACE enable-animations false"
+#$SPAWN "$GSET $INTERFACE color-scheme prefer-dark"
+#$SPAWN "$GSET org.gtk.Settings.FileChooser window-size '(740, 371)'"
+#$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec $term"
+#$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec-arg ''"
 
 ################
 # INPUT CONFIG #
 ################
-$input $touchpad accel-profile adaptive
-$input $touchpad pointer-accel 0.5
-$input $touchpad tap enabled
-$input $touchpad tap-button-map left-right-middle
+$INPUT $TOUCHPAD accel-profile adaptive
+$INPUT $TOUCHPAD pointer-accel 0.5
+$INPUT $TOUCHPAD tap enabled
+$INPUT $TOUCHPAD tap-button-map left-right-middle
 
 ##################
 # CONFIGURATIONS #
 ##################
-$cmd focus-follows-cursor normal
-$cmd set-cursor-warp on-output-change
-$cmd set-repeat 50 250
-$cmd border-color-focused 0xE5E9F0
-$cmd border-color-unfocused 0x3B4252
-$cmd border-color-urgent 0x88C0D0
-$cmd border-width 2
+$CMD float-filter-add app-id "qalculate-gtk"
+$CMD csd-filter-remove app-id "qalculate-gtk"
+$CMD focus-follows-cursor normal
+$CMD set-repeat 50 250
+$CMD border-color-focused 0xE5E9F0
+$CMD border-color-unfocused 0x3B4252
+$CMD border-color-urgent 0x88C0D0
+$CMD border-width 2
 
-# Make certain views start floating
-$cmd float-filter-add app-id float
-$cmd float-filter-add title "popup title with spaces"
-
-$cmd default-layout rivertile
-exec rivertile -view-padding 2 -outer-padding 6
+$CMD default-layout rivertile
+// exec rivertile -view-padding 2 -main-location top -main-count 2
+exec rivertile -view-padding 2

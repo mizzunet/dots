@@ -23,7 +23,6 @@ export SPOTIPY_CLIENT_SECRET=5627a7efa52a4d5ab82c8bc64a62c42e
 export SPOTIPY_CLIENT_ID=b1acb8ba1769473781009e4976250205
 
 ## PATH
-# export PATH=/home/missu/.local/bin:/home/missu/.local/go/bin:$PATH
 fish_add_path /home/missu/.local/bin /home/missu/.local/go/bin
 
 ## Theme
@@ -46,4 +45,3 @@ export BROWSER=firefox
 # Go
 export GOMODCACHE=/home/missu/.local/go
 export GOPATH=/home/missu/.local/go
-# export WLR_NO_HARDWARE_CURSORS=1

@@ -17,13 +17,13 @@ exec {
     doas /usr/bin/powertop --auto-tune 
 
 ### SCRIPTS
-    _pipewire
-    sway_caffiene
+    _pipewire_start
+    _swayidle_toggle
     sway_transparent -o 0.80 
-    sway_nightlight
-    sway_automount
-    sway_low_battery
-    sway_clipboard watcher
+    _nightlight_toggle
+    _udiskie_daemon
+    _notify_battery
+    _clipboard watcher
     sway-audio-idle-inhibit 
 
     autotiling 

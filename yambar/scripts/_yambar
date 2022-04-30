@@ -1,0 +1,31 @@
+#!/usr/bin/bash
+
+INTERVAL=15
+
+printf -- '%s\n' "NETSTATUS|string|"
+printf -- '%s\n' "CAFFIENE|string|"
+printf -- '%s\n' ""
+
+while true;do
+
+  if ! (pidof swayidle> /dev/null);then
+    CAFFIENE=󰅶
+  else
+    CAFFIENE=""
+  fi
+
+  if $(iw dev wlan0 info | grep -q ssid);then
+      wget -q --spider 1.1.1.1
+      if !([ $? -eq 0 ]); then
+          touch /tmp/netstatus
+          NETSTATUS='Offline'
+      fi
+  else
+      status=''
+  fi
+  printf -- '%s\n' "NETSTATUS|string|${NETSTATUS}"
+  printf -- '%s\n' "CAFFIENE|string|${CAFFIENE}"
+  printf -- '%s\n' ""
+
+  sleep $INTERVAL
+done

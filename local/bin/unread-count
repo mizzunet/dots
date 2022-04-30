@@ -14,7 +14,7 @@ args = vars(ap.parse_args())
 
 # Variables
 ICON_READ='󰗯'
-ICON_UNREAD='󰗰'
+ICON_UNREAD='󰚇'
 
 obj = imaplib.IMAP4(str(args['server']), str(args['port']))
 obj.login(str(args['username']), str(args['password']))
