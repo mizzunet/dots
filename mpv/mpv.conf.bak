@@ -1,0 +1,5 @@
+hwdec=auto
+save-position-on-quit
+gpu-context=wayland
+ytdl-format="(bestvideo[vcodec^=avc1]/bestvideo)[height<=?360]+bestaudio/best[height<=?360]/worst"
+ao=pipewire
