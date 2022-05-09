@@ -1,14 +1,8 @@
-export HYDROXIDE_BRIDGE_PASS=TCbbVI04PmrRCmDGnHWGson/GEJIgcg0VpFSwiy0RRM=
+export HYDROXIDE_BRIDGE_PASS=au7AwSwvYdfqJBDyjzySFo7xiIzvX7Ot3uXeGbXGwGA=
 
 ## Editor
 export EDITOR="hx"
 export VISUAL="hx"
-
-## Wine
-#export WINEDLLOVERRIDES="mscoree,mshtml="
-#export WINE_VK_VULKAN_ONLY=1
-#export WINE_VK_USE_FSR=1
-#export WINEFSYNC=1
 
 ## LibVA
 export LIBVA_DRIVER_NAME=i965
@@ -26,7 +20,10 @@ export SPOTIPY_CLIENT_ID=b1acb8ba1769473781009e4976250205
 fish_add_path /home/missu/.local/bin /home/missu/.local/go/bin
 
 ## Theme
-export QT_QPA_PLATFORMTHEME=gnome
+export QT_QPA_PLATFORMTHEME=qt5ct
+export DISABLE_QT5_COMPAT=1
+export CALIBRE_USE_DARK_PALETTE=1
+#export QT_STYLE_OVERRIDE=kvantum
 export NO_AT_BRIDGE=1
 export GDK_CORE_DEVICE_EVENTS=1
 export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
@@ -34,7 +31,7 @@ export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 # Wayland
 export QT_QPA_PLATFORM=wayland-egl
 export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
-export  GTK_USE_PORTAL=0
+# export  GTK_USE_PORTAL=1
 
 # Firefox
 export MOZ_ENABLE_WAYLAND=1
@@ -45,3 +42,9 @@ export BROWSER=firefox
 # Go
 export GOMODCACHE=/home/missu/.local/go
 export GOPATH=/home/missu/.local/go
+
+## Wine
+export WINEDLLOVERRIDES="mscoree=d;mshtml=d"
+export WINE_VK_VULKAN_ONLY=1
+export WINE_VK_USE_FSR=1
+export WINEFSYNC=1

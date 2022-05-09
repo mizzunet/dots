@@ -1,0 +1,15 @@
+yay --needed -S alhp-keyring alhp-mirrorlist  adw-gtk3-git  adwaita-qt  ananicy-cpp  anki-bin  anything-sync-daemon  appimagelauncher    bat  batsignal  bc  bemenu-wayland  bleachbit  bluez  
+yay --needed -S bluez-libs  bluez-utils  booster  breeze-gtk  breeze-icons-git  brillo  btrfs-progs  calc  calibre  chaotic-keyring  chaotic-mirrorlist  clipman  
+yay --needed -S croc  cronie  duf  emote  evince  exa  extramaus  fd  firefox  fish  font-manager  foot  geary  glow  gnome-pomodoro-git  gnome-session  gnome-themes-extra  
+yay --needed -S go  gotop  grim  gst-plugin-pipewire  gst-plugins-bad  gst-plugins-good  gstreamer-vaapi  gtk-theme-switch2  hdparm  helix  hunspell-en_gb  hydroxide  
+yay --needed -S hyphen-en  imv  intel-gpu-tools  intel-ucode-clear intel-undervolt iotop-c  iptables  iputils  iw  iwgtk  jq  kiwix-tools-bin  libreoffice-fresh-en-gb  
+yay --needed -S libva-intel-driver  libva-utils  linux-firmware  linux-lts  linux-xanmod-edge  lostfiles  lshw  lswt  lxappearance  mako  man-db  mesa-amber  modprobed-db  mpv-mpris  mpv-pipewire  
+yay --needed -S ncdu  nohang  ntfs-3g  opendoas  opendoas-sudo  otf-manjari  p7zip  pacman  pacman-cleanup-hook  pacman-contrib  pamixer  patch  pdnsd  pfetch-git  pipe-viewer-git  pipewire  
+yay --needed -S pipewire-jack  pipewire-pulse  playerctl  polkit-gnome  powertop  prelockd  procs  python-pip  python-spotdl  qalculate-gtk  qgnomeplatform  qt5-wayland  
+yay --needed -S qt5ct  qt6-wayland  qt6ct  qt6gtk2  rclone  refind  rhythmbox  river-git  rmlint  rsync  scrcpy  sd  signal-desktop-beta  sirula-git  
+yay --needed -S slurp  smartmontools  sndio  spotify  spotify-adblock-git  sqlite  starship  strongswan  subdl  swappy  swaybg-git  
+yay --needed -S swayidle  taskwarrior-tui  thermald  thunar  tldr  tmpmail  trash-cli  ttf-font-nerd  ttf-jetbrains-mono  ttf-nerd-fonts-symbols  
+yay --needed -S ttf-roboto-mono  ttf-twemoji  tuned  udiskie  unrar  unzip  up  upx  usbutils  ventoy-bin  waybar-git  wf-recorder  wget  which  
+yay --needed -S whitesur-cursor-theme-git  wireless_tools  wireplumber  wl-clipboard  wlr-randr  wlsunset-git  wtype  xarchiver  xdg-desktop-portal  xh  xorg-xwayland  
+yay --needed -S yambar-git  yay  ytfzf-git  zathura  zathura-pdf-poppler  zim-tools  zoxide zramd preloader-signed 
+yay --needed -S aria2-fast kexec-tools 

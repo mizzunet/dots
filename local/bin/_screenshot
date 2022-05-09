@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ACTION=$1
 TMP=/tmp/screen.png 
 

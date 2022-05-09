@@ -19,6 +19,7 @@ group-by=summary
 [urgency=low]
 background-color=#000000
 border-color=#2D2D2D
+default-timeout=1000
 text-color=#ffffff
 
 [urgency=normal]

@@ -12,6 +12,9 @@ yay -S anki-bin bleachbit calibre cheese firefox foot geary gnome-pomodoro-git g
 # Sway
 yay -S autotiling batsignal bemenu-wayland brillo clipman grim mako pamixer polkit-gnome qt5-wayland sirula-git slurp swappy sway-audio-idle-inhibit-git swayidle sirula-git waybar-git wf-recorder wl-clipboard wlsunset-git wtype xorg-xwayland  --needed
 
+# RIVER
+yay -S yambar river-git
+
 # Audio
 yay -S gst-plugin-pipewire gst-plugin-bad gst-plugin-good pipewire pipewire-jack pipewire-pulse  wireplumber  --needed
 

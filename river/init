@@ -2,11 +2,12 @@
 # VARIABLES #
 #############
 TERM=foot
-FILES=thunar
+FILES=pcmanfm-qt
 MENU=sirula
 BROWSER=firefox
 WALLPAPER=/home/missu/Pictures/pexels-cátia-matos-1072179.jpg
 ALL_TAGS=$(((1 << 32) - 1))
+FLOATS=(gnome-pomodoro qalculate-gtk qalculate-qt)
 #gtk-theme=''
 #cursor-theme=''
 #icon-theme=''
@@ -18,6 +19,7 @@ SPAWN='riverctl spawn'
 CMD='riverctl'
 ROTATE='wlr-randr --output eDP-1 --transform '
 TOUCHPAD='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
+KERNEL='lts'
 GSET='gsettings set'
 INTERFACE='org.gnome.desktop.interface'
 
@@ -27,10 +29,11 @@ INTERFACE='org.gnome.desktop.interface'
 $MAP Super+Shift   Return spawn "$TERM"
 $MAP Control+Shift escape spawn "$TERM gotop"
 $MAP Super          Space spawn "$MENU"
-$MAP Super              m spawn "$FILES"
+$MAP Super              e spawn "$FILES"
 $MAP Super              b spawn "$BROWSER"
 $MAP Super+Shift        m spawn "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
-$MAP Control+Alt   Delete spawn "loginctl reboot"
+$MAP Control+Alt+Shift Delete spawn "loginctl reboot"
+$MAP Control+Alt   Delete spawn "doas kexec -l /boot/vmlinuz-linux-$KERNEL --initrd=/boot/booster-linux-${KERNEL}.img --reuse-cmdline && doas kexec -e"
 $MAP Control       Escape spawn "makoctl dismiss -a"
 $MAP Control+Shift      E spawn "emote"
 $MAP Control+Alt       Up spawn "$ROTATE normal"
@@ -97,13 +100,14 @@ $SPAWN yambar
 $SPAWN "swaybg -i $WALLPAPER"
 $SPAWN "mako"
 $SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
-$SPAWN "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
+#$SPAWN "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
+$SPAWN "systemctl --user import-environment"
 $SPAWN "doas /usr/bin/powertop --auto-tune"
 $SPAWN "hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide"
-$SPAWN "geary --gapplication-service"
+#$SPAWN "geary --gapplication-service"
 $SPAWN "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 #$SPAWN "emote"
-$SPAWN "_pipewire_start"
+#$SPAWN "_pipewire_start"
 $SPAWN "_swayidle_toggle"
 $SPAWN "_nightlight_toggle"
 $SPAWN "_udiskie_daemon"
@@ -118,6 +122,7 @@ $SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
 #$SPAWN "$GSET $INTERFACE enable-animations false"
 #$SPAWN "$GSET $INTERFACE color-scheme prefer-dark"
 #$SPAWN "$GSET org.gtk.Settings.FileChooser window-size '(740, 371)'"
+#$SPAWN "$GSET org.gtk.Settings.FileChooser startup-mode \'cwd\' 
 #$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec $term"
 #$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec-arg ''"
 
@@ -132,7 +137,11 @@ $INPUT $TOUCHPAD tap-button-map left-right-middle
 ##################
 # CONFIGURATIONS #
 ##################
-$CMD float-filter-add app-id "qalculate-gtk"
+for w in ${FLOATS[@]}
+do
+    $CMD float-filter-add app-id $w
+done
+
 $CMD focus-follows-cursor normal
 $CMD set-repeat 50 250
 $CMD border-color-focused 0xE5E9F0

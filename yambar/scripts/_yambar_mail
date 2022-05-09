@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-INTERVAL=30
+INTERVAL=60
 
 printf -- '%s\n' "COUNT|string|"
 printf -- '%s\n' ""

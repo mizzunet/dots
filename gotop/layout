@@ -1,3 +1,2 @@
+cpu mem net disk
 2:procs
-2:cpu 2:mem 
-2:net

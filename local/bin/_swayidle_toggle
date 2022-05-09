@@ -1,17 +1,19 @@
 #!/usr/bin/bash
-# notify_info="Caffine 󰅶"
+set -e
 
-PROGRAMS="yay aria2c"
+PROGRAMS="yay aria2c rsync"
 
-if (pidof swayidle > /dev/null);then 
-   echo Unlocked
+if (pidof swayidle > /dev/null) && (pidof rivertile > /dev/null);then 
    killall -9 swayidle
+   printf 'Stopped swayidle'
+   notify-send swayidle Stopped -u low
 else
-   echo Started swayidle
+   printf 'swayidle Started'
+   # notify-send swayidle Started -u low
    swayidle -w \
-      timeout 30 'if test "$(playerctl status 2>&1)" == "Playing";then exit; else; brillo -O ;brillo -q -u 100000 -U 8;fi' \
-      resume  'if test "$(playerctl status 2>&1)" == "Playing";then exit; else; brillo -q -u 100000 -A 8;fi' \
-      timeout 60 'if test "$(playerctl status 2>&1)" == "Playing";then exit; else; wlr-randr --output eDP-1 --off;fi' \
+      timeout 30 'if test "$(playerctl status 2>&1)" == "Playing";then exit; else brillo -O ;brillo -q -u 100000 -U 8;fi' \
+      resume  'if test "$(playerctl status 2>&1)" == "Playing";then exit; else brillo -q -u 100000 -A 8;fi' \
+      timeout 60 'if test "$(playerctl status 2>&1)" == "Playing";then exit; else wlr-randr --output eDP-1 --off;fi' \
       resume 'if test "$(playerctl status 2>&1)" == "Playing";then exit; else wlr-randr --output eDP-1 --on;fi' \
-      timeout 180 'if test "$(playerctl status 2>&1)" == "Playing";then exit;fi &&if (pidof $PROGRAMS);then exit; else; loginctl suspend;fi' &
+      timeout 180 'if test "$(playerctl status 2>&1)" == "Playing";then exit;fi &&if (pidof $PROGRAMS);then exit; else loginctl suspend;fi' &
 fi

@@ -5,16 +5,17 @@
 SPEED=2.3
 FORMAT='139+133'
 TIME="0.8"
-MPV_ARGS="--pause --speed=$SPEED --save-position-on-quit --hwdec=auto --gpu-context=wayland --ytdl-format=$FORMAT --ao=pipewire"
+MPV_ARGS="--config-dir=/home/missu/.config/mpv --script=/etc/mpv/scripts/mpris.so --pause --speed=$SPEED --save-position-on-quit --hwdec=auto --gpu-context=wayland --ytdl-format=$FORMAT --ao=pipewire"
+# MPV_ARGS="--config-dir=/home/missu/.config/mpv --pause --speed=$SPEED --ytdl-format=$FORMAT"
 
 # if [[ $FOCUS == '"firefox"' || $FOCUS == '"chromium"' ]]; then
     #wtype yy
     #sleep $TIME
     URL=$(wl-paste)
+    # URL=$1
     if [[ $URL == https://* || $URL == http://*  ]]; then
-        #shopt -s nocasematch extglob
         notify-send -u low 'Video will be played on mpv' -t 3000
-        mpv $MPV_ARGS $URL || notify-send -u low 'Failed to recognize file format' -t 1000
+        mpv $URL $MPV_ARGS || notify-send -u low 'Failed to recognize file format' -t 1000
     else
         notify-send 'No URL copied' -t 1000 -u low
     fi

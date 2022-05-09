@@ -15,4 +15,4 @@ else
 	// state="On"
 fi
 	 notify-send -u low \
-     "WiFi $state" -t 1000 
+     "WiFi $state" 
