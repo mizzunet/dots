@@ -2,12 +2,11 @@
 # VARIABLES #
 #############
 TERM=foot
-FILES=pcmanfm-qt
+FILES=dolphin
 MENU=sirula
 BROWSER=firefox
 WALLPAPER=/home/missu/Pictures/pexels-cátia-matos-1072179.jpg
 ALL_TAGS=$(((1 << 32) - 1))
-FLOATS=(gnome-pomodoro qalculate-gtk qalculate-qt)
 #gtk-theme=''
 #cursor-theme=''
 #icon-theme=''
@@ -19,7 +18,7 @@ SPAWN='riverctl spawn'
 CMD='riverctl'
 ROTATE='wlr-randr --output eDP-1 --transform '
 TOUCHPAD='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
-KERNEL='lts'
+KERNEL='xanmod-edge'
 GSET='gsettings set'
 INTERFACE='org.gnome.desktop.interface'
 
@@ -36,10 +35,10 @@ $MAP Control+Alt+Shift Delete spawn "loginctl reboot"
 $MAP Control+Alt   Delete spawn "doas kexec -l /boot/vmlinuz-linux-$KERNEL --initrd=/boot/booster-linux-${KERNEL}.img --reuse-cmdline && doas kexec -e"
 $MAP Control       Escape spawn "makoctl dismiss -a"
 $MAP Control+Shift      E spawn "emote"
-$MAP Control+Alt       Up spawn "$ROTATE normal"
-$MAP Control+Alt     Down spawn "$ROTATE 180"
-$MAP Control+Alt    Right spawn "$ROTATE 270"
-$MAP Control+Alt     Left spawn "$ROTATE 90"
+$MAP Control+Alt       Up spawn "$ROTATE normal && riverctl send-layout-cmd rivertile main-location top"
+$MAP Control+Alt     Down spawn "$ROTATE 180 && riverctl send-layout-cmd rivertile main-location bottom"
+$MAP Control+Alt    Right spawn "$ROTATE 270 && riverctl send-layout-cmd rivertile main-location right"
+$MAP Control+Alt     Left spawn "$ROTATE 90 && riverctl send-layout-cmd rivertile main-location right"
 
 ## SCRIPTS
 $MAP None          Print spawn "_screenshot select-copy"
@@ -52,32 +51,30 @@ $MAP Control+Shift Print spawn "_screenrecord"
 $MAP Alt+Shift         P spawn "_playwithmpv"
 
 ## CONTROLS
-$MAP None  XF86AudioRaiseVolume spawn "_volume_change up"
-$MAP None  XF86AudioLowerVolume spawn "_volume_change down"
-$MAP None         XF86AudioMute spawn "_volume_change mute"
+$MAP None  XF86AudioRaiseVolume spawn "_wpctl up"
+$MAP None  XF86AudioLowerVolume spawn "_wpctl down"
+$MAP None         XF86AudioMute spawn "_wpctl mute"
 $MAP None   XF86MonBrightnessUp spawn "_brightness_change up"
 $MAP None XF86MonBrightnessDown spawn "_brightness_change down"
 
 ## BUILT-IN COMMANDS
-$MAP Super           Q close
-$MAP Super+Shift   End exit
-$MAP Super           J focus-view next
-$MAP Super           K focus-view previous
-$MAP Super+Shift     J swap next
-$MAP Super+Shift     K swap previous
-$MAP Super      Return zoom
-$MAP Super           H send-layout-cmd rivertile "main-ratio -0.05"
-$MAP Super           L send-layout-cmd rivertile "main-ratio +0.05"
-$MAP Super+Shift     L send-layout-cmd rivertile "main-count +1"
-$MAP Super+Shift     H send-layout-cmd rivertile "main-count -1"
-$MAP Super+Shift Space toggle-float
-$MAP Super           F toggle-fullscreen
-
-# Super+{Up,Right,Down,Left} to change layout orientation
-$MAP Super    Up send-layout-cmd rivertile "main-location top"
-$MAP Super Right send-layout-cmd rivertile "main-location right"
-$MAP Super  Down send-layout-cmd rivertile "main-location bottom"
-$MAP Super  Left send-layout-cmd rivertile "main-location left"
+$MAP Super           Q  close
+$MAP Super+Shift   End  exit
+$MAP Super           J  focus-view next
+$MAP Super           K  focus-view previous
+$MAP Super+Shift     J  swap next
+$MAP Super+Shift     K  swap previous
+$MAP Super      Return  zoom
+$MAP Super           H  send-layout-cmd rivertile "main-ratio -0.05"
+$MAP Super           L  send-layout-cmd rivertile "main-ratio +0.05"
+$MAP Super+Shift     H  send-layout-cmd rivertile "main-count -1"
+$MAP Super+Shift     L  send-layout-cmd rivertile "main-count +1"
+$MAP Super+Shift Space  toggle-float
+$MAP Super           F  toggle-fullscreen
+$MAP Super           Up send-layout-cmd rivertile "main-location top"
+$MAP Super           Right send-layout-cmd rivertile "main-location right"
+$MAP Super           Down send-layout-cmd rivertile "main-location bottom"
+$MAP Super           Left send-layout-cmd rivertile "main-location left"
 
 ## TAGS
 $MAP Super 0 set-focused-tags $ALL_TAGS
@@ -100,14 +97,10 @@ $SPAWN yambar
 $SPAWN "swaybg -i $WALLPAPER"
 $SPAWN "mako"
 $SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
-#$SPAWN "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK"
 $SPAWN "systemctl --user import-environment"
-$SPAWN "doas /usr/bin/powertop --auto-tune"
 $SPAWN "hydroxide -disable-carddav -imap-host localhost -smtp-host localhost -debug  serve 2&> /tmp/hydroxide"
-#$SPAWN "geary --gapplication-service"
-$SPAWN "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-#$SPAWN "emote"
-#$SPAWN "_pipewire_start"
+$SPAWN "geary --gapplication-service"
+$SPAWN "/usr/lib/polkit-kde-authentication-agent-1"
 $SPAWN "_swayidle_toggle"
 $SPAWN "_nightlight_toggle"
 $SPAWN "_udiskie_daemon"
@@ -137,13 +130,19 @@ $INPUT $TOUCHPAD tap-button-map left-right-middle
 ##################
 # CONFIGURATIONS #
 ##################
-for w in ${FLOATS[@]}
+FLOATS_app_id=(gnome-pomodoro qalculate-gtk qalculate-qt org.kde.polkit-kde-authentication-agent-1)
+for w in ${FLOATS_app_id[@]}
 do
     $CMD float-filter-add app-id $w
 done
+FLOATS_title=("File Properties")
+for w in ${FLOATS_title[@]}
+do
+    $CMD float-filter-add title "$w"
+done
 
 $CMD focus-follows-cursor normal
-$CMD set-repeat 50 250
+$CMD set-repeat 60 250
 $CMD border-color-focused 0xE5E9F0
 $CMD border-color-unfocused 0x3B4252
 $CMD border-color-urgent 0x88C0D0

@@ -1,3 +1,0 @@
-// .Wait()
-type item struct {
-	}

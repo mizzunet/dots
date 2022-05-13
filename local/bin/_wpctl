@@ -1,0 +1,51 @@
+#!/bin/bash
+#set -e
+
+ACTION="$@"
+TMP=/tmp/wp_id
+if test -e "$TMP";then
+	ID=$(cat $TMP)
+else
+	ID=$(wpctl inspect @DEFAULT_AUDIO_SINK@ |  head -1 | cut -d' ' -f2 | sed 's/\,//')
+	echo $ID > $TMP
+fi
+
+# echo $ID $CURRENT 
+CURRENT="$(echo "$STATUS" | grep $ID |  cut -d' ' -f20 | sed 's/]//')"
+if test "$CURRENT" == "";then  
+	STATUS=$(wpctl status)
+	ID=$(wpctl inspect @DEFAULT_AUDIO_SINK@ |  head -1 | cut -d' ' -f2 | sed 's/\,//');  
+	CURRENT=$(echo "$STATUS" | grep $ID |  cut -d' ' -f20 | sed 's/]//');
+	echo $ID > $TMP
+fi
+#IS_MUTE="$(echo "$STATUS" | grep $ID |  cut -d' ' -f21 | sed 's/]//')"
+# echo $ID $CURRENT $IS_MUTE 
+#echo "$STATUS"
+
+case $ACTION in
+	down)
+	  VOL=$(echo "scale=2;("$CURRENT" * 100 - 5)/100" | bc)
+	  wpctl set-volume $ID $VOL
+  ;;
+	up)
+	if test $(echo "$CURRENT < 1.0" | bc -l) -eq 1; then
+	  VOL=$(echo "scale=2;("$CURRENT" * 100 + 5)/100" | bc)
+	  wpctl set-volume $ID $VOL
+	fi
+	;;
+	mute)
+	  wpctl set-mute "$ID" toggle
+	;;
+	max)
+	  wpctl set-volume $ID 1.0
+  ;;
+esac
+
+# if test "$IS_MUTE" == "MUTED"; then 
+# 	notify-send -u low \
+# 	"Volume󰋌 " Muted -t 1000 
+# else
+	notify-send -u low \
+	-h int:value:"$(echo "$VOL * 100" | bc)" Volume󰋌 -t 1000 
+# fi
+

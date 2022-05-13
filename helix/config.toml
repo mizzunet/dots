@@ -1,4 +1,4 @@
-theme = "bogster"
+theme = "bogster-dark"
 
 [editor.lsp]
 display-messages = true

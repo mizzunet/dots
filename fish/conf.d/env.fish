@@ -26,7 +26,7 @@ export CALIBRE_USE_DARK_PALETTE=1
 #export QT_STYLE_OVERRIDE=kvantum
 export NO_AT_BRIDGE=1
 export GDK_CORE_DEVICE_EVENTS=1
-export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
+#export FREETYPE_PROPERTIES="truetype:interpreter-version=40"
 
 # Wayland
 export QT_QPA_PLATFORM=wayland-egl

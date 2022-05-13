@@ -5,8 +5,8 @@
 SPEED=2.3
 FORMAT='139+133'
 TIME="0.8"
-MPV_ARGS="--config-dir=/home/missu/.config/mpv --script=/etc/mpv/scripts/mpris.so --pause --speed=$SPEED --save-position-on-quit --hwdec=auto --gpu-context=wayland --ytdl-format=$FORMAT --ao=pipewire"
-# MPV_ARGS="--config-dir=/home/missu/.config/mpv --pause --speed=$SPEED --ytdl-format=$FORMAT"
+#MPV_ARGS="--config-dir=/home/missu/.config/mpv --script=/etc/mpv/scripts/mpris.so --pause --speed=$SPEED --save-position-on-quit --hwdec=auto --gpu-context=wayland "
+MPV_ARGS="--config-dir=/home/missu/.config/mpv --script=/etc/mpv/scripts/mpris.so --pause --speed=$SPEED --save-position-on-quit --hwdec=auto --gpu-context=wayland --ytdl-format=$FORMAT "
 
 # if [[ $FOCUS == '"firefox"' || $FOCUS == '"chromium"' ]]; then
     #wtype yy

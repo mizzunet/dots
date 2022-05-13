@@ -5,6 +5,6 @@ switch $(tty)
     # exec dbus-run-session river 2> /tmp/river.log
     exec river
  case /dev/tty2
-   exec dbus-run-session -- gnome-shell --display-server --wayland
+   exec dbus-run-session  startplasma-wayland
   # exec river
 end
