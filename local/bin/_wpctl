@@ -28,7 +28,7 @@ case $ACTION in
 	  wpctl set-volume $ID $VOL
   ;;
 	up)
-	if test $(echo "$CURRENT < 1.0" | bc -l) -eq 1; then
+	if test $(echo "$CURRENT < 2.0" | bc -l) -eq 1; then
 	  VOL=$(echo "scale=2;("$CURRENT" * 100 + 5)/100" | bc)
 	  wpctl set-volume $ID $VOL
 	fi

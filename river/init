@@ -2,7 +2,7 @@
 # VARIABLES #
 #############
 TERM=foot
-FILES=dolphin
+FILES=pcmanfm-qt
 MENU=sirula
 BROWSER=firefox
 WALLPAPER=/home/missu/Pictures/pexels-cátia-matos-1072179.jpg
@@ -35,7 +35,7 @@ $MAP Control+Alt+Shift Delete spawn "loginctl reboot"
 $MAP Control+Alt   Delete spawn "doas kexec -l /boot/vmlinuz-linux-$KERNEL --initrd=/boot/booster-linux-${KERNEL}.img --reuse-cmdline && doas kexec -e"
 $MAP Control       Escape spawn "makoctl dismiss -a"
 $MAP Control+Shift      E spawn "emote"
-$MAP Control+Alt       Up spawn "$ROTATE normal && riverctl send-layout-cmd rivertile main-location top"
+$MAP Control+Alt       Up spawn "$ROTATE normal && riverctl send-layout-cmd rivertile main-location right"
 $MAP Control+Alt     Down spawn "$ROTATE 180 && riverctl send-layout-cmd rivertile main-location bottom"
 $MAP Control+Alt    Right spawn "$ROTATE 270 && riverctl send-layout-cmd rivertile main-location right"
 $MAP Control+Alt     Left spawn "$ROTATE 90 && riverctl send-layout-cmd rivertile main-location right"
