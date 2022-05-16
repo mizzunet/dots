@@ -1,18 +1,34 @@
-# My configuration files
+# dots
+## GUI PROGRAMS
+* GUI = `river`
+* Bar = `yambar`
+* Notification = `mako`
+* Launcher = `fuzzel`
+* Terminal = `foot`
+* Browser = `chromium`
+* Files = `pcmanfm-qt`
+* Clipmanager = `clipman`
+* Email = `geary`
 
-<img src="/.screenshots/googlesans.png" alt="Linux" />
+## THEMES
+* Font Sans = `Proxima Nova`
+* Font Mono = `JetBrains Mono`, `Roboto Mono`
+* Font Icons = `Material Icon`
+* GTK = `materia-dark`
+* QT = `kvantum`
+* Kvantum = `materia-dark-kvantum`
+* Cursor = `WhiteSur-cursors`
 
-* WM: `sway`
+## CLI PROGRAMS
+* Network = `iwd`
+* Audio = `pipewire`
+* Nightlight = `wlsunset`
+* Low Battery = `batsignal`
+* Brightness Controller = `brillo`
+* Volume Controller = `wpctl`
+* Automount = `udiskie`
 
-* Bar: `waybar`
-
-* Notification: `mako`
-
-* Terminal: `alacritty`
-
-* Fonts: [Materials Design Icons](https://materialdesignicons.com/), [Google Sans]
-
-### Setup
+## SETUP
 Clone this 
 ```
 git clone git@github.com:mizzunet/dots.git .dots

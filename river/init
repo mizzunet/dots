@@ -107,7 +107,7 @@ $SPAWN "_nightlight_toggle"
 $SPAWN "_udiskie_daemon"
 $SPAWN "_notify_battery"
 $SPAWN "_clipboard watcher"
-$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
+#$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
 
 #$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"
 #$SPAWN "$GSET $INTERFACE icon-theme breeze-dark"

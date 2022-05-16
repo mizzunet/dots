@@ -32,6 +32,7 @@ doas systemctl --now enable waydroid-container.service
 # START WAYDROID
 waydroid session start
 
+
 ###############################################
 # SOME STUFF I'D DO AFTER INSTALLING WAYDROID #
 ###############################################
@@ -147,6 +148,7 @@ $SET secure volume_hush_gesture 0
 $SET global user_switcher_enabled 0
 
 # HIDE SOME DESKTOP ENTRIES
+cd ~/.local/share/applications
 echo NoDisplay=true | tee -a waydroid.fr.neamar.kiss.desktop waydroid.com.android.documentsui.desktop waydroid.com.android.settings.desktop waydroid.org.lineageos.jelly.desktop
 echo NoDisplay=true | tee -a waydroid.com.android.camera2.desktop waydroid.com.android.contacts.desktop waydroid.com.android.calculator2.desktop waydroid.com.android.deskclock.desktop waydroid.com.android.inputmethod.latin.desktop waydroid.com.android.gallery3d.desktop waydroid.com.android.email.desktop
 
