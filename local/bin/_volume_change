@@ -7,19 +7,15 @@ case $action in
 	down)
 	pamixer -d 5 > /dev/null;
   #if $( pamixer --get-mute); then pamixer -u;  fi
-  icon=/usr/share/icons/WhiteSur/status/symbolic/audio-volume-muted-blocking-symbolic.svg	
   ;;
 
 	up)
 	pamixer -i 5 > /dev/null;
   #if $( pamixer --get-mute); then pamixer -u;  fi
-  icon=/usr/share/icons/WhiteSur/status/symbolic/audio-volume-muted-blocking-symbolic.svg	
 	;;
 
 	mute)
     if $( pamixer --get-mute); then pamixer -u; else pamixer -m; fi
-    icon=/usr/share/icons/WhiteSur-dark/status/symbolic/audio-volume-muted-blocking-symbolic.svg	
-
 	;;
 esac
 if $( pamixer --get-mute);

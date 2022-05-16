@@ -52,9 +52,11 @@ $MAP Alt+Shift         P spawn "_playwithmpv"
 $MAP Alt               W spawn "_waydroid_session"
 
 ## CONTROLS
-$MAP None  XF86AudioRaiseVolume spawn "_wpctl up"
-$MAP None  XF86AudioLowerVolume spawn "_wpctl down"
-$MAP None         XF86AudioMute spawn "_wpctl mute"
+$MAP None  XF86AudioRaiseVolume spawn "_volume_change up"
+$MAP None  XF86AudioLowerVolume spawn "_volume_change down"
+#$MAP None  XF86AudioRaiseVolume spawn "_wpctl up"
+#$MAP None  XF86AudioLowerVolume spawn "_wpctl down"
+#$MAP None         XF86AudioMute spawn "_wpctl mute"
 $MAP None   XF86MonBrightnessUp spawn "_brightness_change up"
 $MAP None XF86MonBrightnessDown spawn "_brightness_change down"
 

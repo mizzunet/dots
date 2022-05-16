@@ -4,3 +4,8 @@ sleep 1
 waydroid session start &
 
 notify-send Waydroid "Session restarted" -u low -t 1000 
+
+sleep 5
+echo "ENABLING POWER SAVER"
+doas lxc-attach -P /var/lib/waydroid/lxc/ -n waydroid --clear-env cmd battery unplug
+doas lxc-attach -P /var/lib/waydroid/lxc/ -n waydroid --clear-env settings put global low_power 1
