@@ -1,8 +1,0 @@
-sudo /usr/bin/waydroid container stop
-/usr/bin/waydroid session stop
-sudo /usr/bin/waydroid container start &
-/usr/bin/waydroid session start&
-notify-send Waydroid "Session restarted" -u normal -t 1000 -i /usr/share/icons/elementary/actions/32/system-reboot.svg
-sleep 15
-sudo lxc-attach -P /var/lib/waydroid/lxc/ -n waydroid --clear-env  sh /sdcard/stop
-

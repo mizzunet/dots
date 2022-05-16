@@ -1,0 +1,6 @@
+#!/bin/bash
+waydroid session stop
+sleep 1
+waydroid session start &
+
+notify-send Waydroid "Session restarted" -u low -t 1000 

@@ -11,5 +11,5 @@ bind \ec 'fish_commandline_append " | wl-copy"'
 
 # Show taskwarrior tasks
 if not test "$USER" = "root"
-    task
+    task list
 end

@@ -3,8 +3,8 @@
 #############
 TERM=foot
 FILES=pcmanfm-qt
-MENU=sirula
-BROWSER=firefox
+MENU='fuzzel --prompt=" > " --font="JetBrains Mono":size=12:weight=light --lines=20 --width 25 --horizontal-pad=0 --inner-pad=4 --background=212121ff --no-icons --text-color=ffffff70 --selection-color=bb86fcff --selection-text-color=121212c9 --match-color=ffffff95 --border-radius=9 --border-color=bb86fc70 --border-width=2  --line-height=18 --no-fuzzy'
+BROWSER=chromium
 WALLPAPER=/home/missu/Pictures/pexels-cátia-matos-1072179.jpg
 ALL_TAGS=$(((1 << 32) - 1))
 #gtk-theme=''
@@ -26,7 +26,7 @@ INTERFACE='org.gnome.desktop.interface'
 # MAPPINGS #
 ############
 $MAP Super+Shift   Return spawn "$TERM"
-$MAP Control+Shift escape spawn "$TERM gotop"
+$MAP Control+Shift escape spawn "$TERM htop"
 $MAP Super          Space spawn "$MENU"
 $MAP Super              e spawn "$FILES"
 $MAP Super              b spawn "$BROWSER"
@@ -49,6 +49,7 @@ $MAP Super+Shift       W spawn "_wifi_toggle"
 $MAP Super+Shift       N spawn "_nightlight_toggle"
 $MAP Control+Shift Print spawn "_screenrecord"
 $MAP Alt+Shift         P spawn "_playwithmpv"
+$MAP Alt               W spawn "_waydroid_session"
 
 ## CONTROLS
 $MAP None  XF86AudioRaiseVolume spawn "_wpctl up"
@@ -135,7 +136,7 @@ for w in ${FLOATS_app_id[@]}
 do
     $CMD float-filter-add app-id $w
 done
-FLOATS_title=("File Properties")
+FLOATS_title=("File Properties" "Open File")
 for w in ${FLOATS_title[@]}
 do
     $CMD float-filter-add title "$w"
