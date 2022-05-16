@@ -166,4 +166,5 @@ $BROWSER 'https://f-droid.org/en/packages/at.bitfire.davdroid/'
 # TROUBLESHOOTING #
 ###################
 
+#  WARNING: Service manager /dev/binder has died
 Append "psi=1" to kernel parameter
