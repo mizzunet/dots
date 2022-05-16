@@ -1,5 +1,5 @@
 # dots
-## SETUP
+### SETUP
 * GUI PROGRAMS
   * Window Manager = `river`
   * Bar = `yambar`
