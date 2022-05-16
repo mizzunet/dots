@@ -29,7 +29,7 @@
   * Volume Controller = `wpctl`
   * Automount = `udiskie`
 
-## INSTALL
+### INSTALL
 
 Clone this 
 ```
