@@ -13,12 +13,12 @@ yay -S linux-zen
 yay -S linux-xanmod
 
 # DOWNLOAD IMAGES
-set BROWSER="chromium"
+set BROWSER "chromium"
 $BROWSER "" # SYSTEM
 $BROWSER "" # VENDOR
 
 # UNZIP & MOVE TO IMAGES DIRECOTRY
-set IMAGE_DIR="/usr/share/waydroid-extra/images/"
+set IMAGE_DIR "/usr/share/waydroid-extra/images/"
 unzip *.zip
 mkdir -p $IMAGE_DIR 
 mv *.img $IMAGE_DIR
@@ -32,7 +32,6 @@ doas systemctl --now enable waydroid-container.service
 # START WAYDROID
 waydroid session start
 
-
 ###############################################
 # SOME STUFF I'D DO AFTER INSTALLING WAYDROID #
 ###############################################
@@ -41,16 +40,21 @@ waydroid session start
 waydroid prop set waydroid.display_width 300
 waydroid prop set persist.waydroid.height_padding 57
 
-# DISABLE SOFT NAVIGATION BAR
+# BUILD.PROP
 doas bash -c 'echo qemu.hw.mainkeys=1 >> /var/lib/waydroid/waydroid_base.prop'
-
-# DISABLE BOOTANIMATION
 doas bash -c 'echo debug.sf.nobootanimation=1 >> /var/lib/waydroid/waydroid_base.prop'
 
 # CONNECT ADB
 adb connect 192.168.250.112:5555
 
-set UNINSTALL="adb shell pm uninstall --user 0"
+set OVERLAY "adb shell cmd overlay"
+# LOOK
+$OVERLAY enable org.lineageos.overlay.customization.blacktheme
+$OVERLAY enable com.android.theme.color.black
+$OVERLAY enable com.android.theme.icon_pack.circular.android
+$OVERLAY enable org.lineageos.overlay.customization.blacktheme
+$OVERLAY enable com.android.theme.icon_pack.circular.settingsset UNINSTALL="adb shell pm uninstall --user 0"
+
 # DISABLE BLOATS
 ## USE GUI https://github.com/0x192/universal-android-debloater
 $UNINSTALL com.android.backupconfirm
@@ -130,7 +134,7 @@ $UNINSTALL org.lineageos.jelly
 # SET RESOLUTION
 adb shell wm density 160
 
-set SET="adb shell settings put"
+set SET "adb shell settings put"
 # ENABLE SOME SETTINGS
 $SET put secure ui_night_mode 2 # DARK MODE
 $SET put global airplane_mode_on 1 # FLIGHT MODE
@@ -168,3 +172,6 @@ $BROWSER 'https://f-droid.org/en/packages/at.bitfire.davdroid/'
 
 #  WARNING: Service manager /dev/binder has died
 Append "psi=1" to kernel parameter
+
+# Failed to start Clipboard manager service
+Install python-pyclip
