@@ -1,53 +1,68 @@
-echo DO NOT RUN THIS SCRIPT BLINDLY INSTEAD COPY/PASTE EACH COMMANDS
+# SETUP WAYDROID - ANDROID 10
 
-#########
-# SETUP #
-#########
-
-# INSTALL WAYDROID
+### INSTALL WAYDROID
+```
 yay -S waydroid
+```
 
-# INSTALL REQUIRED KERNEL
+### INSTALL REQUIRED KERNEL
+```
 yay -S linux-zen
 # or
 yay -S linux-xanmod
+```
 
-# DOWNLOAD IMAGES
+### DOWNLOAD IMAGES
+```
 set BROWSER chromium
-$BROWSER "" # SYSTEM
-$BROWSER "" # VENDOR
+$BROWSER "https://sourceforge.net/projects/waydroid/files/images/system/lineage/waydroid_x86_64/" # SYSTEM
+$BROWSER "https://sourceforge.net/projects/waydroid/files/images/vendor/waydroid_x86_64/" # VENDOR
+```
 
-# UNZIP & MOVE TO IMAGES DIRECOTRY
+### UNZIP & MOVE TO IMAGES DIRECOTRY
+```
 set IMAGE_DIR /usr/share/waydroid-extra/images/
 unzip *.zip
 mkdir -p $IMAGE_DIR 
 mv *.img $IMAGE_DIR
+```
 
-# INITILIASE IMAGES
+### INITILIASE IMAGES
+```
 waydroid init 
+```
 
-# ENABLE SERVICE
+### ENABLE SERVICE
+```
 doas systemctl --now enable waydroid-container.service
+```
 
-# START WAYDROID
+### START WAYDROID
+```
 waydroid session start
+```
 
-###############################################
-# SOME STUFF I'D DO AFTER INSTALLING WAYDROID #
-###############################################
+# SOME STUFF I'D DO AFTER INSTALLING WAYDROID 
 
-# SET WAYDROID WINDOW SIZE
+### SET WAYDROID WINDOW SIZE
+```
 waydroid prop set waydroid.display_width 300
 waydroid prop set persist.waydroid.height_padding 57
+```
 
-# BUILD.PROP
-doas bash -c 'echo qemu.hw.mainkeys=1 >> /var/lib/waydroid/waydroid_base.prop'
-doas bash -c 'echo debug.sf.nobootanimation=1 >> /var/lib/waydroid/waydroid_base.prop'
+### BUILD.PROP
+```
+echo qemu.hw.mainkeys=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
+echo debug.sf.nobootanimation=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
+```
 
-# CONNECT ADB
+### CONNECT ADB
+```
 adb connect 192.168.250.112:5555
+```
 
-# LOOK
+### APPEARANCE
+```
 set OVERLAY "adb shell cmd overlay"
 $OVERLAY enable org.lineageos.overlay.customization.blacktheme
 $OVERLAY enable com.android.theme.color.black
@@ -55,8 +70,10 @@ $OVERLAY enable com.android.theme.icon_pack.circular.android
 $OVERLAY enable org.lineageos.overlay.customization.blacktheme
 $OVERLAY enable com.android.theme.icon_pack.circular.settingsset
 $OVERLAY enable org.lineageos.overlay.font.rubik 
+```
 
-# DISABLE BLOATS
+### DISABLE BLOATS
+```
 ## USE GUI https://github.com/0x192/universal-android-debloater
 set UNINSTALL "adb shell pm uninstall --user 0"
 $UNINSTALL android.ext.services
@@ -98,7 +115,6 @@ $UNINSTALL com.android.localtransport
 $UNINSTALL com.android.location.fused
 $UNINSTALL com.android.managedprovisioning
 $UNINSTALL com.android.mms.service
-$UNINSTALL com.android.modulemetadata
 $UNINSTALL com.android.mtp
 $UNINSTALL com.android.networkstack.permissionconfig
 $UNINSTALL com.android.onetimeinitializer
@@ -142,17 +158,23 @@ $UNINSTALL org.lineageos.overlay.font.lato
 $UNINSTALL org.lineageos.profiles
 $UNINSTALL org.lineageos.recorder
 $UNINSTALL org.lineageos.updater
+```
 
-# SET RESOLUTION
+### SET RESOLUTION
+```
 adb shell wm density 160
+```
 
-# ENABLE SOME SETTINGS
+### ENABLE SOME SETTINGS
+```
 set SET adb shell settings put
 $SET put secure ui_night_mode 2 # DARK MODE
 $SET put global airplane_mode_on 1 # FLIGHT MODE
 $SET put global policy_control immersive.full=* # IMMERSIVE MODE
+```
 
-# DISBALE UNWANTED SETTINGS
+### DISBALE UNWANTED SETTINGS
+```
 $SET global animator_duration_scale 0.0 # ANIMATION
 $SET secure location_mode 0 # LOCATIONS
 $SET system dtmf_tone 0 # VIBRATION
@@ -162,36 +184,51 @@ $SET system haptic_feedback_enabled 0 # VIBRATION
 $SET secure camera_double_tap_power_gesture_disabled 0
 $SET secure volume_hush_gesture 0
 $SET global user_switcher_enabled 0
+```
 
-# HIDE SOME DESKTOP ENTRIES
+### HIDE SOME DESKTOP ENTRIES
+```
 cd ~/.local/share/applications
 echo NoDisplay=true | tee -a waydroid.fr.neamar.kiss.desktop waydroid.com.android.documentsui.desktop waydroid.com.android.settings.desktop waydroid.org.lineageos.jelly.desktop
 echo NoDisplay=true | tee -a waydroid.com.android.camera2.desktop waydroid.com.android.contacts.desktop waydroid.com.android.calculator2.desktop waydroid.com.android.deskclock.desktop waydroid.com.android.inputmethod.latin.desktop waydroid.com.android.gallery3d.desktop waydroid.com.android.email.desktop
+```
 
+### RECOMMENDED APPS
+```
 set BROWSER chromium
-# INSTALL APPS
-$BROWSER 'https://github.com/keymapperorg/KeyMapper/releases/'
+$BROWSER 'https://github.com/keymapperorg/KeyMapper/releases/' # you woudln't know much helpful is it
+$BROWSER 'https://f-droid.org/en/packages/com.google.android.marvin.talkback'
+
 $BROWSER 'https://github.com/ankidroid/Anki-Android/releases'
 $BROWSER 'https://apkpure.com/english-dictionary-offline/livio.pack.lang.en_US'
 $BROWSER 'https://signal.org/android/apk/'
 $BROWSER 'https://m.apkpure.com/focusmeter-productivity-timer/co.zeitic.focusmeter'
 $BROWSER 'https://f-droid.org/en/packages/at.bitfire.davdroid/'
+$BROWSER 'https://f-droid.org/en/packages/com.hos_dvk.easyphone.full/'
+```
 
+### MOUNT HOST FOLDER INTO WAYDROID
+echo mount --bind ~/Music ~/.local/share/waydroid/data/media/0/Music | doas tee -a /var/lib/waydroid/lxc/waydroid/config_nodes
 
-###################
-# TROUBLESHOOTING #
-###################
+# TROUBLESHOOTING
 
-#  WARNING: Service manager /dev/binder has died
+### Reset Waydroid
+  * Delete data
+    `doas rm -rf /var/lib/waydroid/*`
+    `rm ~/.local/share/applcations/waydroid.*`
+  * Reinstall Waydroid
+    `yay -S waydroid`
+
+### WARNING: Service manager /dev/binder has died
   Append `psi=1` to kernel parameter
 
-# Failed to start Clipboard manager service
+### Failed to start Clipboard manager service
   Install `python-pyclip`
 
-# No sound
+### No sound
   * Install `pipewire-pulse`
   * Enable `pipewire-pulse.service`
   
-# No video playback
+### No video playback
   * Install `linux-zen-header`
   * Install `anbox-modules-dkms`

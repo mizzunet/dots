@@ -3,7 +3,7 @@
 #############
 TERM=foot
 FILES=pcmanfm-qt
-MENU='fuzzel --prompt=" > " --font="JetBrains Mono":size=12:weight=light --lines=20 --width 25 --horizontal-pad=0 --inner-pad=4 --background=212121ff --no-icons --text-color=ffffff70 --selection-color=bb86fcff --selection-text-color=121212c9 --match-color=ffffff95 --border-radius=9 --border-color=bb86fc70 --border-width=2  --line-height=18 --no-fuzzy'
+MENU='fuzzel --prompt=" > " --font="JetBrains Mono":size=12:weight=light --lines=20 --width 25 --horizontal-pad=0 --inner-pad=4 --no-icons --background=171717ff --text-color=EDEDED95 --selection-color=DA0037ff --selection-text-color=EDEDEDff --match-color=D8E9A8ff --border-color=DA0037ff --border-radius=5 --border-width=2  --line-height=18 --no-fuzzy'
 BROWSER=chromium
 WALLPAPER=/home/missu/Pictures/pexels-cátia-matos-1072179.jpg
 ALL_TAGS=$(((1 << 32) - 1))

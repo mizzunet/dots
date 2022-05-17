@@ -1,4 +1,4 @@
-export HYDROXIDE_BRIDGE_PASS=au7AwSwvYdfqJBDyjzySFo7xiIzvX7Ot3uXeGbXGwGA=
+export HYDROXIDE_BRIDGE_PASS=24qD8u1isQDhzLbndhMwAx08YWNdnvCTLeVvZzF74lo=
 
 ## Editor
 export EDITOR="hx"
