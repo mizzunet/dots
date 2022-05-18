@@ -214,6 +214,9 @@ echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 
 
 # TROUBLESHOOTING
 
+### Quick troubleshooting tip
+  Log and commands that runs shown `waydroid log`. Commands are the one starting with `%`. So, try running each command manually and see where did it fail.
+
 ### Reset Waydroid
   * Delete data
     `doas rm -rf /var/lib/waydroid/*`
@@ -232,8 +235,10 @@ echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 
   * Enable `pipewire-pulse.service`
   
 ### No video playback
-  * Install `linux-zen-header`
-  * Install `anbox-modules-dkms`
+  It's known for kernel versions older than `5.17.7`, you may
+  1. * Install `linux-zen-header`
+     * Install `anbox-modules-dkms` or
+  2. * Install `5.18` kernel or higher
 
 ### Can't enter keys
   * Press Super key
