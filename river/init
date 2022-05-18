@@ -121,6 +121,7 @@ $SPAWN "_clipboard watcher"
 #$SPAWN "$GSET org.gtk.Settings.FileChooser startup-mode \'cwd\' 
 #$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec $term"
 #$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec-arg ''"
+#gsettings set org.gnome.desktop.wm.preferences button-layout ""
 
 ################
 # INPUT CONFIG #

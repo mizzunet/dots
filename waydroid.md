@@ -52,8 +52,10 @@ waydroid prop set persist.waydroid.height_padding 57
 
 ### BUILD.PROP
 ```
-echo qemu.hw.mainkeys=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
+# disable bootanimation, faster boot
 echo debug.sf.nobootanimation=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
+# disable navigation. map keyboard keys for this. see recommended apps
+echo qemu.hw.mainkeys=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
 ```
 
 ### CONNECT ADB
@@ -64,17 +66,17 @@ adb connect 192.168.250.112:5555
 ### APPEARANCE
 ```
 set OVERLAY "adb shell cmd overlay"
-$OVERLAY enable org.lineageos.overlay.customization.blacktheme
-$OVERLAY enable com.android.theme.color.black
+$SET put secure ui_night_mode 2 # dark mode
+$OVERLAY enable org.lineageos.overlay.customization.blacktheme # black theme
+$OVERLAY enable com.android.theme.color.black # white accent
 $OVERLAY enable com.android.theme.icon_pack.circular.android
-$OVERLAY enable org.lineageos.overlay.customization.blacktheme
 $OVERLAY enable com.android.theme.icon_pack.circular.settingsset
-$OVERLAY enable org.lineageos.overlay.font.rubik 
+$OVERLAY enable org.lineageos.overlay.font.rubik  # rubik font
 ```
 
 ### DISABLE BLOATS
 ```
-## USE GUI https://github.com/0x192/universal-android-debloater
+## gui https://github.com/0x192/universal-android-debloater
 set UNINSTALL "adb shell pm uninstall --user 0"
 $UNINSTALL android.ext.services
 $UNINSTALL android.ext.shared
@@ -168,15 +170,14 @@ adb shell wm density 160
 ### ENABLE SOME SETTINGS
 ```
 set SET adb shell settings put
-$SET put secure ui_night_mode 2 # DARK MODE
 $SET put global airplane_mode_on 1 # FLIGHT MODE
 $SET put global policy_control immersive.full=* # IMMERSIVE MODE
 ```
 
 ### DISBALE UNWANTED SETTINGS
 ```
-$SET global animator_duration_scale 0.0 # ANIMATION
-$SET secure location_mode 0 # LOCATIONS
+$SET global animator_duration_scale 0.0 # animation
+$SET secure location_mode 0 # locations
 $SET system dtmf_tone 0 # VIBRATION
 $SET system lockscreen_sounds_enabled 0 # VIBRATION
 $SET system sound_effects_enabled 0 # VIBRATION
@@ -189,8 +190,9 @@ $SET global user_switcher_enabled 0
 ### HIDE SOME DESKTOP ENTRIES
 ```
 cd ~/.local/share/applications
-echo NoDisplay=true | tee -a waydroid.fr.neamar.kiss.desktop waydroid.com.android.documentsui.desktop waydroid.com.android.settings.desktop waydroid.org.lineageos.jelly.desktop
-echo NoDisplay=true | tee -a waydroid.com.android.camera2.desktop waydroid.com.android.contacts.desktop waydroid.com.android.calculator2.desktop waydroid.com.android.deskclock.desktop waydroid.com.android.inputmethod.latin.desktop waydroid.com.android.gallery3d.desktop waydroid.com.android.email.desktop
+echo NoDisplay=true | tee -a waydroid.org.lineageos.*
+echo NoDisplay=true | tee -a waydroid.com.android.*
+echo NoDisplay=true | tee -a waydroid.fr.neamar.kiss.desktop
 ```
 
 ### RECOMMENDED APPS
@@ -208,7 +210,7 @@ $BROWSER 'https://f-droid.org/en/packages/com.hos_dvk.easyphone.full/'
 ```
 
 ### MOUNT HOST FOLDER INTO WAYDROID
-echo mount --bind ~/Music ~/.local/share/waydroid/data/media/0/Music | doas tee -a /var/lib/waydroid/lxc/waydroid/config_nodes
+echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 | doas tee -a /var/lib/waydroid/lxc/waydroid/config_nodes
 
 # TROUBLESHOOTING
 
@@ -232,3 +234,17 @@ echo mount --bind ~/Music ~/.local/share/waydroid/data/media/0/Music | doas tee 
 ### No video playback
   * Install `linux-zen-header`
   * Install `anbox-modules-dkms`
+
+### Can't enter keys
+  * Press Super key
+  - or
+  * press Alt key
+  
+### modprobe: FATAL: Module ashmem_linux/binder_linux not found in directory 
+  You current kernel do not have `ashmem_linux`, `binder_linux`. You might want to either,
+    * Install kernel having these modules, such as `linux-zen`, `linux-xanmod` or
+    * Install these modules for current kernel by,
+      * Install your kernel's header pacakge,`linux-lts-header` for `linux-lts` 
+      * Install `anbox-modules-dkms`
+      * Reboot
+    * Build a kernel
