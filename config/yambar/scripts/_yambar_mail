@@ -1,0 +1,32 @@
+#!/usr/bin/bash
+
+INTERVAL=60
+
+printf -- '%s\n' "COUNT|string|"
+printf -- '%s\n' ""
+
+while true
+do
+  if $(iw dev wlan0 info | grep -q ssid);then
+    wget -q --spider 1.1.1.1
+
+    if ([ $? -eq 0 ]); then
+      COUNT=$(heroku run ./getcount.sh -a emailcount &> /dev/null)
+    else
+      continue
+    fi
+  fi
+  # if ! (pidof hydroxide> /dev/null);then
+  #     sleep $INTERVAL
+  #     continue
+  # fi
+
+  #COUNT=$(unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
+  #COUNT=$(heroku run bash -c 'hydroxide serve &> /dev/null & sleep 2 ;unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143' -a emailcount &> /dev/null 
+  COUNT=$(heroku run ./getcount.sh -a emailcount)
+
+  printf -- '%s\n' "COUNT|string|${COUNT}"
+  printf -- '%s\n' ""
+
+  sleep $INTERVAL
+done

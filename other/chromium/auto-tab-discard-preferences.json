@@ -1,0 +1,10 @@
+{
+  "chrome.storage.local": {
+    "last-update": 1652049358804,
+    "whitelist.session": []
+  },
+  "localStorage": {
+    "click": "popup",
+    "explore-count": "98"
+  }
+}

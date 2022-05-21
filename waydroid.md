@@ -29,7 +29,7 @@ mv *.img $IMAGE_DIR
 
 ### INITILIASE IMAGES
 ```
-waydroid init 
+doas waydroid init -f
 ```
 
 ### ENABLE SERVICE
@@ -65,8 +65,9 @@ adb connect 192.168.250.112:5555
 
 ### APPEARANCE
 ```
-set OVERLAY "adb shell cmd overlay"
-$SET put secure ui_night_mode 2 # dark mode
+set OVERLAY adb shell cmd overlay
+set SET adb shell settings put
+$SET secure ui_night_mode 2 # dark mode
 $OVERLAY enable org.lineageos.overlay.customization.blacktheme # black theme
 $OVERLAY enable com.android.theme.color.black # white accent
 $OVERLAY enable com.android.theme.icon_pack.circular.android
@@ -77,7 +78,7 @@ $OVERLAY enable org.lineageos.overlay.font.rubik  # rubik font
 ### DISABLE BLOATS
 ```
 ## gui https://github.com/0x192/universal-android-debloater
-set UNINSTALL "adb shell pm uninstall --user 0"
+set UNINSTALL adb shell pm uninstall --user 0
 $UNINSTALL android.ext.services
 $UNINSTALL android.ext.shared
 $UNINSTALL com.android.backupconfirm
@@ -170,12 +171,13 @@ adb shell wm density 160
 ### ENABLE SOME SETTINGS
 ```
 set SET adb shell settings put
-$SET put global airplane_mode_on 1 # FLIGHT MODE
-$SET put global policy_control immersive.full=* # IMMERSIVE MODE
+$SET global airplane_mode_on 1 # FLIGHT MODE
+#$SET global policy_control immersive.full=* # IMMERSIVE MODE
 ```
 
 ### DISBALE UNWANTED SETTINGS
 ```
+set SET adb shell settings put
 $SET global animator_duration_scale 0.0 # animation
 $SET secure location_mode 0 # locations
 $SET system dtmf_tone 0 # VIBRATION
@@ -217,12 +219,16 @@ echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 
 ### Quick troubleshooting tip
   Log and commands that runs shown `waydroid log`. Commands are the one starting with `%`. So, try running each command manually and see where did it fail.
 
-### Reset Waydroid
-  * Delete data
-    `doas rm -rf /var/lib/waydroid/*`
-    `rm ~/.local/share/applcations/waydroid.*`
-  * Reinstall Waydroid
-    `yay -S waydroid`
+### Cleaning Waydroid
+```
+waydroid session stop
+doas waydroid container stop
+doas systemctl stop waydroid-container.service
+doas umount -l /var/lib/waydroid/{data,rootfs}
+doas umount /usr/share/waydroid-extra/images/{system,vendor}.img
+doas rm -rf /var/lib/waydroid /home/.waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+doas rm -rf /usr/share/waydroid-extra/images/*
+```
 
 ### WARNING: Service manager /dev/binder has died
   Append `psi=1` to kernel parameter
