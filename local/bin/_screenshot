@@ -7,6 +7,7 @@ if ! $(pidof slurp);then
 
   case $ACTION in 
     select-copy)
+    # wayshot -f $TMP --extension png
     grim -g "$(slurp)" - > $TMP
     wl-copy < $TMP
     notify-send "Screenshot copied to clipboard" 
@@ -14,7 +15,8 @@ if ! $(pidof slurp);then
     ;;
 
     copy)
-    grim -c $TMP 
+    wayshot -f $TMP --extension png
+    # grim -c $TMP 
     wl-copy < $TMP 
     notify-send "Screenshot copied to clipboard" 
     swappy -f $TMP

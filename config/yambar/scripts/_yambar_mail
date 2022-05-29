@@ -10,9 +10,9 @@ do
   if $(iw dev wlan0 info | grep -q ssid);then
     wget -q --spider 1.1.1.1
 
-    if ([ $? -eq 0 ]); then
-      COUNT=$(heroku run ./getcount.sh -a emailcount &> /dev/null)
-    else
+    if ! ([ $? -eq 0 ]); then
+      # COUNT=$(heroku run ./getcount.sh -a emailcount &> /dev/null)
+    # else
       continue
     fi
   fi
@@ -21,12 +21,11 @@ do
   #     continue
   # fi
 
-  #COUNT=$(unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
-  #COUNT=$(heroku run bash -c 'hydroxide serve &> /dev/null & sleep 2 ;unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143' -a emailcount &> /dev/null 
-  COUNT=$(heroku run ./getcount.sh -a emailcount)
+  # COUNT=$(heroku run ./getcount.sh -a emailcount)
+  COUNT=$(/home/missu/.git/mine/emailcount/getcount.sh)
 
   printf -- '%s\n' "COUNT|string|${COUNT}"
   printf -- '%s\n' ""
 
-  sleep $INTERVAL
+#  sleep $INTERVAL
 done

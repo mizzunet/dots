@@ -29,12 +29,12 @@ mv *.img $IMAGE_DIR
 
 ### INITILIASE IMAGES
 ```
-doas waydroid init -f
+sudo waydroid init -f
 ```
 
 ### ENABLE SERVICE
 ```
-doas systemctl --now enable waydroid-container.service
+sudo systemctl --now enable waydroid-container.service
 ```
 
 ### START WAYDROID
@@ -46,16 +46,16 @@ waydroid session start
 
 ### SET WAYDROID WINDOW SIZE
 ```
-waydroid prop set waydroid.display_width 300
+waydroid prop set persist.waydroid.width 400
 waydroid prop set persist.waydroid.height_padding 57
 ```
 
 ### BUILD.PROP
 ```
 # disable bootanimation, faster boot
-echo debug.sf.nobootanimation=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
+echo debug.sf.nobootanimation=1 | sudo tee -a /var/lib/waydroid/waydroid_base.prop
 # disable navigation. map keyboard keys for this. see recommended apps
-echo qemu.hw.mainkeys=1 | doas tee -a /var/lib/waydroid/waydroid_base.prop
+echo qemu.hw.mainkeys=1 | sudo tee -a /var/lib/waydroid/waydroid_base.prop
 ```
 
 ### CONNECT ADB
@@ -78,6 +78,7 @@ $OVERLAY enable org.lineageos.overlay.font.rubik  # rubik font
 ### DISABLE BLOATS
 ```
 ## gui https://github.com/0x192/universal-android-debloater
+## restore: adb shell cmd package install-existing --user 0 <pkg>
 set UNINSTALL adb shell pm uninstall --user 0
 $UNINSTALL android.ext.services
 $UNINSTALL android.ext.shared
@@ -133,7 +134,7 @@ $UNINSTALL com.android.provision
 $UNINSTALL com.android.proxyhandler
 $UNINSTALL com.android.se
 $UNINSTALL com.android.server.telecom
-$UNINSTALL com.android.settings.intelligence
+#$UNINSTALL com.android.settings.intelligence
 $UNINSTALL com.android.sharedstoragebackup
 $UNINSTALL com.android.simappdialog
 $UNINSTALL com.android.smspush
@@ -150,7 +151,7 @@ $UNINSTALL com.android.wallpaper
 $UNINSTALL com.android.wallpaper.livepicker
 $UNINSTALL com.android.wallpaperbackup
 $UNINSTALL com.android.wallpapercropper
-$UNINSTALL com.stevesoltys.seedvault
+#$UNINSTALL com.stevesoltys.seedvault
 $UNINSTALL org.lineageos.backgrounds
 $UNINSTALL org.lineageos.customization
 $UNINSTALL org.lineageos.eleven
@@ -179,14 +180,18 @@ $SET global airplane_mode_on 1 # FLIGHT MODE
 ```
 set SET adb shell settings put
 $SET global animator_duration_scale 0.0 # animation
-$SET secure location_mode 0 # locations
+$SET global window_animation_scale 0.0 # animation
+$SET global transition_animation_scale 0.0 # animation
+$SET global user_switcher_enabled 0
+$SET global app_auto_restriction_enabled 0
 $SET system dtmf_tone 0 # VIBRATION
 $SET system lockscreen_sounds_enabled 0 # VIBRATION
 $SET system sound_effects_enabled 0 # VIBRATION
 $SET system haptic_feedback_enabled 0 # VIBRATION
+$SET secure location_mode 0 # locations
 $SET secure camera_double_tap_power_gesture_disabled 0
 $SET secure volume_hush_gesture 0
-$SET global user_switcher_enabled 0
+$SET secure automatic_storage_manager_enabled 0
 ```
 
 ### HIDE SOME DESKTOP ENTRIES
@@ -197,6 +202,10 @@ echo NoDisplay=true | tee -a waydroid.com.android.*
 echo NoDisplay=true | tee -a waydroid.fr.neamar.kiss.desktop
 ```
 
+### DELETE DEFAULT FOLDER
+```
+sudo rmdir ~/.local/share/waydroid/data/media/0/*
+```
 ### RECOMMENDED APPS
 ```
 set BROWSER chromium
@@ -212,7 +221,7 @@ $BROWSER 'https://f-droid.org/en/packages/com.hos_dvk.easyphone.full/'
 ```
 
 ### MOUNT HOST FOLDER INTO WAYDROID
-echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 | doas tee -a /var/lib/waydroid/lxc/waydroid/config_nodes
+echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 | sudo tee -a /var/lib/waydroid/lxc/waydroid/config_nodes
 
 # TROUBLESHOOTING
 
@@ -222,12 +231,11 @@ echo lxc.mount.entry = /home/missu/Pictures data/media/0/Pictures none bind 0 0 
 ### Cleaning Waydroid
 ```
 waydroid session stop
-doas waydroid container stop
-doas systemctl stop waydroid-container.service
-doas umount -l /var/lib/waydroid/{data,rootfs}
-doas umount /usr/share/waydroid-extra/images/{system,vendor}.img
-doas rm -rf /var/lib/waydroid /home/.waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
-doas rm -rf /usr/share/waydroid-extra/images/*
+sudo systemctl stop waydroid-container.service
+sudo umount -l /var/lib/waydroid/{data,rootfs}
+sudo umount /usr/share/waydroid-extra/images/{system,vendor}.img
+sudo rm -rf /var/lib/waydroid /home/.waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+sudo rm -rf /usr/share/waydroid-extra/images/*
 ```
 
 ### WARNING: Service manager /dev/binder has died

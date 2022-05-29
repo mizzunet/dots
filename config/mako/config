@@ -26,14 +26,14 @@ text-color=#ffffff
 background-color=#161616
 border-color=#565656
 text-color=#ffffff
-on-notify=exec pw-play --volume 0.5 /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/message-new-instant.oga
 
 [urgency=critical]
 background-color=#C20618
 border-color=#D70015
 text-color=#ffffff
 default-timeout=0
-on-notify=exec pw-play  --volume 0.5 /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
+on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 [app-name=Geary]
 default-timeout=10000
