@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+set -e
+
+PROGRAMS="yay aria2c rsync yt-dlp"
+
+if (pidof swayidle > /dev/null) && (pidof rivertile > /dev/null);then 
+
+ killall -9 swayidle
+ printf 'Stopped swayidle'
+ notify-send -a control -u low \
+ swayidle Stopped
+
+else
+
+ swayidle -w \
+  timeout 60 'if  $(_s-isplaying); then brillo -O; brillo -q -u 100000 -U 8; else exit;fi' \
+  resume 'brillo -q -u 100000 -A 8'\
+  timeout 90 'wlr-randr --output eDP-1 --off' \
+  resume 'wlr-randr --output eDP-1 --on' \
+  timeout 180 'if ! test $(pidof $PROGRAMS); then _s-lockscreen; else exit;fi' \
+  resume 'wlr-randr --output eDP-1 --on && brillo -q -u 100000 -A 8' 
+
+fi

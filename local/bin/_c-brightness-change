@@ -22,5 +22,7 @@ esac
 
 current=$(brillo)
 
-notify-send -u low  -h int:value:$current "Brightness󰃟" -t 1000 
+notify-send -u low -a control \
+	-h int:value:$current "Brightness" -t 1000 
+	# -h int:value:$current "Brightness󰃟" -t 1000 
 

@@ -1,0 +1,12 @@
+#!/bin/bash
+set -e
+
+if pgrep -x 'blanket' > /dev/null; then
+    notify-send -u low -a control \
+        Blanket Stopped 
+    pkill blanket
+else
+    notify-send -u low -a control \
+        Blanket Started 
+    blanket -h
+fi

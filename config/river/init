@@ -32,8 +32,8 @@ $MAP Super              e spawn "$FILES"
 $MAP Super              b spawn "$BROWSER"
 $MAP Super+Shift        m spawn "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
 $MAP Control+Alt+Shift Delete spawn "loginctl reboot"
-$MAP Control+Alt   Delete spawn "sudo kexec -l /boot/vmlinuz-linux-$KERNEL --initrd=/boot/booster-linux-${KERNEL}.img --reuse-cmdline && sudo kexec -e"
-$MAP Control       Escape spawn "makoctl dismiss -a"
+$MAP Control+Alt   Delete spawn "_s-reboot"
+$MAP Control       Escape spawn "dbus-send --print-reply --dest=org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako.DismissLastNotification" 
 $MAP Control+Shift      E spawn "emote"
 $MAP Control+Alt       Up spawn "$ROTATE normal && riverctl send-layout-cmd rivertile main-location right"
 $MAP Control+Alt     Down spawn "$ROTATE 180 && riverctl send-layout-cmd rivertile main-location bottom"
@@ -41,24 +41,26 @@ $MAP Control+Alt    Right spawn "$ROTATE 270 && riverctl send-layout-cmd riverti
 $MAP Control+Alt     Left spawn "$ROTATE 90 && riverctl send-layout-cmd rivertile main-location right"
 
 ## SCRIPTS
-$MAP None          Print spawn "_screenshot select-copy"
-$MAP Shift         Print spawn "_screenshot copy"
-$MAP Super             c spawn "_clipboard clipman"
-$MAP Super+Shift       C spawn "_swayidle_toggle"
-$MAP Super+Shift       W spawn "_wifi_toggle"
-$MAP Super+Shift       N spawn "_nightlight_toggle"
-$MAP Control+Shift Print spawn "_screenrecord"
-$MAP Alt+Shift         P spawn "_playwithmpv"
-$MAP Alt               W spawn "_waydroid_session"
+$MAP None          Print spawn "_s-screenshot select-copy"
+$MAP Shift         Print spawn "_s-screenshot copy"
+$MAP Super             c spawn "_d-clipboard clipman"
+$MAP Control+Shift Print spawn "_s-screenrecord"
+$MAP Alt+Shift         P spawn "_s-playwithmpv"
+$MAP Alt               W spawn "_s-waydroid"
+$MAP Super        Escape spawn "_s-blanket"
 
 ## CONTROLS
-$MAP None  XF86AudioRaiseVolume spawn "_volume_change up"
-$MAP None  XF86AudioLowerVolume spawn "_volume_change down"
+$MAP Super+Shift       C spawn "_c-swayidle"
+$MAP Super+Shift       W spawn "_c-wifi-toggle"
+$MAP Super+Shift       N spawn "_c-nightlight"
+$MAP None  XF86AudioRaiseVolume spawn "_c-volume-change up"
+$MAP None  XF86AudioLowerVolume spawn "_c-volume-change down"
 #$MAP None  XF86AudioRaiseVolume spawn "_wpctl up"
 #$MAP None  XF86AudioLowerVolume spawn "_wpctl down"
 #$MAP None         XF86AudioMute spawn "_wpctl mute"
-$MAP None   XF86MonBrightnessUp spawn "_brightness_change up"
-$MAP None XF86MonBrightnessDown spawn "_brightness_change down"
+$MAP None   XF86MonBrightnessUp spawn "_c-brightness-change up"
+$MAP None XF86MonBrightnessDown spawn "_c-brightness-change down"
+$MAP Control         Space spawn 'playerctl play-pause && notify-send -u low -a control $(playerctl metadata | head -1 | cut -d" " -f1) $(playerctl status)'
 
 ## BUILT-IN COMMANDS
 $MAP Super           Q  close
@@ -123,14 +125,14 @@ $SPAWN "swaybg -i $WALLPAPER"
 $SPAWN "mako"
 $SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
 $SPAWN "systemctl --user import-environment"
-$SPAWN "hydroxide -disable-carddav -imap-host 127.0.0.1 -smtp-host 127.0.0.1 serve 2&> /tmp/hydroxide"
-$SPAWN "geary --gapplication-service"
+#$SPAWN "hydroxide -disable-carddav -imap-host 127.0.0.1 -smtp-host 127.0.0.1 serve 2&> /tmp/hydroxide"
+#$SPAWN "geary --gapplication-service"
 $SPAWN "/usr/lib/polkit-kde-authentication-agent-1"
-$SPAWN "_swayidle_toggle"
-$SPAWN "_nightlight_toggle"
-$SPAWN "_udiskie_daemon"
-$SPAWN "_notify_battery"
-$SPAWN "_clipboard watcher"
+$SPAWN "_c-swayidle"
+$SPAWN "_c-nightlight"
+$SPAWN "_d-udiskie"
+$SPAWN "_d-battery"
+$SPAWN "_d-clipboard watcher"
 #$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
 
 #$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"
@@ -161,7 +163,7 @@ for w in ${FLOATS_app_id[@]}
 do
     $CMD float-filter-add app-id $w
 done
-FLOATS_title=("File Properties" "Open File")
+FLOATS_title=("Open File")
 for w in ${FLOATS_title[@]}
 do
     $CMD float-filter-add title "$w"

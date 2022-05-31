@@ -10,6 +10,7 @@ export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export MESA_GLSL_CACHE_DISABLE=true
 export MESA_LOADER_DRIVER_OVERRIDE=i965
 export KOOHA_VAAPI=1
+export GTK_THEME=Materia-dark-compact
 export GST_VAAPI_ALL_DRIVERS=1
 
 ## spotify_dl
@@ -40,8 +41,8 @@ export MOZ_WEBRENDER=1
 export BROWSER=chromium
 
 # Go
-export GOMODCACHE=~/.local/go
-export GOPATH=~/.local/go
+export GOMODCACHE=/home/missu/.local/go
+export GOPATH=/home/missu/.local/go
 
 ## Wine
 export WINEDLLOVERRIDES="mscoree=d;mshtml=d"

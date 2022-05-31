@@ -18,14 +18,15 @@ case $action in
     if $( pamixer --get-mute); then pamixer -u; else pamixer -m; fi
 	;;
 esac
+
 if $( pamixer --get-mute);
-   notify-send -u low \
-  -h int:value:"$(pamixer --get-volume)" Volume󰋌 -t 1000 
+   notify-send -u low -a control \
+  -h int:value:"$(pamixer --get-volume)" Volume -t 1000 
+  # -h int:value:"$(pamixer --get-volume)" Volume󰋌 -t 1000 
  then exit;
 else
  notify-send -u low \
-  "Volume󰋌 " Muted -t 1000 -i $icon
-
-
+  Volume Muted -t 1000 -i $icon
+  # "Volume󰋌 " Muted -t 1000 -i $icon
 fi
 

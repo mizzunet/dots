@@ -2,4 +2,5 @@
 
 waylock --init-color  "#2b2d42" \
         --input-color "#2f3e46" \
-        --fail-color  "#d90429"
+        --fail-color  "#d90429" &
+systemctl suspend

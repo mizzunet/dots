@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+# if $(waydroid status | grep -q Container);then
+  if test "$(waydroid status | head -1 | awk '{print $2}')" == "RUNNING"; then
+    waydroid session stop
+    echo "STOPPED SESSION"
+    sleep 1
+  fi
+
+  waydroid session start &
+  echo "STARTING SESSION"
+
+  notify-send -u low -t 1000 -a control \
+    Waydroid "Session restarted" 
+
+  # sleep 8
+  # echo "ENABLING POWER SAVER"
+  # doas lxc-attach -P /var/lib/waydroid/lxc/ -n waydroid --clear-env cmd battery unplug
+  # doas lxc-attach -P /var/lib/waydroid/lxc/ -n waydroid --clear-env settings put global low_power 1
+
+# else
+  # notify-send Waydroid "Container need to started" -u low -t 2000 
+# fi

@@ -1,3 +1,5 @@
+#!/bin/bash
+
 #DejaVu Sans Mono!/bin/sh
 #cmd=`nmcli radio wifi`
 cmd=`iwctl adapter phy0 show | grep Powered | awk '{print $4}'`
@@ -7,12 +9,12 @@ cmdOff='iwctl adapter phy0 set-property Powered off'
 if [ $cmd == "on" ]
 then
 	$cmdOff
-    state="󰤭"
+    icon="󰤭"
 	// state="Off"
 else
 	$cmdOn
-    state="󰤥"
+    icon="󰤥"
 	// state="On"
 fi
-	 notify-send -u low \
-     "WiFi $state" 
+	 notify-send -u low -a control \
+     WiFi $icon

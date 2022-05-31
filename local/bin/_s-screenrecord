@@ -4,10 +4,12 @@ set -e
 AREA=$(slurp)
 FILE=/tmp/record.gif
 
-notify-send "WF-RECORDER" "Recording started" -u low
+notify-send -a control -u low \
+  "WF-RECORDER" "Recording started" 
 
 wf-recorder -f "$FILE" -c gif -g "$AREA"
 
 curl -F"file=@$FILE"  https://0x0.st | wl-copy
 
-notify-send "WF-RECORDER" "Recording uploaded" -u low
+notify-send -a control -u low \
+  "WF-RECORDER" "Recording uploaded" 

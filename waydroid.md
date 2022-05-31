@@ -173,6 +173,7 @@ adb shell wm density 160
 ```
 set SET adb shell settings put
 $SET global airplane_mode_on 1 # FLIGHT MODE
+$SET global device_name "WayDroid"
 #$SET global policy_control immersive.full=* # IMMERSIVE MODE
 ```
 
@@ -202,7 +203,7 @@ echo NoDisplay=true | tee -a waydroid.com.android.*
 echo NoDisplay=true | tee -a waydroid.fr.neamar.kiss.desktop
 ```
 
-### DELETE DEFAULT FOLDER
+### DELETE DEFAULT FOLDERS
 ```
 sudo rmdir ~/.local/share/waydroid/data/media/0/*
 ```
@@ -234,8 +235,9 @@ waydroid session stop
 sudo systemctl stop waydroid-container.service
 sudo umount -l /var/lib/waydroid/{data,rootfs}
 sudo umount /usr/share/waydroid-extra/images/{system,vendor}.img
-sudo rm -rf /var/lib/waydroid /home/.waydroid ~/waydroid ~/.share/waydroid ~/.local/share/applications/*aydroid* ~/.local/share/waydroid
+sudo rm -rf /var/lib/waydroid 
 sudo rm -rf /usr/share/waydroid-extra/images/*
+rm -rf ~/.local/share/waydroid ~/.local/share/applications/*aydroid*
 ```
 
 ### WARNING: Service manager /dev/binder has died
