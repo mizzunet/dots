@@ -63,14 +63,11 @@ bar:
          - string: {text: "{time} {date}"}
  right:
    - script:
-       path: /home/missu/.config/yambar/scripts/_yambar_mail
-       content: {string: {text: "{COUNT}", font: *icon}}
-   - script:
        path: /home/missu/.config/yambar/scripts/_yambar_caffiene
        content:  {string: {text: "{CAFFIENE}", font: *icon}}
-   # - script:
-   #     path: /home/missu/.config/yambar/scripts/_yambar_netstatus
-   #     content:  {string: {text: "{STATUS}", font: *icon}}
+   - script:
+       path: /home/missu/.config/yambar/scripts/_yambar_mail
+       content:  {string: {text: "{COUNT}", font: *icon}}
    - network:
          name: wlan0
          content:

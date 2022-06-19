@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-INTERVAL=60
+INTERVAL=20
 
 printf -- '%s\n' "COUNT|string|"
 printf -- '%s\n' ""
@@ -11,21 +11,21 @@ do
     wget -q --spider 1.1.1.1
 
     if ! ([ $? -eq 0 ]); then
-      # COUNT=$(heroku run ./getcount.sh -a emailcount &> /dev/null)
-    # else
       continue
     fi
   fi
-  # if ! (pidof hydroxide> /dev/null);then
-  #     sleep $INTERVAL
-  #     continue
-  # fi
-
-  # COUNT=$(heroku run ./getcount.sh -a emailcount)
-  COUNT=$(/home/missu/.git/mine/emailcount/getcount.sh)
+  # COUNT=$(heroku run getcount.sh -a emailcount &> /dev/null)
+  # COUNT=$(_s-unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
+  COUNT=$(sqlite3 ~/.local/share/geary/account_01/geary.db 'SELECT unread_count FROM FolderTable' | head -1)
+  
+  if test $COUNT -gt 0;then
+    COUNT="$COUNT 󰚇"
+  else
+    COUNT=""
+  fi
 
   printf -- '%s\n' "COUNT|string|${COUNT}"
   printf -- '%s\n' ""
 
-#  sleep $INTERVAL
+ sleep $INTERVAL
 done

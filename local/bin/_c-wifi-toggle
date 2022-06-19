@@ -2,19 +2,21 @@
 
 #DejaVu Sans Mono!/bin/sh
 #cmd=`nmcli radio wifi`
-cmd=`iwctl adapter phy0 show | grep Powered | awk '{print $4}'`
-cmdOn='iwctl adapter phy0 set-property Powered on'
-cmdOff='iwctl adapter phy0 set-property Powered off'
+# cmd=`iwctl adapter phy0 show | grep Powered | awk '{print $4}'`
+# cmdOn='iwctl adapter phy0 set-property Powered on'
+# cmdOff='iwctl adapter phy0 set-property Powered off'
+IsPowered=""
+PowerOn="dbus-send --system --print-reply=literal --dest=net.connman.iwd /net/connman/iwd/0 org.freedesktop.DBus.Properties.Set string:net.connman.iwd.Adapter string:Powered variant:boolean:true"
+PowerOff="dbus-send --system --print-reply=literal --dest=net.connman.iwd /net/connman/iwd/0 org.freedesktop.DBus.Properties.Set string:net.connman.iwd.Adapter string:Powered variant:boolean:false"
 
-if [ $cmd == "on" ]
+if [ $(dbus-send --system  --print-reply=literal --dest=net.connman.iwd /net/connman/iwd/0 org.freedesktop.DBus.Properties.Get string:net.connman.iwd.Adapter string:Powered | awk '{print $3}') == "true" ]
 then
-	$cmdOff
-    icon="󰤭"
-	// state="Off"
+	$PowerOff
+	icon="󰤭"
 else
-	$cmdOn
-    icon="󰤥"
-	// state="On"
+	dbus-send --system --print-reply=literal --dest=net.connman.iwd /net/connman/iwd/0 org.freedesktop.DBus.Properties.Set string:net.connman.iwd.Adapter string:Powered variant:boolean:true
+  icon="󰤥"
 fi
-	 notify-send -u low -a control \
-     WiFi $icon
+
+notify-send -u low -a control \
+	WiFi $icon

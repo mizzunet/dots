@@ -1,0 +1,27 @@
+#!/usr/bin/env python3
+import imaplib
+import argparse
+
+# Construct the argument parser
+ap = argparse.ArgumentParser()
+
+# Add the arguments to the parser
+ap.add_argument("-u", "--username", required=True)
+ap.add_argument("-p", "--password", required=True)
+ap.add_argument("-S", "--server", required=True)
+ap.add_argument("-P", "--port", required=True)
+args = vars(ap.parse_args())
+
+# Variables
+ICON_READ='󰗯'
+ICON_UNREAD='󰚇'
+
+obj = imaplib.IMAP4(str(args['server']), str(args['port']))
+obj.login(str(args['username']), str(args['password']))
+obj.select()
+COUNT = len(obj.search(None, 'UnSeen')[1][0].split())
+
+if COUNT > 0:
+    print(str(COUNT) + ' ' + ICON_UNREAD)
+else:
+    exit()

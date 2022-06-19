@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 # Script to change brightness level by brillo with animation. Also send notification
-action=$1
-current=$(brillo)
 
-if (( $(bc <<<"$current < 5.0") ));then
+if (( $(bc <<<"$(brillo) < 5.0") ));then
 	up=2
 	down=2
 else
@@ -11,7 +9,7 @@ else
 	down=8
 fi
 
-case $action in
+case $1 in
 	up)
 		brillo -q -u 150000 -A $up
 		;;
@@ -20,9 +18,7 @@ case $action in
 		;;
 esac
 
-current=$(brillo)
-
-notify-send -u low -a control \
-	-h int:value:$current "Brightness" -t 1000 
-	# -h int:value:$current "Brightness󰃟" -t 1000 
+notify-send -u low -a control -t 1000 \
+	-h int:value:$(brillo) \
+	"Brightness" 
 

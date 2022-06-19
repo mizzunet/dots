@@ -1,0 +1,23 @@
+#!/bin/bash
+
+case $1 in
+
+  up)
+  wlr-randr --output eDP-1 --transform normal
+  riverctl send-layout-cmd rivertile "main-location top"
+  ;;
+  down)
+  wlr-randr --output eDP-1 --transform 180
+  riverctl send-layout-cmd rivertile "main-location bottom"
+  ;;
+  right)
+  wlr-randr --output eDP-1 --transform 270
+  riverctl send-layout-cmd rivertile "main-location right"
+  ;;
+  left)
+  wlr-randr --output eDP-1 --transform 90 
+  riverctl send-layout-cmd rivertile "main-location left"
+  ;;
+
+esac
+  

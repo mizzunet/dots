@@ -1,32 +1,26 @@
 #!/bin/bash
 
-action="$@"
-volume="$(pamixer --get-volume)"
-
-case $action in
+case $1 in
 	down)
 	pamixer -d 5 > /dev/null;
-  #if $( pamixer --get-mute); then pamixer -u;  fi
   ;;
-
 	up)
 	pamixer -i 5 > /dev/null;
-  #if $( pamixer --get-mute); then pamixer -u;  fi
 	;;
-
 	mute)
-    if $( pamixer --get-mute); then pamixer -u; else pamixer -m; fi
+  if $( pamixer --get-mute); then pamixer -u; else pamixer -m; fi
 	;;
+  *)
+  echo pass somthing
+  ;;
 esac
 
-if $( pamixer --get-mute);
-   notify-send -u low -a control \
-  -h int:value:"$(pamixer --get-volume)" Volume -t 1000 
-  # -h int:value:"$(pamixer --get-volume)" Volume󰋌 -t 1000 
- then exit;
+if $(pamixer --get-mute); then
+  notify-send -u low -a control \
+  Volume Muted -t 1000  
 else
- notify-send -u low \
-  Volume Muted -t 1000 -i $icon
-  # "Volume󰋌 " Muted -t 1000 -i $icon
+  notify-send -u low -a control \
+  -h int:value:"$(pamixer --get-volume)" \
+  Volume -t 1000 
 fi
 

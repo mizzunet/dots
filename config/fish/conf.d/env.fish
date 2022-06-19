@@ -1,4 +1,4 @@
-export HYDROXIDE_BRIDGE_PASS=24qD8u1isQDhzLbndhMwAx08YWNdnvCTLeVvZzF74lo=
+export HYDROXIDE_BRIDGE_PASS=9oVyMJAo7qUIkha8+NmTaYOLHLHy12RwXdQWlb5j1pk=
 
 ## Editor
 export EDITOR="hx"
@@ -10,7 +10,7 @@ export LIBVA_DRIVERS_PATH=/usr/lib/dri
 export MESA_GLSL_CACHE_DISABLE=true
 export MESA_LOADER_DRIVER_OVERRIDE=i965
 export KOOHA_VAAPI=1
-export GTK_THEME=Materia-dark-compact
+# export GTK_THEME=Materia-dark-compact
 export GST_VAAPI_ALL_DRIVERS=1
 
 ## spotify_dl

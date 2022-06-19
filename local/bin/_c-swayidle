@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 set -e
 
-PROGRAMS="yay aria2c rsync yt-dlp"
+PROGRAMS="yay aria2c rsync yt-dlp git"
 
 if (pidof swayidle > /dev/null) && (pidof rivertile > /dev/null);then 
 

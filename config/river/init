@@ -1,4 +1,4 @@
-#############
+############
 # VARIABLES #
 #############
 TERM=foot
@@ -13,19 +13,17 @@ ALL_TAGS=$(((1 << 32) - 1))
 #font=''
 
 MAP='riverctl map normal'
-INPUT='riverctl input'
-SPAWN='riverctl spawn'
 CMD='riverctl'
-ROTATE='wlr-randr --output eDP-1 --transform '
+INPUT="$CMD input"
+SPAWN="$CMD spawn"
 TOUCHPAD='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
-KERNEL='xanmod-edge'
 GSET='gsettings set'
 INTERFACE='org.gnome.desktop.interface'
 
 ############
 # MAPPINGS #
 ############
-$MAP Super+Shift   Return spawn "$TERM"
+$MAP Super+Shift   Return spawn "$TERM bash"
 $MAP Control+Shift escape spawn "$TERM htop"
 $MAP Super          Space spawn "$MENU"
 $MAP Super              e spawn "$FILES"
@@ -34,11 +32,12 @@ $MAP Super+Shift        m spawn "xdg-open https://mail.protonmail.com/u/0/all-ma
 $MAP Control+Alt+Shift Delete spawn "loginctl reboot"
 $MAP Control+Alt   Delete spawn "_s-reboot"
 $MAP Control       Escape spawn "dbus-send --print-reply --dest=org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako.DismissLastNotification" 
-$MAP Control+Shift      E spawn "emote"
-$MAP Control+Alt       Up spawn "$ROTATE normal && riverctl send-layout-cmd rivertile main-location right"
-$MAP Control+Alt     Down spawn "$ROTATE 180 && riverctl send-layout-cmd rivertile main-location bottom"
-$MAP Control+Alt    Right spawn "$ROTATE 270 && riverctl send-layout-cmd rivertile main-location right"
-$MAP Control+Alt     Left spawn "$ROTATE 90 && riverctl send-layout-cmd rivertile main-location right"
+#$MAP Control+Shift      E spawn "emote"
+$MAP Control+Alt       Up spawn "_s-rotate up"
+$MAP Control+Alt     Down spawn "_s-rotate down"
+$MAP Control+Alt    Right spawn "_s-rotate right"
+$MAP Control+Alt     Left spawn "_s-rotate left"
+$MAP Super 		T spawn "$TERM taskwarrior-tui"
 
 ## SCRIPTS
 $MAP None          Print spawn "_s-screenshot select-copy"
@@ -60,7 +59,7 @@ $MAP None  XF86AudioLowerVolume spawn "_c-volume-change down"
 #$MAP None         XF86AudioMute spawn "_wpctl mute"
 $MAP None   XF86MonBrightnessUp spawn "_c-brightness-change up"
 $MAP None XF86MonBrightnessDown spawn "_c-brightness-change down"
-$MAP Control         Space spawn 'playerctl play-pause && notify-send -u low -a control $(playerctl metadata | head -1 | cut -d" " -f1) $(playerctl status)'
+$MAP Control         Space spawn 'playerctl play-pause && notify-send -t 1500 -u low -a control $(playerctl metadata | head -1 | cut -d" " -f1) $(playerctl status)'
 
 ## BUILT-IN COMMANDS
 $MAP Super           Q  close
@@ -101,6 +100,10 @@ $MAP Super           Left send-layout-cmd rivertile "main-location left"
 #riverctl map helix None Alt_R spawn "riverctl enter-mode normal && notify-send -u low 'Normal mode'"
 #riverctl map normal None Alt_R spawn "riverctl enter-mode helix && notify-send -u low 'Helix mode'"
 riverctl map normal None KP_Insert spawn "wtype -P Right"
+#riverctl map normal Alt_R j spawn "wtype -P Down"
+#riverctl map normal Alt_R k spawn "wtype -P Up"
+#riverctl map normal Alt_R l spawn "wtype -P Right"
+#riverctl map normal Alt_R h spawn "wtype -P Left"
 riverctl map normal Control KP_Insert spawn "wtype -P XF86MonBrightnessUp"
 
 ## TAGS
@@ -125,8 +128,8 @@ $SPAWN "swaybg -i $WALLPAPER"
 $SPAWN "mako"
 $SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
 $SPAWN "systemctl --user import-environment"
-#$SPAWN "hydroxide -disable-carddav -imap-host 127.0.0.1 -smtp-host 127.0.0.1 serve 2&> /tmp/hydroxide"
-#$SPAWN "geary --gapplication-service"
+$SPAWN "hydroxide -debug -disable-carddav serve 2&> /tmp/hydroxide"
+$SPAWN "geary --gapplication-service"
 $SPAWN "/usr/lib/polkit-kde-authentication-agent-1"
 $SPAWN "_c-swayidle"
 $SPAWN "_c-nightlight"
@@ -134,6 +137,7 @@ $SPAWN "_d-udiskie"
 $SPAWN "_d-battery"
 $SPAWN "_d-clipboard watcher"
 #$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
+$SPAWN "$TERM taskwarrior-tui" 
 
 #$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"
 #$SPAWN "$GSET $INTERFACE icon-theme breeze-dark"

@@ -1,6 +1,6 @@
 #!/usr/bin/bash
 
-INTERVAL=15
+INTERVAL=150
 
 printf -- '%s\n' "CAFFIENE|string|"
 printf -- '%s\n' ""

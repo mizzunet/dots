@@ -1,31 +1,32 @@
 # GLOBAL
-sort=+time
+#sort=+time
+layer=overlay
 
 # STYLE
 font=Proxima Nova 12
 width=230
-margin=0,0,12
-padding=10
+margin=5,18,0
+padding=9
 border-size=1
-border-radius=4
+border-radius=13
 progress-color=#ffffff
 max-icon-size=36
 icon-path=/usr/share/icons/WhiteSur-dark:/usr/share/icons/WhiteSur:/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 format=<b>%s</b>\n%b
 text-alignment=center
-layer=overlay
-anchor=bottom-center
+anchor=top-right
 
 # CRITERA
 ## urgency
+
 [urgency=low]
-default-timeout=1500
+default-timeout=2500
 background-color=#000000
 border-color=#2D2D2D
 text-color=#ffffff
 
 [urgency=normal]
-default-timeout=6000
+default-timeout=8000
 background-color=#161616
 border-color=#565656
 text-color=#ffffff
@@ -40,7 +41,7 @@ on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 ## app-name
 [app-name=Geary]
-format=Geary<b>%s</b>\n%b
+format=Geary\n%s: %b
 
 [app-name=control]
 format=<b>%s</b>\n%b
@@ -49,6 +50,9 @@ group-by=summary
 [app-name=batsignal]
 format=<b>%s</b>\n%b
 group-by=app-name
+
+[app-name=udiskie]
+default-timeout=2500
 
 ## body
 [body=""]
