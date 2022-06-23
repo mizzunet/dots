@@ -5,7 +5,7 @@ bar:
  location: top
  layer: bottom
  spacing: 4
- font: Proxima Nova:size=17.3
+ font: SF Pro Text:size=17.3:weight=light
  left-margin: 6
  right-margin: 16
  foreground: F1F1F1FF

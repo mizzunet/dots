@@ -1,8 +1,8 @@
 export HYDROXIDE_BRIDGE_PASS=9oVyMJAo7qUIkha8+NmTaYOLHLHy12RwXdQWlb5j1pk=
 
 ## Editor
-export EDITOR="hx"
-export VISUAL="hx"
+export EDITOR="nv"
+export VISUAL="nv"
 
 ## LibVA
 export LIBVA_DRIVER_NAME=i965
@@ -50,6 +50,12 @@ export WINE_VK_VULKAN_ONLY=1
 export WINE_VK_USE_FSR=1
 export WINEFSYNC=1
 
-
 # SSH
 export SSH_SDF=ZtyprgVEItndKQ
+
+# vscodium
+export VSCODE_GALLERY_SERVICE_URL='https://marketplace.visualstudio.com/_apis/public/gallery'
+export VSCODE_GALLERY_CACHE_URL='https://vscode.blob.core.windows.net/gallery/index'
+export VSCODE_GALLERY_ITEM_URL='https://marketplace.visualstudio.com/items'
+export VSCODE_GALLERY_CONTROL_URL=''
+export VSCODE_GALLERY_RECOMMENDATIONS_URL=''

@@ -3,9 +3,9 @@
 #############
 TERM=foot
 FILES=pcmanfm-qt
-MENU='fuzzel --prompt=" > " --font="JetBrains Mono":size=12:weight=light --lines=20 --width 25 --horizontal-pad=0 --inner-pad=4 --no-icons --background=171717ff --text-color=EDEDED95 --selection-color=DA0037ff --selection-text-color=EDEDEDff --match-color=D8E9A8ff --border-color=DA0037ff --border-radius=5 --border-width=2  --line-height=18 --no-fuzzy'
+MENU=' fuzzel --prompt="     " --font="SF Pro Text":size=15:weight=light --lines=26 --width 13 --horizontal-pad=0  --inner-pad=9 --no-icons --background=1e222aff --text-color=b2b5bbff --selection-color=c882e7ff --selection-text-color=1e222aff --match-color=000000ff --line-height=17 --no-fuzzy'
 BROWSER=chromium
-WALLPAPER=~/Pictures/pexels-cátia-matos-1072179.jpg
+WALLPAPER="~/Pictures/pexels-elijah-o'donnell-3473569.jpg"
 ALL_TAGS=$(((1 << 32) - 1))
 #gtk-theme=''
 #cursor-theme=''
@@ -28,7 +28,7 @@ $MAP Control+Shift escape spawn "$TERM htop"
 $MAP Super          Space spawn "$MENU"
 $MAP Super              e spawn "$FILES"
 $MAP Super              b spawn "$BROWSER"
-$MAP Super+Shift        m spawn "xdg-open https://mail.protonmail.com/u/0/all-mail#filter=unread"
+$MAP Super+Shift        m spawn "xdg-open https://mail.proton.me/u/0/inbox#filter=unread" 
 $MAP Control+Alt+Shift Delete spawn "loginctl reboot"
 $MAP Control+Alt   Delete spawn "_s-reboot"
 $MAP Control       Escape spawn "dbus-send --print-reply --dest=org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako.DismissLastNotification" 
@@ -124,7 +124,7 @@ $CMD map-pointer normal Super BTN_LEFT move-view
 # SPAWNS #
 ##########
 $SPAWN yambar
-$SPAWN "swaybg -i $WALLPAPER"
+$SPAWN "swaybg -i ~/Pictures/pexels-forest.jpg"
 $SPAWN "mako"
 $SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
 $SPAWN "systemctl --user import-environment"
@@ -138,6 +138,7 @@ $SPAWN "_d-battery"
 $SPAWN "_d-clipboard watcher"
 #$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
 $SPAWN "$TERM taskwarrior-tui" 
+$SPAWN $MENU
 
 #$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"
 #$SPAWN "$GSET $INTERFACE icon-theme breeze-dark"

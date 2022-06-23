@@ -3,7 +3,7 @@
 layer=overlay
 
 # STYLE
-font=Proxima Nova 12
+font=SF Pro Text 12.5
 width=230
 margin=5,18,0
 padding=9
