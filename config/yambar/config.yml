@@ -1,11 +1,13 @@
 icon: &icon  Material Design Icons:style=Regular:pixelsize=18
 tags: &tags Material Design Icons:style=Regular:pixelsize=23
+# title: &title Google:style=Regular:pixelsize=19
+
 bar:
  height: 36
  location: top
  layer: bottom
  spacing: 4
- font: SF Pro Text:size=17.3:weight=light
+ font: Inter:size=17.4:weight=regular
  left-margin: 6
  right-margin: 16
  foreground: F1F1F1FF
@@ -61,6 +63,10 @@ bar:
        date-format: "%a %d"
        content:
          - string: {text: "{time} {date}"}
+   # - river:
+   #     title: {string: { text: "{title}"}}
+   #     content: { empty: {}}
+
  right:
    - script:
        path: /home/missu/.config/yambar/scripts/_yambar_caffiene

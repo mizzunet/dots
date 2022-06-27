@@ -3,22 +3,21 @@
 layer=overlay
 
 # STYLE
-font=SF Pro Text 12.5
+font=Inter 12
 width=230
 margin=5,18,0
 padding=9
 border-size=1
-border-radius=13
+border-radius=10
 progress-color=#ffffff
 max-icon-size=36
 icon-path=/usr/share/icons/WhiteSur-dark:/usr/share/icons/WhiteSur:/usr/share/icons/Adwaita:/usr/share/icons/hicolor
 format=<b>%s</b>\n%b
-text-alignment=center
+text-alignment=left
 anchor=top-right
 
 # CRITERA
 ## urgency
-
 [urgency=low]
 default-timeout=2500
 background-color=#000000
@@ -46,6 +45,9 @@ format=Geary\n%s: %b
 [app-name=control]
 format=<b>%s</b>\n%b
 group-by=summary
+anchor=top-center
+width=250
+text-alignment=center
 
 [app-name=batsignal]
 format=<b>%s</b>\n%b

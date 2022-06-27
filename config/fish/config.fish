@@ -1,5 +1,4 @@
 # starship prompt
-starship init fish | source
 # zoxide
 zoxide init fish | source
 

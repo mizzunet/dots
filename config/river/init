@@ -3,9 +3,12 @@
 #############
 TERM=foot
 FILES=pcmanfm-qt
-MENU=' fuzzel --prompt="     " --font="SF Pro Text":size=15:weight=light --lines=26 --width 13 --horizontal-pad=0  --inner-pad=9 --no-icons --background=1e222aff --text-color=b2b5bbff --selection-color=c882e7ff --selection-text-color=1e222aff --match-color=000000ff --line-height=17 --no-fuzzy'
-BROWSER=chromium
+MENU=' fuzzel --prompt="     " --font="SF Pro":size=16:weight=light --lines=26 --width 13 --horizontal-pad=0  --inner-pad=9 --no-icons --background=1e222aff --text-color=b2b5bbff --selection-color=c882e7ff --selection-text-color=1e222aff --match-color=000000ff --line-height=18 --no-fuzzy'
 WALLPAPER="~/Pictures/pexels-elijah-o'donnell-3473569.jpg"
+BROWSER=chromium
+MAIL=geary
+EDITOR=vscodium
+
 ALL_TAGS=$(((1 << 32) - 1))
 #gtk-theme=''
 #cursor-theme=''
@@ -28,6 +31,9 @@ $MAP Control+Shift escape spawn "$TERM htop"
 $MAP Super          Space spawn "$MENU"
 $MAP Super              e spawn "$FILES"
 $MAP Super              b spawn "$BROWSER"
+$MAP Super              m spawn "$MAIL"
+$MAP Super              i spawn "$EDITOR"
+
 $MAP Super+Shift        m spawn "xdg-open https://mail.proton.me/u/0/inbox#filter=unread" 
 $MAP Control+Alt+Shift Delete spawn "loginctl reboot"
 $MAP Control+Alt   Delete spawn "_s-reboot"
@@ -131,13 +137,14 @@ $SPAWN "systemctl --user import-environment"
 $SPAWN "hydroxide -debug -disable-carddav serve 2&> /tmp/hydroxide"
 $SPAWN "geary --gapplication-service"
 $SPAWN "/usr/lib/polkit-kde-authentication-agent-1"
+#$SPAWN "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 $SPAWN "_c-swayidle"
 $SPAWN "_c-nightlight"
 $SPAWN "_d-udiskie"
 $SPAWN "_d-battery"
 $SPAWN "_d-clipboard watcher"
 #$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
-$SPAWN "$TERM taskwarrior-tui" 
+$SPAWN "WAYLAND_DEBUG=1 /home/missu/.git/de/foot taskwarrior-tui" 
 $SPAWN $MENU
 
 #$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"

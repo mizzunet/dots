@@ -49,6 +49,8 @@ export WINEDLLOVERRIDES="mscoree=d;mshtml=d"
 export WINE_VK_VULKAN_ONLY=1
 export WINE_VK_USE_FSR=1
 export WINEFSYNC=1
+export MESA_LOADER_DRIVER_OVERRIDE=crocus
+
 
 # SSH
 export SSH_SDF=ZtyprgVEItndKQ

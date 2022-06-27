@@ -4,7 +4,7 @@ switch $(tty)
     echo river crashed
     #exec river;
   else;
-    exec river 2> /tmp/river.log;
+    exec WAYLAND_DEBUG=1 river 2> /tmp/river.log;
     #echo river crashed
   end
 end

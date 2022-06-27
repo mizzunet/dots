@@ -1,0 +1,2 @@
+#!/bin/bash
+ sudo pacman -Qii | awk '/^MODIFIED/ {print $2}'
