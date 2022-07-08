@@ -1,0 +1,26 @@
+riverctl map normal Super+Shift L send-layout-cmd stacktile 'primary_count +1'
+riverctl map normal Super+Shift H send-layout-cmd stacktile 'primary_count -1'
+riverctl map normal Super L send-layout-cmd stacktile 'primary_ratio +0.1'
+riverctl map normal Super H send-layout-cmd stacktile 'primary_ratio -0.1'
+riverctl map normal Super 0 send-layout-cmd stacktile 'primary_sublayout rows,stack,dwindle'
+riverctl map normal Alt L send-layout-cmd stacktile 'secondary_ratio +0.1'
+riverctl map normal Alt H send-layout-cmd stacktile 'secondary_ratio -0.1'
+riverctl map normal Alt+Shift L send-layout-cmd stacktile 'secondary_count +1'
+riverctl map normal Alt+Shift H send-layout-cmd stacktile 'secondary_count -1'
+riverctl map normal Alt 0 send-layout-cmd stacktile 'remainder_sublayout stack,grid'
+riverctl map normal Super Up send-layout-cmd stacktile 'primary_postion up'
+riverctl map normal Super Down send-layout-cmd stacktile 'primary_postion down'
+riverctl map normal Super Right send-layout-cmd stacktile 'primary_postion right'
+riverctl map normal Super Left send-layout-cmd stacktile 'primary_postion left'
+riverctl map normal Super           Q  close
+riverctl map normal Super+Shift   End  exit
+riverctl map normal Super           J  focus-view next
+riverctl map normal Super           K  focus-view previous
+riverctl map normal Super+Shift     J  swap next
+riverctl map normal Super+Shift     K  swap previous
+riverctl map normal Super      Return  zoom
+riverctl map normal Super+Shift Space  toggle-float
+riverctl map normal Super+Shift Return spawn $TERM
+
+riverctl spawn stacktile
+riverctl output-layout stacktile

@@ -3,15 +3,16 @@
 layer=overlay
 
 # STYLE
-font=Inter 12
-width=230
+font=SF Pro Text 11
+width=220
 margin=5,18,0
-padding=9
+padding=7
 border-size=1
 border-radius=10
 progress-color=#ffffff
 max-icon-size=36
 icon-path=/usr/share/icons/WhiteSur-dark:/usr/share/icons/WhiteSur:/usr/share/icons/Adwaita:/usr/share/icons/hicolor
+icon-location=right
 format=<b>%s</b>\n%b
 text-alignment=left
 anchor=top-right
@@ -39,6 +40,13 @@ text-color=#ffffff
 on-notify=exec mpv /usr/share/sounds/freedesktop/stereo/dialog-warning.oga
 
 ## app-name
+[app-name=Pomodoro]
+anchor=top-center
+format=%s\n%b
+group-by=app-name
+default-timeout=1000
+on-notify=exec echo hello
+
 [app-name=Geary]
 format=Geary\n%s: %b
 
@@ -46,7 +54,6 @@ format=Geary\n%s: %b
 format=<b>%s</b>\n%b
 group-by=summary
 anchor=top-center
-width=250
 text-alignment=center
 
 [app-name=batsignal]

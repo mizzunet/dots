@@ -1,0 +1,47 @@
+#!/bin/bash
+set -e
+
+ACTION=$1
+
+State=$(dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.freedesktop.DBus.Properties.Get string:org.gnome.Pomodoro string:State | awk '{print $2}')
+isPaused=$(dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.freedesktop.DBus.Properties.Get string:org.gnome.Pomodoro string:IsPaused | awk '{print $3}')
+
+case $ACTION in
+  start-resume-pause)
+    if test "$State" = "null"; then
+      dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Start
+    else
+      if test "$isPaused" = true; then
+        dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Resume
+      else
+        dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Pause
+        notify-send Pomodoro Paused -i gnome-pomodoro -a Pomodoro
+      fi
+    fi
+  ;;
+
+  start)
+    dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Start
+  ;;
+
+  pause)
+    isPaused=$(dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.freedesktop.DBus.Properties.Get string:org.gnome.Pomodoro string:IsPaused | awk '{print $3}')
+
+    if test "$isPaused" = false; then
+      dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Pause
+      notify-send Pomodoro Paused -i gnome-pomodoro -a Pomodoro
+    fi
+  ;;
+
+  resume)
+   dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Resume
+  ;;
+
+  stop)
+   dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Stop
+  ;;
+
+  skip)
+   dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.gnome.Pomodoro.Skip
+  ;;
+esac

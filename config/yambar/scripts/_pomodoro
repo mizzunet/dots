@@ -1,0 +1,13 @@
+#!/bin/bash
+
+elapsed=$(dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.freedesktop.DBus.Properties.Get string:org.gnome.Pomodoro string:Elapsed | awk '{print $3}')
+duration=$(dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.freedesktop.DBus.Properties.Get string:org.gnome.Pomodoro string:StateDuration| awk '{print $3}')
+left=$(echo "$duration - $elapsed" | bc)
+
+printf -- '%s\n' "status|string|Paused"
+printf -- '%s\n' "time|string|$(date -d@${left} -u +%M:%S)"
+printf -- '%s\n' ""
+
+dbus-monitor  "type='signal',sender='org.gnome.Pomodoro',interface='org.freedesktop.DBus.Properties',path='/org/gnome/Pomodoro',member='PropertiesChanged'" | awk '  /"Elapsed"/ {getline; leftSec=$3; command = "dbus-send  --print-reply=literal --dest=org.gnome.Pomodoro /org/gnome/Pomodoro org.freedesktop.DBus.Properties.Get string:org.gnome.Pomodoro string:StateDuration | cut -d\" \" -f12";close(command); command |& getline duration; if(duration=="300") {status="󱦠"}; cmd="date -d@"duration-leftSec" -u +%M:%S"; cmd |& getline left; print "status|string|Running"; print "time|string|"left; print ""}'
+
+#/"IsPaused"/ {getline; if($3=="true") {print "STATUS|string|Paused";print "OUTPUT|string|"; print ""}} 

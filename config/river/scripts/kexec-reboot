@@ -1,0 +1,3 @@
+#!/bin/bash
+
+pkexec sh -c 'kexec -l /boot/vmlinuz-linux-zen --initrd=/boot/booster-linux-zen.img  --reuse-cmdline; kexec -e'

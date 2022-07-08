@@ -1,0 +1,26 @@
+riverctl declare-mode rivertile
+riverctl map normal Super 0 spawn enter-mode rivertile
+riverctl map rivertile Super 0 spawn enter-mode normal
+riverctl map rivertile Super H send-layout-cmd rivertile "main-ratio -0.05"
+riverctl map rivertile Super L send-layout-cmd rivertile "main-ratio +0.05"
+riverctl map rivertile Super+Shift H  send-layout-cmd rivertile "main-count -1"
+riverctl map rivertile Super+Shift L send-layout-cmd rivertile "main-count +1"
+riverctl map rivertile Super Up send-layout-cmd rivertile "main-location top"
+riverctl map rivertile Super Right send-layout-cmd rivertile "main-location right"
+riverctl map rivertile Super Down send-layout-cmd rivertile "main-location bottom"
+riverctl map rivertile Super Left send-layout-cmd rivertile "main-location left"
+riverctl map rivertile Super Q close
+riverctl map rivertile Super+Shift End  exit
+riverctl map rivertile Super J focus-view next
+riverctl map rivertile Super K focus-view previous
+riverctl map rivertile Super+Shift J swap next
+riverctl map rivertile Super+Shift K swap previous
+riverctl map rivertile Super Return zoom
+riverctl map rivertile Super+Shift Space toggle-float
+
+riverctl map rivertile Super+Shift Return spawn $TERM
+
+riverctl spawn rivertile
+riverctl output-layout rivertile
+riverctl enter-mode rivertile
+

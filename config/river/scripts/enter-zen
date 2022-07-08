@@ -1,0 +1,19 @@
+#!/bin/bash
+
+FILE='/tmp/river_zen'
+
+if(test -f $FILE);then
+  echo Exiting Zen Mode
+  rm $FILE
+  pomodoro-cli pause
+  riverctl enter-mode normal
+  pkill yambar
+  yambar &
+else
+  echo Entering Zen Mode
+  touch $FILE
+  riverctl enter-mode zen
+  pkill yambar
+  yambar -c ~/.config/yambar/zen.yml &
+  pomodoro-cli start
+fi

@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+INTERVAL=20
+
+printf -- '%s\n' "count|string|"
+printf -- '%s\n' ""
+
+while true
+do
+  COUNT=$(sqlite3 ~/.local/share/Anki2/User\ 1/collection.anki2 'SELECT COUNT(*),due FROM cards  WHERE due>=7' | cut -d'|' -f1)
+  
+  if test $COUNT -gt 0;then
+    COUNT="󰄶$COUNT"
+  else
+    COUNT=""
+  fi
+
+  printf -- '%s\n' "count|string|${COUNT}"
+  printf -- '%s\n' ""
+
+ sleep $INTERVAL
+done

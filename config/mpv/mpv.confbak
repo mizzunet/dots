@@ -7,3 +7,6 @@ ao=pipewire
 
 audio-display=no
 volume=130
+
+af=scaletempo2
+

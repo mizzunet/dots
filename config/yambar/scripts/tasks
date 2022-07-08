@@ -1,0 +1,22 @@
+#!/usr/bin/bash
+
+INTERVAL=20
+
+printf -- '%s\n' "COUNT|string|"
+printf -- '%s\n' ""
+
+while true
+do
+  COUNT=$(task status:pending count)
+  
+  if test $COUNT -gt 0;then
+    COUNT="󰄴 $COUNT"
+  else
+    COUNT=""
+  fi
+
+  printf -- '%s\n' "COUNT|string|${COUNT}"
+  printf -- '%s\n' ""
+
+ sleep $INTERVAL
+done

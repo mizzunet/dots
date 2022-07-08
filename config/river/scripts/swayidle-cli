@@ -18,6 +18,7 @@ else
   timeout 90 'wlr-randr --output eDP-1 --off' \
   resume 'wlr-randr --output eDP-1 --on' \
   timeout 180 'if ! test $(pidof $PROGRAMS); then _s-lockscreen; else exit;fi' \
-  resume 'wlr-randr --output eDP-1 --on && brillo -q -u 100000 -A 8' 
-
+  resume 'wlr-randr --output eDP-1 --on && brillo -q -u 100000 -A 8'  \
+  timeout 200 'loginctl suspend' \
+  resume 'swaylock --color 000000 --image Pictures/Wallpaper/wall10.jpg --indicator-caps-lock'
 fi

@@ -1,193 +1,133 @@
-############
-# VARIABLES #
-#############
 TERM=foot
-FILES=pcmanfm-qt
-MENU=' fuzzel --prompt="     " --font="SF Pro":size=16:weight=light --lines=26 --width 13 --horizontal-pad=0  --inner-pad=9 --no-icons --background=1e222aff --text-color=b2b5bbff --selection-color=c882e7ff --selection-text-color=1e222aff --match-color=000000ff --line-height=18 --no-fuzzy'
-WALLPAPER="~/Pictures/pexels-elijah-o'donnell-3473569.jpg"
+FILES=nautilus
 BROWSER=chromium
 MAIL=geary
-EDITOR=vscodium
+WALLPAPER=~/Pictures/Wallpaper/wall7.jpg
+EDITOR='vscodium --enable-features=UseOzonePlatform --ozone-platform=wayland --force-dark-mode --enable-features=WebUIDarkMode'
+MENU='fuzzel --prompt="     " --font="SF Pro Text":size=16:weight=light --lines=21 --width 13 --horizontal-pad=0  --inner-pad=9 --no-icons --background=1e222aff --text-color=b2b5bbff --selection-color=c882e7ff --selection-text-color=1e222aff --match-color=ffffffff --line-height=18 --no-fuzzy'
 
-ALL_TAGS=$(((1 << 32) - 1))
-#gtk-theme=''
-#cursor-theme=''
-#icon-theme=''
-#font=''
+--------------------------
+--------- SPAWNS ---------
+--------------------------
+riverctl spawn 'riverctl background-color 0x000000'
+riverctl spawn "swaybg -i $WALLPAPER"
+riverctl spawn yambar
+riverctl spawn mako
+riverctl spawn "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
+riverctl spawn "systemctl --user import-environment"
+riverctl spawn "hydroxide -debug -disable-carddav serve 2&> /tmp/hydroxide"
+riverctl spawn "geary --gapplication-service"
+riverctl spawn /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+riverctl spawn swayidle-cli
+riverctl spawn wlsunset-cli
+riverctl spawn udiskie-cli
+riverctl spawn batsignal-cli
+riverctl spawn "clipman-cli watcher"
+riverctl spawn "$TERM taskwarrior-tui" 
 
-MAP='riverctl map normal'
-CMD='riverctl'
-INPUT="$CMD input"
-SPAWN="$CMD spawn"
-TOUCHPAD='pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad'
-GSET='gsettings set'
-INTERFACE='org.gnome.desktop.interface'
-
-############
-# MAPPINGS #
-############
-$MAP Super+Shift   Return spawn "$TERM bash"
-$MAP Control+Shift escape spawn "$TERM htop"
-$MAP Super          Space spawn "$MENU"
-$MAP Super              e spawn "$FILES"
-$MAP Super              b spawn "$BROWSER"
-$MAP Super              m spawn "$MAIL"
-$MAP Super              i spawn "$EDITOR"
-
-$MAP Super+Shift        m spawn "xdg-open https://mail.proton.me/u/0/inbox#filter=unread" 
-$MAP Control+Alt+Shift Delete spawn "loginctl reboot"
-$MAP Control+Alt   Delete spawn "_s-reboot"
-$MAP Control       Escape spawn "dbus-send --print-reply --dest=org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako.DismissLastNotification" 
-#$MAP Control+Shift      E spawn "emote"
-$MAP Control+Alt       Up spawn "_s-rotate up"
-$MAP Control+Alt     Down spawn "_s-rotate down"
-$MAP Control+Alt    Right spawn "_s-rotate right"
-$MAP Control+Alt     Left spawn "_s-rotate left"
-$MAP Super 		T spawn "$TERM taskwarrior-tui"
-
-## SCRIPTS
-$MAP None          Print spawn "_s-screenshot select-copy"
-$MAP Shift         Print spawn "_s-screenshot copy"
-$MAP Super             c spawn "_d-clipboard clipman"
-$MAP Control+Shift Print spawn "_s-screenrecord"
-$MAP Alt+Shift         P spawn "_s-playwithmpv"
-$MAP Alt               W spawn "_s-waydroid"
-$MAP Super        Escape spawn "_s-blanket"
-
-## CONTROLS
-$MAP Super+Shift       C spawn "_c-swayidle"
-$MAP Super+Shift       W spawn "_c-wifi-toggle"
-$MAP Super+Shift       N spawn "_c-nightlight"
-$MAP None  XF86AudioRaiseVolume spawn "_c-volume-change up"
-$MAP None  XF86AudioLowerVolume spawn "_c-volume-change down"
-#$MAP None  XF86AudioRaiseVolume spawn "_wpctl up"
-#$MAP None  XF86AudioLowerVolume spawn "_wpctl down"
-#$MAP None         XF86AudioMute spawn "_wpctl mute"
-$MAP None   XF86MonBrightnessUp spawn "_c-brightness-change up"
-$MAP None XF86MonBrightnessDown spawn "_c-brightness-change down"
-$MAP Control         Space spawn 'playerctl play-pause && notify-send -t 1500 -u low -a control $(playerctl metadata | head -1 | cut -d" " -f1) $(playerctl status)'
-
-## BUILT-IN COMMANDS
-$MAP Super           Q  close
-$MAP Super+Shift   End  exit
-$MAP Super           J  focus-view next
-$MAP Super           K  focus-view previous
-$MAP Super+Shift     J  swap next
-$MAP Super+Shift     K  swap previous
-$MAP Super      Return  zoom
-$MAP Super           H  send-layout-cmd rivertile "main-ratio -0.05"
-$MAP Super           L  send-layout-cmd rivertile "main-ratio +0.05"
-$MAP Super+Shift     H  send-layout-cmd rivertile "main-count -1"
-$MAP Super+Shift     L  send-layout-cmd rivertile "main-count +1"
-$MAP Super+Shift Space  toggle-float
-$MAP Super           F  toggle-fullscreen
-$MAP Super           Up send-layout-cmd rivertile "main-location top"
-$MAP Super           Right send-layout-cmd rivertile "main-location right"
-$MAP Super           Down send-layout-cmd rivertile "main-location bottom"
-$MAP Super           Left send-layout-cmd rivertile "main-location left"
-
-## HELIX KEYBINDING FOR EDITING
-#$CMD declare-mode helix
-#riverctl map helix None h spawn "wtype -P Left"
-#riverctl map helix None l spawn "wtype -P Right"
-#riverctl map helix None j spawn "wtype -P Down"
-#riverctl map helix None k spawn "wtype -P Up"
-#riverctl map helix None d spawn "wtype -P BackSpace"
-#riverctl map helix None i spawn "riverctl enter-mode normal && notify-send -u low 'Normal mode'"
-#riverctl map helix None a spawn "wtype -P Right && riverctl enter-mode normal && notify-send -u low 'Normal mode'"
-#riverctl map helix None I spawn "wtype -P Home  && riverctl enter-mode normal && notify-send -u low 'Normal mode'"
-#riverctl map helix None A spawn "wtype -P End   && riverctl enter-mode normal && notify-send -u low 'Normal mode'"
-#riverctl map helix None w spawn "wtype -M ctrl -P Right"
-#riverctl map helix None b spawn "wtype -M ctrl -P Left"
-#riverctl map helix None c spawn "wtype -P BackSapce && riverctl enter-mode normal"
-#riverctl map helix None x spawn "wtype -P BackSapce"
-#riverctl map helix None u spawn "wtype -M ctrl z"
-#riverctl map helix None U spawn "wtype -M ctrl+Shift z"
-#riverctl map helix None Alt_R spawn "riverctl enter-mode normal && notify-send -u low 'Normal mode'"
-#riverctl map normal None Alt_R spawn "riverctl enter-mode helix && notify-send -u low 'Helix mode'"
-riverctl map normal None KP_Insert spawn "wtype -P Right"
-#riverctl map normal Alt_R j spawn "wtype -P Down"
-#riverctl map normal Alt_R k spawn "wtype -P Up"
-#riverctl map normal Alt_R l spawn "wtype -P Right"
-#riverctl map normal Alt_R h spawn "wtype -P Left"
-riverctl map normal Control KP_Insert spawn "wtype -P XF86MonBrightnessUp"
-
-## TAGS
-$MAP Super 0 set-focused-tags $ALL_TAGS
-$MAP Super+Shift 0 set-view-tags $ALL_TAGS
-for i in $(seq 1 9)
-do
-    tags=$((1 << ($i - 1)))
-
-    $MAP Super $i set-focused-tags $tags
-    $MAP Super+Shift $i set-view-tags $tags
+--------------------------
+-------- MAPPINGS --------
+--------------------------
+riverctl map normal Super+Shift   Return spawn $TERM
+riverctl map normal Control+Shift escape spawn "$TERM htop"
+riverctl map normal Super          Space spawn "$MENU"
+riverctl map normal Super              e spawn $FILES
+riverctl map normal Super              b spawn $BROWSER
+riverctl map normal Super              m spawn $MAIL
+riverctl map normal Super              i spawn "$EDITOR"
+riverctl map normal Super+Shift        m spawn "xdg-open https://mail.proton.me/u/0/inbox#filter=unread" 
+riverctl map normal Control+Alt+Shift Delete spawn "loginctl reboot"
+riverctl map normal Control       Escape spawn "dbus-send --print-reply --dest=org.freedesktop.Notifications /fr/emersion/Mako fr.emersion.Mako.DismissLastNotification" 
+riverctl map normal None       KP_Insert spawn "wtype -P Right"
+riverctl map normal Super 		T spawn "$TERM taskwarrior-tui"
+riverctl map normal Control         Space spawn 'playerctl play-pause && notify-send -t 1500 -u low -a control $(playerctl metadata | head -1 | cut -d" " -f1) $(playerctl status)'
+### SCRIPTS
+riverctl map normal Control+Alt       Up spawn "wlr-randr-cli up"
+riverctl map normal Control+Alt     Down spawn "wlr-randr-cli down"
+riverctl map normal Control+Alt    Right spawn "wlr-randr-cli right"
+riverctl map normal Control+Alt     Left spawn "wlr-randr-cli left"
+riverctl map normal None          Print spawn "grim-cli select-copy"
+riverctl map normal Shift         Print spawn "grim-cli copy"
+riverctl map normal Super             c spawn "clipman-cli clipman"
+riverctl map normal Control+Shift Print spawn wf-recorder-cli
+riverctl map normal Alt+Shift         P spawn playwithmpv
+riverctl map normal Alt               W spawn waydroid-cli
+riverctl map normal Control+Alt   Delete spawn kexec-reboot
+riverctl map normal Super+Shift       C spawn swayidle-cli
+riverctl map normal Super+Shift       W spawn iw-cli
+riverctl map normal Super+Shift       N spawn wlsunset-cli
+riverctl map normal None XF86AudioRaiseVolume spawn "pamixer-cli up"
+riverctl map normal None XF86AudioLowerVolume spawn "pamixer-cli down"
+riverctl map normal None XF86MonBrightnessUp spawn "brillo-cli up"
+riverctl map normal None XF86MonBrightnessDown spawn "brillo-cli down"
+riverctl map normal Control KP_Insert spawn "brillo-cli up"
+riverctl map normal Alt F1 spawn 'pomodoro-cli start-resume-pause'
+riverctl map normal Alt F2 spawn 'pomodoro-cli pause'
+riverctl map normal Alt F3 spawn 'pomodoro-cli skip'
+riverctl map normal Alt F4 spawn 'pomodoro-cli stop'
+### BUILT-IN COMMANDS
+riverctl map normal Super           Q  close
+riverctl map normal Super+Shift   End  exit
+riverctl map normal Super           J  focus-view next
+riverctl map normal Super           K  focus-view previous
+riverctl map normal Super+Shift     J  swap next
+riverctl map normal Super+Shift     K  swap previous
+riverctl map normal Super      Return  zoom
+riverctl map normal Super+Shift Space  toggle-float
+riverctl map normal Super           F  toggle-fullscreen
+riverctl map normal Super+Shift L send-layout-cmd stacktile 'primary_count +1'
+riverctl map normal Super+Shift H send-layout-cmd stacktile 'primary_count -1'
+riverctl map normal Super L send-layout-cmd stacktile 'primary_ratio +0.1'
+riverctl map normal Super H send-layout-cmd stacktile 'primary_ratio -0.1'
+riverctl map normal Super 0 send-layout-cmd stacktile 'primary_sublayout rows,stack,dwindle'
+#riverctl map normal Alt L send-layout-cmd stacktile 'secondary_ratio +0.1'
+#riverctl map normal Alt H send-layout-cmd stacktile 'secondary_ratio -0.1'
+riverctl map normal Alt+Shift L send-layout-cmd stacktile 'secondary_count +1'
+riverctl map normal Alt+Shift H send-layout-cmd stacktile 'secondary_count -1'
+riverctl map normal Alt 0 send-layout-cmd stacktile 'remainder_sublayout stack,grid'
+riverctl map normal Super Up send-layout-cmd stacktile 'primary_postion up'
+riverctl map normal Super Down send-layout-cmd stacktile 'primary_postion down'
+riverctl map normal Super Right send-layout-cmd stacktile 'primary_postion right'
+riverctl map normal Super Left send-layout-cmd stacktile 'primary_postion left'
+### ZEN
+riverctl declare-mode zen
+riverctl map normal Alt     Escape spawn enter-zen
+riverctl map zen Super Escape spawn enter-zen
+riverctl map zen Super F1     spawn 'pomodoro-cli start-resume-pause'
+riverctl map zen Super F2     spawn 'pomodoro-cli skip'
+riverctl map zen Super F3     spawn 'pomodoro-cli stop'
+riverctl map zen Super T      spawn "$TERM taskwarrior-tui"
+riverctl map zen Super F      toggle-fullscreen
+riverctl map zen Super 1      set-focused-tags 1
+riverctl map zen Super 2      set-focused-tags 2
+riverctl map zen Super+Shift 1 set-view-tags 1
+riverctl map zen Super+Shift 2 set-view-tags 2
+### TAGS
+for i in $(seq 1 9);do
+  tags=$((1 << ($i - 1)))
+  riverctl map normal Super $i set-focused-tags $tags
+  riverctl map normal Super+Shift $i set-view-tags $tags
 done
 
-$CMD map-pointer normal Super BTN_RIGHT resize-view
-$CMD map-pointer normal Super BTN_LEFT move-view
+--------------------------
+------ INPUT CONFIG ------
+--------------------------
+riverctl input pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad accel-profile adaptive
+riverctl input pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad pointer-accel 0.5
+riverctl input pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad tap enabled
+riverctl input pointer-1739-10608-SYN1B7E:01_06CB:2970_Touchpad tap-button-map left-right-middle
 
-##########
-# SPAWNS #
-##########
-$SPAWN yambar
-$SPAWN "swaybg -i ~/Pictures/pexels-forest.jpg"
-$SPAWN "mako"
-$SPAWN "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus"
-$SPAWN "systemctl --user import-environment"
-$SPAWN "hydroxide -debug -disable-carddav serve 2&> /tmp/hydroxide"
-$SPAWN "geary --gapplication-service"
-$SPAWN "/usr/lib/polkit-kde-authentication-agent-1"
-#$SPAWN "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
-$SPAWN "_c-swayidle"
-$SPAWN "_c-nightlight"
-$SPAWN "_d-udiskie"
-$SPAWN "_d-battery"
-$SPAWN "_d-clipboard watcher"
-#$SPWAN "signal-desktop-beta --start-in-tray --no-sandbox"
-$SPAWN "WAYLAND_DEBUG=1 /home/missu/.git/de/foot taskwarrior-tui" 
-$SPAWN $MENU
-
-#$SPAWN "$GSET $INTERFACE gtk-theme adw-gtk3-dark"
-#$SPAWN "$GSET $INTERFACE icon-theme breeze-dark"
-#$SPAWN "$GSET $INTERFACE cursor-theme Adwaita"
-#$SPAWN "$GSET $INTERFACE font-name Proxima Nova 11.3"
-#$SPAWN "$GSET $INTERFACE enable-animations false"
-#$SPAWN "$GSET $INTERFACE color-scheme prefer-dark"
-#$SPAWN "$GSET org.gtk.Settings.FileChooser window-size '(740, 371)'"
-#$SPAWN "$GSET org.gtk.Settings.FileChooser startup-mode \'cwd\' 
-#$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec $term"
-#$SPAWN "$GSET org.gnome.desktop.default-applications.terminal exec-arg ''"
-#gsettings set org.gnome.desktop.wm.preferences button-layout ""
-
-################
-# INPUT CONFIG #
-################
-$INPUT $TOUCHPAD accel-profile adaptive
-$INPUT $TOUCHPAD pointer-accel 0.5
-$INPUT $TOUCHPAD tap enabled
-$INPUT $TOUCHPAD tap-button-map left-right-middle
-
-##################
-# CONFIGURATIONS #
-##################
-FLOATS_app_id=(gnome-pomodoro qalculate-gtk qalculate-qt org.kde.polkit-kde-authentication-agent-1)
-for w in ${FLOATS_app_id[@]}
-do
-    $CMD float-filter-add app-id $w
-done
-FLOATS_title=("Open File")
-for w in ${FLOATS_title[@]}
-do
-    $CMD float-filter-add title "$w"
-done
-
-$CMD focus-follows-cursor normal
-$CMD set-repeat 60 250
-$CMD border-color-focused 0xE5E9F0
-$CMD border-color-unfocused 0x3B4252
-$CMD border-color-urgent 0x88C0D0
-$CMD border-width 2
-
-$CMD default-layout rivertile
-// exec rivertile -view-padding 2 -main-location top -main-count 2
-exec rivertile -view-padding 2
+--------------------------
+----- CONFIGURATIONS -----
+--------------------------
+riverctl map-pointer normal Super BTN_RIGHT resize-view
+riverctl map-pointer normal Super BTN_LEFT move-view
+riverctl focus-follows-cursor normal
+riverctl set-repeat 60 250
+riverctl border-color-focused 0xE5E9F0
+riverctl border-color-unfocused 0x3B4252
+riverctl border-color-urgent 0x88C0D0
+riverctl border-width 2
+riverctl spawn stacktile
+riverctl output-layout stacktile
+exec rivertile -view-padding 2 -main-ratio 0.5 -view-padding 3 

@@ -1,6 +1,0 @@
-#!/bin/bash
-
-pkexec bash -c 'kexec -l \ 
-  /boot/vmlinuz-linux-xanmod-edge \ 
-  --initrd=/boot/booster-linux-xanmod-edge.img \
-  --reuse-cmdline && kexec -e'

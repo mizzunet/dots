@@ -16,10 +16,10 @@ do
   fi
   # COUNT=$(heroku run getcount.sh -a emailcount &> /dev/null)
   # COUNT=$(_s-unread-count -u mizzunet -p $HYDROXIDE_BRIDGE_PASS -S 127.0.0.1 -P 1143)
-  COUNT=$(sqlite3 ~/.local/share/geary/account_01/geary.db 'SELECT unread_count FROM FolderTable' | head -1)
+  COUNT=$(sqlite3 ~/.local/share/geary/account_01/geary.db 'SELECT unread_count FROM FolderTable WHERE id=5')
   
   if test $COUNT -gt 0;then
-    COUNT="$COUNT 󰚇"
+    COUNT="󰁥 $COUNT"
   else
     COUNT=""
   fi

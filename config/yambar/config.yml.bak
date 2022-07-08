@@ -1,33 +1,35 @@
 icon: &icon  Material Design Icons:style=Regular:pixelsize=18
-tags: &tags Material Design Icons:style=Regular:pixelsize=22
+tags: &tags Material Design Icons:style=Regular:pixelsize=23
 
 bar:
  height: 36
  location: top
  layer: bottom
- spacing: 5
- font: JetBrains Mono:size=15:weight=regular
+ spacing: 4
+ font: Inter:size=16:weight=regular
  left-margin: 16
  right-margin: 16
  foreground: F1F1F1FF
  background: 11111100
  
  left:
-   - clock:
-       time-format: "%I:%M"
-       date-format: "%a %d"
-       content:
-         - string: {text: "[ 󰥔 {time} {date} ]"}
+   - foreign-toplevel:
+       content: 
+        map:
+         conditions:
+          ~activated: {empty: {}}
+          activated:
+            - string: {text: "{app-id}"}
    - script:
-       path: /home/missu/.config/yambar/scripts/_pomodoro
-       content:
-         map:
-           conditions:
-             status == Paused: {string: {text: "[ 󱦠 {time} ]" }}
-             status == Running: {string: {text: "[ 󱦟 {time} ]"}}
+       path: /home/missu/.config/yambar/scripts/tasks
+       content:  {string: {text: "{COUNT}", font: *icon}}
+   - script:
+       path: /home/missu/.config/yambar/scripts/_yambar_caffiene
+       content:  {string: {text: "{CAFFIENE}", font: *icon}}
+   - script:
+       path: /home/missu/.config/yambar/scripts/_yambar_mail
+       content:  {string: {text: "{COUNT}", font: *icon}}
  center:
-   - label:
-       content: {string: {text: '['}}
    - river:
        anchors:
         - base: &river_base
@@ -71,28 +73,8 @@ bar:
                 conditions:
                   ~occupied: {empty: {}}
                   occupied: {map: {<<: *river_base}}
-   - label:
-       content: {string: {text: ']'}}
 
  right:
-   - label:
-       content: {string: {text: '['}}
-   - script:
-       path: /home/missu/.config/yambar/scripts/anki
-       content:  {string: {text: "{count}", font: *icon}}
-   - script:
-       path: /home/missu/.config/yambar/scripts/tasks
-       content:  {string: {text: "{COUNT}", font: *icon}}
-   - script:
-       path: /home/missu/.config/yambar/scripts/_yambar_caffiene
-       content:  {string: {text: "{CAFFIENE}", font: *icon}}
-   - script:
-       path: /home/missu/.config/yambar/scripts/_yambar_mail
-       content:  {string: {text: "{COUNT}", font: *icon}}
-   - label:
-       content: {string: {text: ']'}}
-   - label:
-       content: {string: {text: '['}}
    - network:
          name: wlan0
          content:
@@ -104,28 +86,28 @@ bar:
                    tag: signal
                    items:
                      # - string: {text: 󰤟, font: *icon}
-                     - string: {text: 󰤢}
-                     - string: {text: 󰤥}
-                     - string: {text: 󰤨}
+                     - string: {text: 󰤢, font: *icon}
+                     - string: {text: 󰤥, font: *icon}
+                     - string: {text: 󰤨, font: *icon}
    - alsa:
        card: hw:PCH
        mixer: Master
        content:
          map:
            conditions:
-             ~online: {string: {text: X, foreground: ff0000ff}}
+             ~online: {string: {text: X, font: *icon, foreground: ff0000ff}}
              online:
                map:
                  # on-click: /bin/sh -c "amixer -q sset Speaker unmute && amixer -q sset Headphone unmute && amixer -q sset Master toggle"
                  conditions:
-                   muted: {string: {text: 󰖁 }}
+                   muted: {string: {text: 󰖁, font: *icon }}
                    ~muted:
                      ramp:
                        tag: volume
                        items:
-                         - string: {text: 󰖀}
-                         - string: {text: 󰖀}
-                         - string: {text: 󰕾}
+                         - string: {text: 󰖀, font: *icon}
+                         - string: {text: 󰖀, font: *icon}
+                         - string: {text: 󰕾, font: *icon}
    - battery:
        name: BAT1
        poll-interval: 20
@@ -136,16 +118,16 @@ bar:
                - ramp:
                    tag: capacity
                    items:
-                     - string: {text: "󰂃{capacity}%", foreground: ffa600ff}
-                     - string: {text: "󰂃{capacity}%", foreground: ffa600ff}
-                     - string: {text: 󰁼}
-                     - string: {text: 󰁽}
-                     - string: {text: 󰁾}
-                     - string: {text: 󰁿}
-                     - string: {text: 󰂀}
-                     - string: {text: 󰂁}
-                     - string: {text: 󰂂}
-                     - string: {text: 󰁹}
+                     - string: {text: "󰂃{capacity}%", foreground: ffa600ff,font: *icon}
+                     - string: {text: "󰂃{capacity}%", foreground: ffa600ff,font: *icon}
+                     - string: {text: 󰁼, font: *icon}
+                     - string: {text: 󰁽, font: *icon}
+                     - string: {text: 󰁾, font: *icon}
+                     - string: {text: 󰁿, font: *icon}
+                     - string: {text: 󰂀, font: *icon}
+                     - string: {text: 󰂁, font: *icon}
+                     - string: {text: 󰂂, font: *icon}
+                     - string: {text: 󰁹, font: *icon}
        content:
          map:
            conditions:
@@ -154,9 +136,13 @@ bar:
              state == discharging:
                <<: *discharging
              state == charging:
-               - string: {text: 󰂄, foreground: 00ff00ff}
+               - string: {text: 󰂄, foreground: 00ff00ff, font: *icon}
                - string: {text: "{capacity}%"}
              state == full:
-               - string: {text: 󱟢, foreground: 00ff00ff}
-   - label:
-       content: {string: {text: ']'}}
+               - string: {text: 󱟢, foreground: 00ff00ff, font: *icon}
+   - clock:
+       time-format: "%I:%M"
+       date-format: "%d %a"
+       content:
+         - string: {text: "{date} {time}"}
+

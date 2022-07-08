@@ -1,5 +1,4 @@
-<?xml version='1.0'?>
-<fontconfig>
+<?xml version="1.0"?><fontconfig>
  <!-- Set preferred serif, sans serif, and monospace fonts. -->
  <alias>
   <family>serif</family>
@@ -10,19 +9,19 @@
  <alias>
   <family>sans-serif</family>
   <prefer>
-   <family>SF Pro Text</family>
+   <family>Inter </family>
   </prefer>
  </alias>
  <alias>
   <family>sans</family>
   <prefer>
-   <family>SF Pro Text</family>
+   <family>Inter </family>
   </prefer>
  </alias>
  <alias>
   <family>monospace</family>
   <prefer>
-   <family>Roboto Mono</family>
+   <family>Inter</family>
   </prefer>
  </alias>
  <!-- Aliases for commonly used MS fonts. -->
@@ -31,7 +30,7 @@
    <string>Arial</string>
   </test>
   <edit binding="strong" name="family" mode="assign">
-   <string>SF Pro Text</string>
+   <string>Inter</string>
   </edit>
  </match>
  <match>
@@ -39,7 +38,7 @@
    <string>Helvetica</string>
   </test>
   <edit binding="strong" name="family" mode="assign">
-   <string>SF Pro Text</string>
+   <string>Inter </string>
   </edit>
  </match>
  <match>
@@ -47,7 +46,7 @@
    <string>Verdana</string>
   </test>
   <edit binding="strong" name="family" mode="assign">
-   <string>SF Pro Text</string>
+   <string>Inter </string>
   </edit>
  </match>
  <match>
@@ -55,7 +54,7 @@
    <string>Tahoma</string>
   </test>
   <edit binding="strong" name="family" mode="assign">
-   <string>SF Pro Text</string>
+   <string>Inter </string>
   </edit>
  </match>
  <match>
@@ -64,7 +63,7 @@
    <string>Comic Sans MS</string>
   </test>
   <edit binding="strong" name="family" mode="assign">
-   <string>SF Pro Text</string>
+   <string>Inter </string>
   </edit>
  </match>
  <match>

@@ -1,0 +1,29 @@
+bar:
+ height: 36
+ location: top
+ layer: bottom
+ spacing: 5
+ font: Inter:size=16:weight=regular
+ left-margin: 16
+ right-margin: 16
+ foreground: F1F1F1FF
+ background: 11111100
+ 
+ center:
+   - label:
+       content: {string: {text: '['}}
+   - script:
+       path: /home/missu/.config/yambar/scripts/_pomodoro
+       content:
+         map:
+           conditions:
+             status == Paused: {string: {text: "󱦠 {time}" }}
+             status == Running: {string: {text: "󱦟 {time}"}}
+   - script:
+       path: /home/missu/.config/yambar/scripts/tasks
+       content:  {string: {text: "{COUNT}"}}
+   - script:
+       path: /home/missu/.config/yambar/scripts/anki
+       content:  {string: {text: "{count}"}}
+   - label:
+       content: {string: {text: ']'}}
