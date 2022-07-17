@@ -7,18 +7,14 @@ export VISUAL="nv"
 ## LibVA
 export LIBVA_DRIVER_NAME=i965
 export LIBVA_DRIVERS_PATH=/usr/lib/dri
-export MESA_GLSL_CACHE_DISABLE=true
 export MESA_LOADER_DRIVER_OVERRIDE=i965
 export KOOHA_VAAPI=1
-# export GTK_THEME=Materia-dark-compact
+export GTK_THEME=Materia-dark-compact
 export GST_VAAPI_ALL_DRIVERS=1
 
 ## spotify_dl
 export SPOTIPY_CLIENT_SECRET=5627a7efa52a4d5ab82c8bc64a62c42e
 export SPOTIPY_CLIENT_ID=b1acb8ba1769473781009e4976250205
-
-## PATH
-fish_add_path ~/.local/bin ~/.local/go/bin
 
 ## Theme
 export QT_QPA_PLATFORMTHEME=qt5ct
@@ -34,10 +30,6 @@ export QT_QPA_PLATFORM=wayland-egl
 export XDG_CURRENT_DESKTOP=sway # xdg-desktop-portal
 # export  GTK_USE_PORTAL=1
 
-# Firefox
-export MOZ_ENABLE_WAYLAND=1
-export MOZ_DISABLE_RDD_SANDBOX=1
-export MOZ_WEBRENDER=1
 export BROWSER=chromium
 
 # Go
@@ -49,9 +41,6 @@ export WINEDLLOVERRIDES="mscoree=d;mshtml=d"
 export WINE_VK_VULKAN_ONLY=1
 export WINE_VK_USE_FSR=1
 export WINEFSYNC=1
-#export MESA_LOADER_DRIVER_OVERRIDE=crocus
-
-
 # SSH
 export SSH_SDF=ZtyprgVEItndKQ
 

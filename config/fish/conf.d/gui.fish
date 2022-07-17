@@ -1,5 +1,5 @@
 switch $(tty)
-  case /dev/tty1
+  case /dev/tty2
   if test -e /tmp/river.log;
     echo river crashed
     #exec river;
