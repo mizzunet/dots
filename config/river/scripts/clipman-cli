@@ -9,7 +9,7 @@ ARGS='-l 40 -n -b -i --wrap
 	--nf #ffffff'
 
 case $1 in
-	clipman)
+	history)
 	clipman pick -t $PICKER --tool-args="$ARGS"
 	;;
 	watcher)
