@@ -1,0 +1,4 @@
+timeout 30 'brillo -q -u 100000 -U 8' resume 'brillo -q -u 100000 -A 8'
+timeout 300 'wlr-randr --output eDP-1 --off' resume 'wlr-randr --output eDP-1 --on'
+timeout 360 "swaylock --color 000000  --indicator-caps-lock --font 'Proxima Nova Light' --image ~/Pictures/Wallpaper/pexels-forest.jpg --ignore-empty-password -f"
+before-sleep "swaylock --color 000000  --indicator-caps-lock --font 'Proxima Nova Light' --image ~/Pictures/Wallpaper/pexels-forest.jpg --ignore-empty-password -f"

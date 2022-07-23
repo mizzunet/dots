@@ -25,6 +25,7 @@ riverctl spawn batsignal-cli
 riverctl spawn "clipman-cli watcher"
 riverctl spawn "$TERM taskwarrior-tui" 
 riverctl spawn "export $(dbus-launch)" 
+riverctl spawn "foot --server" 
 
 --------------------------
 -------- MAPPINGS --------
@@ -43,20 +44,22 @@ riverctl map normal None       KP_Insert spawn "wtype -P Right"
 riverctl map normal Super 		T spawn "$TERM taskwarrior-tui"
 riverctl map normal Control         Space spawn 'playerctl play-pause && notify-send -t 1500 -u low -a control $(playerctl metadata | head -1 | cut -d" " -f1) $(playerctl status)'
 ### SCRIPTS
-riverctl map normal Control+Alt       Up spawn "wlr-randr-cli up"
-riverctl map normal Control+Alt     Down spawn "wlr-randr-cli down"
-riverctl map normal Control+Alt    Right spawn "wlr-randr-cli right"
-riverctl map normal Control+Alt     Left spawn "wlr-randr-cli left"
-riverctl map normal None          Print spawn "grim-cli select-copy"
-riverctl map normal Shift         Print spawn "grim-cli copy"
-riverctl map normal Super             c spawn "clipman-cli history"
+riverctl map normal Control+Alt Up spawn "wlr-randr-cli up"
+riverctl map normal Control+Alt Down spawn "wlr-randr-cli down"
+riverctl map normal Control+Alt Right spawn "wlr-randr-cli right"
+riverctl map normal Control+Alt Left spawn "wlr-randr-cli left"
+riverctl map normal None Print spawn "grim-cli select-copy"
+riverctl map normal Shift Print spawn "grim-cli copy"
+riverctl map normal Super c spawn "clipman-cli history"
 riverctl map normal Control+Shift Print spawn wf-recorder-cli
-riverctl map normal Alt+Shift         P spawn playwithmpv
-riverctl map normal Super+Shift               W spawn waydroid-cli
-riverctl map normal Control+Alt   Delete spawn kexec-reboot
-riverctl map normal Super+Shift       C spawn swayidle-cli
-riverctl map normal Super+Shift       W spawn iw-cli
-riverctl map normal Super+Shift       N spawn wlsunset-cli
+riverctl map normal Alt+Shift P spawn playwithmpv
+riverctl map normal Alt+Shift W spawn waydroid-cli
+riverctl map normal Control+Alt Delete spawn kexec-reboot
+riverctl map normal Super+Shift C spawn swayidle-cli
+riverctl map normal Super+Shift W spawn iw-cli
+riverctl map normal Super W spawn iwgtk
+riverctl map normal Super+Shift N spawn wlsunset-cli
+riverctl map normal Super F1 spawn "$TERM nvim ~/.config/river/init"
 riverctl map normal None XF86AudioRaiseVolume spawn "pamixer-cli up"
 riverctl map normal None XF86AudioLowerVolume spawn "pamixer-cli down"
 riverctl map normal None XF86MonBrightnessUp spawn "brillo-cli up"
@@ -130,5 +133,5 @@ riverctl border-color-unfocused 0x3B4252
 riverctl border-color-urgent 0x88C0D0
 riverctl border-width 2
 riverctl output-layout stacktile
-riverctl spawn 'stacktile --primary-ratio 0.5 --secondary-count 2 --remainder-sublayout grid'
+riverctl spawn 'stacktile --primary-ratio 0.5 --secondary-count 2 --remainder-sublayout grid --inner-padding 4'
 #exec rivertile -view-padding 2 -main-ratio 0.5 -view-padding 3 

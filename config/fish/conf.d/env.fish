@@ -7,7 +7,6 @@ export VISUAL="nv"
 ## LibVA
 export LIBVA_DRIVER_NAME=i965
 export LIBVA_DRIVERS_PATH=/usr/lib/dri
-export MESA_LOADER_DRIVER_OVERRIDE=i965
 export KOOHA_VAAPI=1
 export GTK_THEME=Materia-dark-compact
 export GST_VAAPI_ALL_DRIVERS=1

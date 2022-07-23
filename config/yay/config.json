@@ -21,7 +21,7 @@
 	"searchby": "name-desc",
 	"gitflags": "",
 	"removemake": "no",
-	"sudobin": "pkexec",
+	"sudobin": "sudo",
 	"sudoflags": "",
 	"requestsplitn": 150,
 	"completionrefreshtime": 7,
